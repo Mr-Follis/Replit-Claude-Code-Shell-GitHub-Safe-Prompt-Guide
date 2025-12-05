@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Replit + Claude Code – GitHub Safe Prompt Guide</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     
     <!-- Social sharing meta tags -->
     <meta name="description" content="GitHub-safe prompts for using Claude Code in Replit. Includes CLAUDE.md template, morning kick-off, and end-of-day wrap-up prompts.">
@@ -419,7 +420,7 @@
         <h1>🚀 Replit + Claude Code (Shell)</h1>
         <p class="subtitle">GitHub Safe Prompt Guide</p>
 
-        <p><strong>CLAUDE.md</strong> is the single source of truth—it contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
+        <p><strong>CLAUDE.md</strong> is the single source of truth. It contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
 
         <div class="quick-nav">
             <span>Quick jump:</span>
@@ -432,8 +433,8 @@
             <h3>⚙️ Prerequisites</h3>
             <p>Before you start, make sure you have:</p>
             <ol>
-                <li><strong>GitHub connected to Replit</strong> — Go to Replit → Settings → Connected Services → Connect GitHub</li>
-                <li><strong>A repo linked to your Repl</strong> — Either import from GitHub or create a new repo from your Repl</li>
+                <li><strong>GitHub connected to Replit</strong>: Go to Replit → Settings → Connected Services → Connect GitHub</li>
+                <li><strong>A repo linked to your Repl</strong>: Either import from GitHub or create a new repo from your Repl</li>
             </ol>
             <p>💡 Need help? See <a href="https://docs.replit.com/category/git-and-github" target="_blank">Replit's GitHub integration guide</a></p>
         </div>
@@ -461,7 +462,7 @@
         <p>⚠️ <strong>Do this once when starting a new project.</strong> This creates the CLAUDE.md file with all the safety rules built in.</p>
 
         <details class="copy-section-collapsible">
-            <summary class="setup-summary">📄 CLAUDE.md Template — Click to Expand 👇</summary>
+            <summary class="setup-summary">📄 CLAUDE.md Template: Click to Expand 👇</summary>
             <div class="copy-section-inner">
                 <div class="copy-header-inner setup">
                     <h3>Copy This Into Claude</h3>
@@ -545,7 +546,7 @@
             </div>
             <div class="copy-section-inner">
                 <div class="copy-header-inner">
-                    <h3>📌 After Claude Creates the File — Commit It</h3>
+                    <h3>📌 After Claude Creates the File: Commit It</h3>
                     <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
                         <span>📋</span> COPY
                     </button>
@@ -629,7 +630,7 @@ git push</div>
                 </tr>
                 <tr>
                     <td><strong>During Session</strong></td>
-                    <td>Just work—rules are already in CLAUDE.md</td>
+                    <td>Just work. Rules are already in CLAUDE.md</td>
                 </tr>
             </table>
         </div>
@@ -641,7 +642,7 @@ git push</div>
                 <li><strong>Every session:</strong> <code>npm install -g @anthropic-ai/claude-code && claude</code></li>
                 <li><strong>New project:</strong> Create CLAUDE.md (use First-Time Setup above)</li>
                 <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
-                <li><strong>Rules live in CLAUDE.md</strong> — no need to repeat them!</li>
+                <li><strong>Rules live in CLAUDE.md</strong>. No need to repeat them!</li>
             </ol>
         </div>
 
