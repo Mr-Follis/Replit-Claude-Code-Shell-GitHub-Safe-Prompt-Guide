@@ -261,6 +261,10 @@
             overflow: hidden;
         }
 
+        details.copy-section-collapsible {
+            border: 2px solid #e67e22;
+        }
+
         summary {
             background: #6c757d;
             color: white;
@@ -270,6 +274,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        summary.setup-summary {
+            background: #e67e22;
+            font-size: 1.1rem;
+            padding: 18px 20px;
+        }
+
+        summary.setup-summary:hover {
+            background: #d35400;
         }
 
         summary:hover {
@@ -287,6 +301,44 @@
             font-size: 0.85rem;
             white-space: pre-wrap;
             overflow-x: auto;
+        }
+
+        .copy-section-inner {
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .copy-section-inner:last-child {
+            border-bottom: none;
+        }
+
+        .copy-header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .copy-header-inner.setup {
+            background: #fef5e7;
+        }
+
+        .copy-header-inner h3 {
+            color: #333;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .copy-header-inner .copy-btn {
+            background: #e67e22;
+            border-color: #e67e22;
+        }
+
+        .copy-header-inner .copy-btn:hover {
+            background: #d35400;
+            border-color: #d35400;
+            color: white;
         }
 
         @media (max-width: 600px) {
@@ -347,14 +399,16 @@
         <h2>🆕 First-Time Setup: Create CLAUDE.md</h2>
         <p>⚠️ <strong>Do this once when starting a new project.</strong> This creates the CLAUDE.md file with all the safety rules built in.</p>
 
-        <div class="copy-section">
-            <div class="copy-header setup">
-                <h3>📄 CLAUDE.md Template — Copy This Into Claude</h3>
-                <button class="copy-btn" onclick="copyToClipboard(this, 'claude-md-template')">
-                    <span>📋</span> COPY ALL
-                </button>
-            </div>
-            <div class="copy-content" id="claude-md-template">Create a CLAUDE.md file in the project root with this content:
+        <details class="copy-section-collapsible">
+            <summary class="setup-summary">📄 CLAUDE.md Template — Click to Expand 👇</summary>
+            <div class="copy-section-inner">
+                <div class="copy-header-inner setup">
+                    <h3>Copy This Into Claude</h3>
+                    <button class="copy-btn" onclick="copyToClipboard(this, 'claude-md-template')">
+                        <span>📋</span> COPY ALL
+                    </button>
+                </div>
+                <div class="copy-content" id="claude-md-template">Create a CLAUDE.md file in the project root with this content:
 
 # Project: [Project Name]
 
@@ -427,19 +481,19 @@
 
 ## Project-Specific Rules
 [Add any coding conventions or requirements specific to this project]</div>
-        </div>
-
-        <div class="copy-section">
-            <div class="copy-header">
-                <h3>📌 After Claude Creates the File — Commit It</h3>
-                <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
-                    <span>📋</span> COPY
-                </button>
             </div>
-            <div class="copy-content" id="git-commit">git add CLAUDE.md
+            <div class="copy-section-inner">
+                <div class="copy-header-inner">
+                    <h3>📌 After Claude Creates the File — Commit It</h3>
+                    <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
+                        <span>📋</span> COPY
+                    </button>
+                </div>
+                <div class="copy-content" id="git-commit">git add CLAUDE.md
 git commit -m "docs: add CLAUDE.md with project rules and session tracking"
 git push</div>
-        </div>
+            </div>
+        </details>
 
         <!-- Morning Kick-Off -->
         <h2>☀️ Morning Kick-Off Prompt</h2>
