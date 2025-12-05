@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replit + Claude Code – GitHub Safe Prompt Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #1a5276;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a5276;
+        }
+
+        h3 {
+            color: #2874a6;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .prereq-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .prereq-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+
+        .prereq-box ol {
+            margin-left: 20px;
+        }
+
+        .prereq-box a {
+            color: #856404;
+        }
+
+        .note {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .copy-section {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .copy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #1a5276;
+            color: white;
+        }
+
+        .copy-header.morning {
+            background: #27ae60;
+        }
+
+        .copy-header.evening {
+            background: #8e44ad;
+        }
+
+        .copy-header.setup {
+            background: #e67e22;
+        }
+
+        .copy-header.install {
+            background: #3498db;
+        }
+
+        .copy-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background: white;
+            color: #1a5276;
+        }
+
+        .copy-header.morning .copy-btn:hover {
+            color: #27ae60;
+        }
+
+        .copy-header.evening .copy-btn:hover {
+            color: #8e44ad;
+        }
+
+        .copy-header.setup .copy-btn:hover {
+            color: #e67e22;
+        }
+
+        .copy-header.install .copy-btn:hover {
+            color: #3498db;
+        }
+
+        .copy-btn.copied {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        .copy-content {
+            padding: 20px;
+            background: #f8f9fa;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .quick-ref {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .quick-ref table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .quick-ref th {
+            background: #1a5276;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .quick-ref td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .quick-ref tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .quick-ref tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tldr {
+            background: linear-gradient(135deg, #1a5276, #2874a6);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .tldr h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            margin-top: 0;
+        }
+
+        .tldr ol {
+            margin-left: 20px;
+        }
+
+        .tldr li {
+            margin: 10px 0;
+        }
+
+        .tldr code {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+
+        footer a {
+            color: #1a5276;
+        }
+
+        details {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        summary {
+            background: #6c757d;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        summary:hover {
+            background: #5a6268;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        details .content {
+            padding: 20px;
+            background: #f8f9fa;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 600px) {
+            .copy-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Replit + Claude Code (Shell)</h1>
+        <p class="subtitle">GitHub Safe Prompt Guide</p>
+
+        <p><strong>CLAUDE.md</strong> is the single source of truth—it contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
+
+        <!-- Prerequisites -->
+        <div class="prereq-box">
+            <h3>⚙️ Prerequisites</h3>
+            <p>Before you start, make sure you have:</p>
+            <ol>
+                <li><strong>GitHub connected to Replit</strong> — Go to Replit → Settings → Connected Services → Connect GitHub</li>
+                <li><strong>A repo linked to your Repl</strong> — Either import from GitHub or create a new repo from your Repl</li>
+            </ol>
+            <p>💡 Need help? See <a href="https://docs.replit.com/category/git-and-github" target="_blank">Replit's GitHub integration guide</a></p>
+        </div>
+
+        <!-- Install Command -->
+        <h2>📥 Installing Claude Code in Replit</h2>
+        <p>Open the <strong>Shell</strong> tab in Replit and run:</p>
+
+        <div class="copy-section">
+            <div class="copy-header install">
+                <h3>📥 Install & Start Claude Code</h3>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'install-cmd')">
+                    <span>📋</span> COPY
+                </button>
+            </div>
+            <div class="copy-content" id="install-cmd">npm install -g @anthropic-ai/claude-code && claude</div>
+        </div>
+
+        <div class="warning">
+            ⚠️ <strong>Note:</strong> Replit's shell resets between sessions, so you'll need to run this install command <strong>every time</strong> you start a new Replit session.
+        </div>
+
+        <!-- First-Time Setup -->
+        <h2>🆕 First-Time Setup: Create CLAUDE.md</h2>
+        <p>⚠️ <strong>Do this once when starting a new project.</strong> This creates the CLAUDE.md file with all the safety rules built in.</p>
+
+        <div class="copy-section">
+            <div class="copy-header setup">
+                <h3>📄 CLAUDE.md Template — Copy This Into Claude</h3>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'claude-md-template')">
+                    <span>📋</span> COPY ALL
+                </button>
+            </div>
+            <div class="copy-content" id="claude-md-template">Create a CLAUDE.md file in the project root with this content:
+
+# Project: [Project Name]
+
+## Rules for Claude (Always Follow)
+
+### CLAUDE.md Management
+- Always read this file at the start of every session.
+- Update the Session Log at the end of every session with completed tasks and fixes.
+
+### GitHub Safety
+- Always commit the current working code before starting edits.
+- If a change may break existing functionality, create a new branch and explain why.
+- Write clear, descriptive commit messages for all changes.
+
+### Preserve Functionality
+- Do not remove or alter working features unless explicitly instructed.
+- If a change risks regression, stop and explain the impact before proceeding.
+
+### Code Changes
+- Keep changes incremental and well-commented.
+- Highlight what was added, removed, or updated.
+
+### Verification
+- After edits, run tests or basic checks to confirm nothing is broken.
+- Report any errors, warnings, or issues that appear.
+
+### General
+- Treat GitHub as the single source of truth.
+- All steps must be safe, reversible, and transparent.
+
+---
+
+## Project Overview
+[Brief description of what this project does]
+
+## Tech Stack
+- [List technologies, frameworks, dependencies]
+
+## Project Structure
+[Key folders and files]
+
+---
+
+## Current Status
+- Status: [In Progress / Stable / Needs Review]
+- Last Session: [Date]
+- Current Branch: main
+
+## Pending Tasks
+- [ ] [Task 1]
+- [ ] [Task 2]
+
+## Known Issues
+- [None yet]
+
+---
+
+## Session Log
+
+### [Date] - Initial Setup
+- Tasks Completed:
+  - Created CLAUDE.md
+  - [Other setup tasks]
+- Fixes Applied:
+  - None
+- Notes:
+  - Project initialized
+
+---
+
+## Project-Specific Rules
+[Add any coding conventions or requirements specific to this project]</div>
+        </div>
+
+        <div class="copy-section">
+            <div class="copy-header">
+                <h3>📌 After Claude Creates the File — Commit It</h3>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
+                    <span>📋</span> COPY
+                </button>
+            </div>
+            <div class="copy-content" id="git-commit">git add CLAUDE.md
+git commit -m "docs: add CLAUDE.md with project rules and session tracking"
+git push</div>
+        </div>
+
+        <!-- Morning Kick-Off -->
+        <h2>☀️ Morning Kick-Off Prompt</h2>
+        <p>Use this at the <strong>start</strong> of every coding session.</p>
+
+        <div class="copy-section">
+            <div class="copy-header morning">
+                <h3>☀️ Start of Session</h3>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'kickoff-prompt')">
+                    <span>📋</span> COPY
+                </button>
+            </div>
+            <div class="copy-content" id="kickoff-prompt">I'm starting a new coding session. Please:
+
+1. Read CLAUDE.md for project context, rules, and pending tasks.
+2. Run `git pull` to ensure we're up-to-date.
+3. Run `git status` and `git log --oneline -5` to see recent activity.
+4. Summarize where we left off and what's pending.
+5. Suggest the best next step.</div>
+        </div>
+
+        <!-- End-of-Day Wrap-Up -->
+        <h2>🌙 End-of-Day Wrap-Up Prompt</h2>
+        <p>Use this at the <strong>end</strong> of every coding session.</p>
+
+        <div class="copy-section">
+            <div class="copy-header evening">
+                <h3>🌙 End of Session</h3>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'wrapup-prompt')">
+                    <span>📋</span> COPY
+                </button>
+            </div>
+            <div class="copy-content" id="wrapup-prompt">I'm finishing for the day. Please:
+
+1. Confirm all changes are committed to GitHub.
+2. If anything is in progress, save it on a separate branch.
+3. Update CLAUDE.md:
+   - Add today's date to Session Log
+   - List tasks completed
+   - List fixes applied
+   - Add any notes for next session
+   - Update Pending Tasks
+   - Add any new Known Issues
+4. Commit CLAUDE.md: "docs: update CLAUDE.md session log [date]"
+5. Run `git push`
+6. Confirm the project is in a safe state.</div>
+        </div>
+
+        <!-- Quick Reference -->
+        <h2>📊 Quick Reference</h2>
+        <div class="quick-ref">
+            <table>
+                <tr>
+                    <th>When</th>
+                    <th>What to Do</th>
+                </tr>
+                <tr>
+                    <td><strong>Every Session</strong></td>
+                    <td>Install Claude Code and start it</td>
+                </tr>
+                <tr>
+                    <td><strong>New Project</strong></td>
+                    <td>Run the First-Time Setup to create CLAUDE.md</td>
+                </tr>
+                <tr>
+                    <td><strong>Start of Session</strong></td>
+                    <td>Use the Kick-Off Prompt</td>
+                </tr>
+                <tr>
+                    <td><strong>End of Session</strong></td>
+                    <td>Use the Wrap-Up Prompt</td>
+                </tr>
+                <tr>
+                    <td><strong>During Session</strong></td>
+                    <td>Just work—rules are already in CLAUDE.md</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- TL;DR -->
+        <div class="tldr">
+            <h2>⚡ TL;DR</h2>
+            <ol>
+                <li><strong>Every session:</strong> <code>npm install -g @anthropic-ai/claude-code && claude</code></li>
+                <li><strong>New project:</strong> Create CLAUDE.md (use First-Time Setup above)</li>
+                <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
+                <li><strong>Rules live in CLAUDE.md</strong> — no need to repeat them!</li>
+            </ol>
+        </div>
+
+        <!-- Example -->
+        <details>
+            <summary>📄 Example: What CLAUDE.md looks like after a few sessions</summary>
+            <div class="content"># Project: MyWebApp
+
+## Rules for Claude (Always Follow)
+
+### CLAUDE.md Management
+- Always read this file at the start of every session.
+- Update the Session Log at the end of every session with completed tasks and fixes.
+
+### GitHub Safety
+- Always commit the current working code before starting edits.
+- If a change may break existing functionality, create a new branch and explain why.
+- Write clear, descriptive commit messages for all changes.
+
+### Preserve Functionality
+- Do not remove or alter working features unless explicitly instructed.
+- If a change risks regression, stop and explain the impact before proceeding.
+
+### Code Changes
+- Keep changes incremental and well-commented.
+- Highlight what was added, removed, or updated.
+
+### Verification
+- After edits, run tests or basic checks to confirm nothing is broken.
+- Report any errors, warnings, or issues that appear.
+
+### General
+- Treat GitHub as the single source of truth.
+- All steps must be safe, reversible, and transparent.
+
+---
+
+## Project Overview
+A React-based dashboard for tracking inventory.
+
+## Tech Stack
+- React 18
+- Node.js / Express
+- PostgreSQL
+- Tailwind CSS
+
+## Project Structure
+- /src - Frontend React code
+- /server - Backend API
+- /db - Database migrations
+
+---
+
+## Current Status
+- Status: In Progress
+- Last Session: 2025-01-15
+- Current Branch: main
+
+## Pending Tasks
+- [ ] Add password reset functionality
+- [ ] Build inventory list component
+- [ ] Add search/filter to inventory
+
+## Known Issues
+- Logout button sometimes requires double-click
+
+---
+
+## Session Log
+
+### 2025-01-15
+- Tasks Completed:
+  - Added user authentication flow
+  - Created login and signup pages
+- Fixes Applied:
+  - Fixed navbar not displaying on mobile
+- Notes:
+  - Need to add password reset functionality next
+
+### 2025-01-14
+- Tasks Completed:
+  - Set up project structure
+  - Connected to PostgreSQL database
+- Fixes Applied:
+  - None
+- Notes:
+  - Initial setup complete
+
+### 2025-01-13 - Initial Setup
+- Tasks Completed:
+  - Created CLAUDE.md
+  - Initialized React project
+- Fixes Applied:
+  - None
+- Notes:
+  - Project initialized
+
+---
+
+## Project-Specific Rules
+- Use functional components only (no class components)
+- All API routes must have error handling
+- Run `npm test` before committing</div>
+        </details>
+
+        <footer>
+            <p>Made for developers using Claude Code in Replit ❤️</p>
+            <p><a href="https://github.com/Mr-Follis" target="_blank">⭐ Star on GitHub if this helped!</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(button, elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Visual feedback
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<span>✅</span> COPIED!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy. Please select and copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>
