@@ -37,6 +37,45 @@
             margin-bottom: 30px;
         }
 
+        .quick-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+
+        .quick-nav span {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn.morning {
+            background: #27ae60;
+        }
+
+        .nav-btn.evening {
+            background: #8e44ad;
+        }
+
         h2 {
             color: #1a5276;
             margin: 30px 0 15px 0;
@@ -366,6 +405,12 @@
 
         <p><strong>CLAUDE.md</strong> is the single source of truth—it contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
 
+        <div class="quick-nav">
+            <span>Quick jump:</span>
+            <a href="#morning-kickoff" class="nav-btn morning">☀️ Morning Kick-Off</a>
+            <a href="#evening-wrapup" class="nav-btn evening">🌙 End-of-Day Wrap-Up</a>
+        </div>
+
         <!-- Prerequisites -->
         <div class="prereq-box">
             <h3>⚙️ Prerequisites</h3>
@@ -496,7 +541,7 @@ git push</div>
         </details>
 
         <!-- Morning Kick-Off -->
-        <h2>☀️ Morning Kick-Off Prompt</h2>
+        <h2 id="morning-kickoff">☀️ Morning Kick-Off Prompt</h2>
         <p>Use this at the <strong>start</strong> of every coding session.</p>
 
         <div class="copy-section">
@@ -516,7 +561,7 @@ git push</div>
         </div>
 
         <!-- End-of-Day Wrap-Up -->
-        <h2>🌙 End-of-Day Wrap-Up Prompt</h2>
+        <h2 id="evening-wrapup">🌙 End-of-Day Wrap-Up Prompt</h2>
         <p>Use this at the <strong>end</strong> of every coding session.</p>
 
         <div class="copy-section">
