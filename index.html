@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Replit + Claude Code – GitHub Safe Prompt Guide</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
-    
+
     <!-- Social sharing meta tags -->
     <meta name="description" content="GitHub-safe prompts for using Claude Code in Replit. Includes CLAUDE.md template, morning kick-off, and end-of-day wrap-up prompts.">
     
@@ -21,6 +21,7 @@
     <meta name="twitter:title" content="Replit + Claude Code – GitHub Safe Prompt Guide">
     <meta name="twitter:description" content="GitHub-safe prompts for using Claude Code in Replit. Includes CLAUDE.md template, morning kick-off, and end-of-day wrap-up prompts.">
     <meta name="twitter:image" content="https://mr-follis.github.io/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide/og-image.png">
+
     <style>
         * {
             box-sizing: border-box;
@@ -51,6 +52,13 @@
         .subtitle {
             text-align: center;
             color: #666;
+            margin-bottom: 10px;
+        }
+
+        .version-badge {
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
             margin-bottom: 30px;
         }
 
@@ -93,6 +101,55 @@
             background: #8e44ad;
         }
 
+        .workflow-diagram {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .workflow-diagram h3 {
+            margin: 0 0 15px 0;
+            color: #1a5276;
+        }
+
+        .workflow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .workflow-step {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px 20px;
+            min-width: 100px;
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .step-label {
+            font-weight: bold;
+            color: #1a5276;
+        }
+
+        .step-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .workflow-arrow {
+            font-size: 1.5rem;
+            color: #27ae60;
+        }
+
         h2 {
             color: #1a5276;
             margin: 30px 0 15px 0;
@@ -128,6 +185,61 @@
 
         .prereq-box a {
             color: #856404;
+        }
+
+        .prereq-collapsible {
+            background: #fff;
+            border: 2px solid #f0a500;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .prereq-summary {
+            background: #ffcc80;
+            color: #7a4a00;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prereq-summary:hover {
+            background: #ffb347;
+        }
+
+        .prereq-summary::after {
+            content: "👇";
+            margin-left: auto;
+        }
+
+        .prereq-collapsible[open] .prereq-summary::after {
+            content: "👆";
+        }
+
+        .prereq-content {
+            padding: 20px;
+            background: #fff3e0;
+        }
+
+        .prereq-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .prereq-content li {
+            margin-bottom: 8px;
+        }
+
+        .prereq-content a {
+            color: #e65100;
+        }
+
+        .prereq-content p:last-child {
+            margin-bottom: 0;
         }
 
         .note {
@@ -179,6 +291,18 @@
             background: #3498db;
         }
 
+        .copy-header.install .copy-btn:hover {
+            color: #3498db;
+        }
+
+        .install-reminder {
+            background: #e8f4f8;
+            color: #1a5276;
+            padding: 12px 20px;
+            font-weight: 500;
+            border-top: 2px dashed #3498db;
+        }
+
         .copy-header h3 {
             color: white;
             margin: 0;
@@ -215,10 +339,6 @@
 
         .copy-header.setup .copy-btn:hover {
             color: #e67e22;
-        }
-
-        .copy-header.install .copy-btn:hover {
-            color: #3498db;
         }
 
         .copy-btn.copied {
@@ -309,6 +429,42 @@
             color: #1a5276;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a5276;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #2874a6;
+            transform: translateY(-3px);
+        }
+
+        .footer-version {
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
         details {
             background: #fff;
             border-radius: 12px;
@@ -397,6 +553,123 @@
             color: white;
         }
 
+        .new-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        .update-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .update-box .update-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .update-box .update-badge {
+            background: #fff;
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: bounce 1s ease infinite;
+        }
+
+        .update-box p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .update-box code {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .troubleshooting-section {
+            background: #fff;
+            border: 2px solid #6c757d;
+            border-radius: 12px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .troubleshooting-summary {
+            background: #6c757d;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .troubleshooting-summary:hover {
+            background: #5a6268;
+        }
+
+        .troubleshooting-content {
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .trouble-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #6c757d;
+        }
+
+        .trouble-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trouble-item h4 {
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+
+        .trouble-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        .trouble-item code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
         @media (max-width: 600px) {
             .copy-header {
                 flex-direction: column;
@@ -419,6 +692,7 @@
     <div class="container">
         <h1>🚀 Replit + Claude Code (Shell)</h1>
         <p class="subtitle">GitHub Safe Prompt Guide</p>
+        <p class="version-badge">v2.0 · Last updated: January 2025</p>
 
         <p><strong>CLAUDE.md</strong> is the single source of truth. It contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
 
@@ -428,16 +702,49 @@
             <a href="#evening-wrapup" class="nav-btn evening">🌙 End-of-Day Wrap-Up</a>
         </div>
 
-        <!-- Prerequisites -->
-        <div class="prereq-box">
-            <h3>⚙️ Prerequisites</h3>
-            <p>Before you start, make sure you have:</p>
-            <ol>
-                <li><strong>GitHub connected to Replit</strong>: Go to Replit → Settings → Connected Services → Connect GitHub</li>
-                <li><strong>A repo linked to your Repl</strong>: Either import from GitHub or create a new repo from your Repl</li>
-            </ol>
-            <p>💡 Need help? See <a href="https://docs.replit.com/getting-started/quickstarts/import-from-github#import-from-github" target="_blank">Replit's GitHub integration guide</a></p>
+        <!-- Workflow Diagram -->
+        <div class="workflow-diagram">
+            <h3>📋 Daily Workflow</h3>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-icon">1️⃣</div>
+                    <div class="step-label">Install</div>
+                    <div class="step-desc">Every session</div>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="step-icon">2️⃣</div>
+                    <div class="step-label">Kick-Off</div>
+                    <div class="step-desc">Start prompt</div>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="step-icon">3️⃣</div>
+                    <div class="step-label">Work</div>
+                    <div class="step-desc">Code away!</div>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="step-icon">4️⃣</div>
+                    <div class="step-label">Wrap-Up</div>
+                    <div class="step-desc">End prompt</div>
+                </div>
+                <div class="workflow-arrow">🔄</div>
+            </div>
         </div>
+
+        <!-- Prerequisites -->
+        <details class="prereq-collapsible">
+            <summary class="prereq-summary">⚙️ First-Time Setup: GitHub + Replit – One-time only, skip if already done (click to expand)</summary>
+            <div class="prereq-content">
+                <p>Before you start, make sure you have:</p>
+                <ol>
+                    <li><strong>GitHub connected to Replit</strong>: Go to Replit → Settings → Connected Services → Connect GitHub</li>
+                    <li><strong>A repo linked to your Repl</strong>: Either import from GitHub or create a new repo from your Repl</li>
+                </ol>
+                <p>💡 Need help? See <a href="https://docs.replit.com/getting-started/quickstarts/import-from-github#import-from-github" target="_blank">Replit's GitHub integration guide</a></p>
+            </div>
+        </details>
 
         <!-- Install Command -->
         <h2>📥 Installing Claude Code in Replit</h2>
@@ -445,32 +752,31 @@
 
         <div class="copy-section">
             <div class="copy-header install">
-                <h3>📥 Install & Start Claude Code</h3>
+                <h3>⚠️ Run This EVERY Session to Start Claude Code</h3>
                 <button class="copy-btn" onclick="copyToClipboard(this, 'install-cmd')">
                     <span>📋</span> COPY
                 </button>
             </div>
             <div class="copy-content" id="install-cmd">npm install -g @anthropic-ai/claude-code && claude</div>
-        </div>
-
-        <div class="warning">
-            ⚠️ <strong>Note:</strong> Replit's shell resets between sessions, so you'll need to run this install command <strong>every time</strong> you start a new Replit session.
+            <div class="install-reminder">
+                ⚠️ Replit's shell resets between sessions – you must run this <strong>every time</strong> you start a new Replit session!
+            </div>
         </div>
 
         <!-- First-Time Setup -->
-        <h2>🆕 First-Time Setup: Create CLAUDE.md</h2>
-        <p>⚠️ <strong>Do this once when starting a new project.</strong> This creates the CLAUDE.md file with all the safety rules built in.</p>
-
-        <details class="copy-section-collapsible">
-            <summary class="setup-summary">📄 CLAUDE.md Template: Click to Expand 👇</summary>
-            <div class="copy-section-inner">
-                <div class="copy-header-inner setup">
-                    <h3>Copy This Into Claude</h3>
-                    <button class="copy-btn" onclick="copyToClipboard(this, 'claude-md-template')">
-                        <span>📋</span> COPY ALL
-                    </button>
-                </div>
-                <div class="copy-content" id="claude-md-template">Create a CLAUDE.md file in the project root with this content:
+        <details class="prereq-collapsible">
+            <summary class="prereq-summary">🆕 First-Time Setup: Create CLAUDE.md – Do this once per new project (click to expand)</summary>
+            <div class="prereq-content">
+                <p>⚠️ <strong>Do this once when starting a new project.</strong> This creates the CLAUDE.md file with all the safety rules built in.</p>
+            
+                <div class="copy-section" style="margin: 15px 0;">
+                    <div class="copy-header setup">
+                        <h3>📄 Copy This Into Claude</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'claude-md-template')">
+                            <span>📋</span> COPY ALL
+                        </button>
+                    </div>
+                    <div class="copy-content" id="claude-md-template">Create a CLAUDE.md file in the project root with this content:
 
 # Project: [Project Name]
 
@@ -479,6 +785,7 @@
 ### CLAUDE.md Management
 - Always read this file at the start of every session.
 - Update the Session Log at the end of every session with completed tasks and fixes.
+- If CLAUDE.md exceeds 30k characters, archive old session logs to CLAUDE_ARCHIVE.md before continuing.
 
 ### GitHub Safety
 - Always commit the current working code before starting edits.
@@ -543,23 +850,33 @@
 
 ## Project-Specific Rules
 [Add any coding conventions or requirements specific to this project]</div>
-            </div>
-            <div class="copy-section-inner">
-                <div class="copy-header-inner">
-                    <h3>📌 After Claude Creates the File: Commit It</h3>
-                    <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
-                        <span>📋</span> COPY
-                    </button>
                 </div>
-                <div class="copy-content" id="git-commit">git add CLAUDE.md
+
+                <div class="copy-section" style="margin: 15px 0;">
+                    <div class="copy-header">
+                        <h3>📌 After Claude Creates the File: Commit It</h3>
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'git-commit')">
+                            <span>📋</span> COPY
+                        </button>
+                    </div>
+                    <div class="copy-content" id="git-commit">git add CLAUDE.md
 git commit -m "docs: add CLAUDE.md with project rules and session tracking"
 git push</div>
+                </div>
             </div>
         </details>
 
         <!-- Morning Kick-Off -->
         <h2 id="morning-kickoff">☀️ Morning Kick-Off Prompt</h2>
         <p>Use this at the <strong>start</strong> of every coding session.</p>
+
+        <div class="update-box">
+            <div class="update-header">
+                <span class="update-badge">🆕 NEW</span>
+                <strong>January 2025 Update: Auto-Archive for Large Files</strong>
+            </div>
+            <p>We've added a <strong>file size check</strong> as Step 1! Large CLAUDE.md files (over 30-40k chars) can slow down Claude Code performance. The prompt now automatically archives old session logs to <code>CLAUDE_ARCHIVE.md</code> to keep things fast.</p>
+        </div>
 
         <div class="copy-section">
             <div class="copy-header morning">
@@ -570,11 +887,12 @@ git push</div>
             </div>
             <div class="copy-content" id="kickoff-prompt">I'm starting a new coding session. Please:
 
-1. Read CLAUDE.md for project context, rules, and pending tasks.
-2. Run `git pull` to ensure we're up-to-date.
-3. Run `git status` and `git log --oneline -5` to see recent activity.
-4. Summarize where we left off and what's pending.
-5. Suggest the best next step.</div>
+1. Check CLAUDE.md file size - if over 30k chars, trim by moving old session logs to CLAUDE_ARCHIVE.md
+2. Read CLAUDE.md for project context, rules, and pending tasks.
+3. Run `git pull` to ensure we're up-to-date.
+4. Run `git status` and `git log --oneline -5` to see recent activity.
+5. Summarize where we left off and what's pending.
+6. Suggest the best next step.</div>
         </div>
 
         <!-- End-of-Day Wrap-Up -->
@@ -622,7 +940,7 @@ git push</div>
                 </tr>
                 <tr>
                     <td><strong>Start of Session</strong></td>
-                    <td>Use the Kick-Off Prompt</td>
+                    <td>Use the Kick-Off Prompt (checks file size first!)</td>
                 </tr>
                 <tr>
                     <td><strong>End of Session</strong></td>
@@ -643,8 +961,36 @@ git push</div>
                 <li><strong>New project:</strong> Create CLAUDE.md (use First-Time Setup above)</li>
                 <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
                 <li><strong>Rules live in CLAUDE.md</strong>. No need to repeat them!</li>
+                <li><strong>File too big?</strong> Kick-off prompt auto-archives old logs to CLAUDE_ARCHIVE.md</li>
             </ol>
         </div>
+
+        <!-- Troubleshooting -->
+        <details class="troubleshooting-section">
+            <summary class="troubleshooting-summary">🔧 Troubleshooting – Common Issues & Fixes (click to expand)</summary>
+            <div class="troubleshooting-content">
+                <div class="trouble-item">
+                    <h4>❌ Claude Code not installing</h4>
+                    <p><strong>Try:</strong> Run <code>npm cache clean --force</code> then try the install command again. If still failing, check your internet connection or try restarting the Repl.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>❌ Git push failing</h4>
+                    <p><strong>Try:</strong> Make sure GitHub is connected in Replit Settings → Connected Services. Also check you have write access to the repo.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>❌ CLAUDE.md not being read</h4>
+                    <p><strong>Try:</strong> Make sure the file is named exactly <code>CLAUDE.md</code> (case-sensitive) and is in the project root folder, not a subfolder.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>❌ Claude forgetting rules mid-session</h4>
+                    <p><strong>Try:</strong> Your CLAUDE.md might be too large. Use the Kick-Off prompt to check file size and archive old logs if needed.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>❌ Changes not showing on GitHub</h4>
+                    <p><strong>Try:</strong> Run <code>git status</code> to check for uncommitted changes, then <code>git add .</code>, <code>git commit -m "message"</code>, and <code>git push</code>.</p>
+                </div>
+            </div>
+        </details>
 
         <!-- Example -->
         <details>
@@ -656,6 +1002,7 @@ git push</div>
 ### CLAUDE.md Management
 - Always read this file at the start of every session.
 - Update the Session Log at the end of every session with completed tasks and fixes.
+- If CLAUDE.md exceeds 30k characters, archive old session logs to CLAUDE_ARCHIVE.md before continuing.
 
 ### GitHub Safety
 - Always commit the current working code before starting edits.
@@ -751,10 +1098,14 @@ A React-based dashboard for tracking inventory.
         <footer>
             <p>Made by <a href="https://github.com/Mr-Follis" target="_blank">Mr-Follis</a> using Claude Code in Replit ❤️</p>
             <p>🛠️ Explore my other projects</p>
-            <p><a href="https://auditmylisting.com/" target="_blank">www.auditmylisting.com</a></p>
+            <p><a href="https://jmf-dynamic.com/" target="_blank">JMF Dynamic Global</a></p>
+            <p><a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a></p>
             <p><a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub if this helped!</a></p>
+            <p class="footer-version">v2.0 · Last updated: January 2025</p>
         </footer>
     </div>
+
+    <a href="#" class="back-to-top" id="backToTop" title="Back to Top">⬆️</a>
 
     <script>
         function copyToClipboard(button, elementId) {
@@ -774,6 +1125,16 @@ A React-based dashboard for tracking inventory.
                 alert('Failed to copy. Please select and copy manually.');
             });
         }
+
+        // Back to Top button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
     </script>
 </body>
 </html>
