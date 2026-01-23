@@ -692,7 +692,7 @@
     <div class="container">
         <h1>🚀 Replit + Claude Code (Shell)</h1>
         <p class="subtitle">GitHub Safe Prompt Guide</p>
-        <p class="version-badge">v2.0 · Last updated: January 2025</p>
+        <p class="version-badge">v2.1 · Last updated: January 2025</p>
 
         <p><strong>CLAUDE.md</strong> is the single source of truth. It contains the project rules, context, and session history. Claude Code automatically reads it, so you don't need to re-enter the safety rules every time.</p>
 
@@ -750,6 +750,14 @@
         <h2>📥 Installing Claude Code in Replit</h2>
         <p>Open the <strong>Shell</strong> tab in Replit and run:</p>
 
+        <div class="update-box">
+            <div class="update-header">
+                <span class="update-badge">🆕 NEW</span>
+                <strong>January 2025 Update: Native Installer</strong>
+            </div>
+            <p>Anthropic now recommends the <strong>native installer</strong> over npm. It auto-updates, has no Node.js dependency, and avoids permission issues. The old npm command still works as a fallback.</p>
+        </div>
+
         <div class="copy-section">
             <div class="copy-header install">
                 <h3>⚠️ Run This EVERY Session to Start Claude Code</h3>
@@ -757,7 +765,7 @@
                     <span>📋</span> COPY
                 </button>
             </div>
-            <div class="copy-content" id="install-cmd">npm install -g @anthropic-ai/claude-code && claude</div>
+            <div class="copy-content" id="install-cmd">curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude</div>
             <div class="install-reminder">
                 ⚠️ Replit's shell resets between sessions – you must run this <strong>every time</strong> you start a new Replit session!
             </div>
@@ -957,7 +965,7 @@ git push</div>
         <div class="tldr">
             <h2>⚡ TL;DR</h2>
             <ol>
-                <li><strong>Every session:</strong> <code>npm install -g @anthropic-ai/claude-code && claude</code></li>
+                <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude</code></li>
                 <li><strong>New project:</strong> Create CLAUDE.md (use First-Time Setup above)</li>
                 <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
                 <li><strong>Rules live in CLAUDE.md</strong>. No need to repeat them!</li>
@@ -971,7 +979,7 @@ git push</div>
             <div class="troubleshooting-content">
                 <div class="trouble-item">
                     <h4>❌ Claude Code not installing</h4>
-                    <p><strong>Try:</strong> Run <code>npm cache clean --force</code> then try the install command again. If still failing, check your internet connection or try restarting the Repl.</p>
+                    <p><strong>Try:</strong> If native installer fails, use the npm fallback: <code>npm install -g @anthropic-ai/claude-code && claude</code>. If still failing, check your internet connection or restart the Repl.</p>
                 </div>
                 <div class="trouble-item">
                     <h4>❌ Git push failing</h4>
@@ -1101,7 +1109,7 @@ A React-based dashboard for tracking inventory.
             <p><a href="https://jmf-dynamic.com/" target="_blank">JMF Dynamic Global</a></p>
             <p><a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a></p>
             <p><a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub if this helped!</a></p>
-            <p class="footer-version">v2.0 · Last updated: January 2025</p>
+            <p class="footer-version">v2.1 · Last updated: January 2025</p>
         </footer>
     </div>
 
