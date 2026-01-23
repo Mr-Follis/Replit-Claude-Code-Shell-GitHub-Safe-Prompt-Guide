@@ -670,6 +670,74 @@
             50% { opacity: 0.7; }
         }
 
+        .fallback-section {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 10px 0 25px 0;
+            font-size: 0.85rem;
+        }
+
+        .fallback-summary {
+            background: #6c757d;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: normal;
+            font-size: 0.85rem;
+        }
+
+        .fallback-summary:hover {
+            background: #5a6268;
+        }
+
+        .fallback-content {
+            padding: 12px 15px;
+            background: #f8f9fa;
+        }
+
+        .fallback-cmd {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .fallback-cmd code {
+            flex: 1;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.8rem;
+            color: #333;
+        }
+
+        .copy-btn-small {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn-small:hover {
+            background: #5a6268;
+        }
+
+        .fallback-content small {
+            color: #666;
+        }
+
+        .fallback-content small code {
+            background: #e9ecef;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
         @media (max-width: 600px) {
             .copy-header {
                 flex-direction: column;
@@ -770,6 +838,18 @@
                 ⚠️ Replit's shell resets between sessions – you must run this <strong>every time</strong> you start a new Replit session!
             </div>
         </div>
+
+        <!-- Fallback Install -->
+        <details class="fallback-section">
+            <summary class="fallback-summary">🔄 Native installer not working? Click for npm fallback</summary>
+            <div class="fallback-content">
+                <div class="fallback-cmd">
+                    <code id="install-cmd-fallback">npm install -g @anthropic-ai/claude-code && claude</code>
+                    <button class="copy-btn-small" onclick="copyToClipboard(this, 'install-cmd-fallback')">📋</button>
+                </div>
+                <small>Note: npm won't auto-update – run <code>npm update -g @anthropic-ai/claude-code</code> periodically.</small>
+            </div>
+        </details>
 
         <!-- First-Time Setup -->
         <details class="prereq-collapsible">
