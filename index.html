@@ -90,8 +90,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.75;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
@@ -211,7 +211,7 @@ header h1 span { color: var(--amber); }
   color: var(--text-dim);
   padding: 7px 14px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: none;
   font-weight: 500;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
@@ -325,6 +325,10 @@ header h1 span { color: var(--amber); }
 .card:hover { border-color: var(--border2); }
 .card-body { padding: clamp(14px, 3vw, 22px); }
 
+.card-body p, .pad p, .auto-mode-body p, .trouble-a, .update-banner p {
+  font-size: 15px;
+}
+
 .card-amber {
   background: linear-gradient(135deg, var(--bg2), var(--amber-soft));
   border-color: rgba(245,166,35,0.2);
@@ -358,7 +362,7 @@ header h1 span { color: var(--amber); }
   gap: 12px;
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   text-align: left;
   transition: background 0.15s;
@@ -464,7 +468,7 @@ header h1 span { color: var(--amber); }
 .code-block pre {
   padding: clamp(12px, 2.5vw, 18px);
   font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(11px, 1.8vw, 13px);
+  font-size: clamp(12px, 1.8vw, 14px);
   line-height: 1.75;
   color: var(--code-text);
   overflow-x: auto;
@@ -474,7 +478,7 @@ header h1 span { color: var(--amber); }
 
 code {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 15px;
   background: var(--bg3);
   border: 1px solid var(--border);
   padding: 1px 6px;
@@ -507,7 +511,7 @@ code {
 }
 
 .prompt-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -532,10 +536,10 @@ code {
   .update-banner { border-color: rgba(180,83,9,0.2); }
 }
 
-.update-banner .update-icon { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.update-banner .update-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
 
 .update-banner p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-dim);
   margin: 0;
   line-height: 1.5;
@@ -568,7 +572,7 @@ code {
 
 .auto-mode-body p {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 14px;
   line-height: 1.6;
 }
@@ -616,7 +620,7 @@ code {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-muted);
   display: flex;
   align-items: flex-start;
@@ -641,7 +645,7 @@ ul.plain-list {
 
 ul.plain-list li {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -661,7 +665,7 @@ ul.plain-list li::before {
 .ref-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .ref-table th {
@@ -745,7 +749,7 @@ ul.plain-list li::before {
 
 .tldr li {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 16px;
   padding-left: 4px;
   line-height: 1.55;
 }
@@ -763,14 +767,14 @@ ul.plain-list li::before {
 .trouble-item:last-child { border-bottom: none; }
 
 .trouble-q {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--red);
   margin-bottom: 6px;
 }
 
 .trouble-a {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -779,7 +783,7 @@ ul.plain-list li::before {
    INNER PAD
 ═══════════════════════════════════════ */
 .pad { padding: clamp(14px, 3vw, 22px); }
-.pad p { color: var(--text-dim); font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
+.pad p { color: var(--text-dim); font-size: 16px; margin-bottom: 12px; line-height: 1.6; }
 .spacer { height: 14px; }
 
 hr.divider {
@@ -797,7 +801,7 @@ footer {
   margin-top: clamp(40px, 8vw, 64px);
   text-align: center;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 15px;
 }
 
 footer a { color: var(--amber); text-decoration: none; }
@@ -813,7 +817,7 @@ footer a:hover { text-decoration: underline; }
 
 .footer-links a {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: none;
   transition: color 0.15s;
 }
@@ -836,7 +840,7 @@ footer a:hover { text-decoration: underline; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.15s;
@@ -921,7 +925,7 @@ footer a:hover { text-decoration: underline; }
     <h2>Installing Claude Code in Replit</h2>
   </div>
 
-  <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px;line-height:1.6;">Open the <strong>Shell</strong> tab in Replit and run this every session. Replit resets between sessions so this is always required.</p>
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:16px;line-height:1.6;">Open the <strong>Shell</strong> tab in Replit and run this every session. Replit resets between sessions so this is always required.</p>
 
   <div class="card card-amber">
     <div style="padding:10px clamp(14px,3vw,20px) 4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -929,7 +933,7 @@ footer a:hover { text-decoration: underline; }
       <span style="font-size:12px;color:var(--text-muted);">Recommended — auto-updates, no Node.js dependency</span>
     </div>
     <div class="pad" style="padding-top:12px;">
-      <p style="font-size:13px;margin-bottom:10px;">⚠️ Run this <strong style="color:var(--amber);">every session</strong> to start Claude Code</p>
+      <p style="font-size:15px;margin-bottom:10px;">⚠️ Run this <strong style="color:var(--amber);">every session</strong> to start Claude Code</p>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">bash</span>
@@ -970,7 +974,7 @@ footer a:hover { text-decoration: underline; }
           <li><strong>Connect GitHub to Replit:</strong> Go to Replit → Settings → Connected Services → Connect GitHub</li>
           <li><strong>Link a repo to your Repl:</strong> Import from GitHub or create a new repo from your Repl</li>
         </ul>
-        <p style="color:var(--text-muted);font-size:13px;margin-bottom:0;">💡 Need help? See <a href="https://docs.replit.com/getting-started/quickstarts/import-from-github#import-from-github" target="_blank" style="color:var(--amber);">Replit's GitHub integration guide</a></p>
+        <p style="color:var(--text-muted);font-size:15px;margin-bottom:0;">💡 Need help? See <a href="https://docs.replit.com/getting-started/quickstarts/import-from-github#import-from-github" target="_blank" style="color:var(--amber);">Replit's GitHub integration guide</a></p>
       </div>
     </div>
   </div>
@@ -1063,7 +1067,7 @@ footer a:hover { text-decoration: underline; }
 [Add any coding conventions or requirements specific to this project]</code></pre>
         </div>
         <div class="spacer"></div>
-        <p style="font-weight:600;color:var(--text);font-size:13px;">After Claude creates the file, commit it:</p>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">After Claude creates the file, commit it:</p>
         <div class="code-block">
           <div class="code-header">
             <span class="code-lang">bash</span>
@@ -1147,7 +1151,7 @@ git push</code></pre>
     <h2>Permission Modes <span class="new-badge" style="font-size:10px;vertical-align:middle;">New in 2026</span></h2>
   </div>
 
-  <p style="color:var(--text-dim);font-size:14px;margin-bottom:20px;line-height:1.6;">Claude Code now has multiple permission modes. Cycle through them with <code>Shift+Tab</code> instead of approving every action or skipping all safety checks with <code>--dangerously-skip-permissions</code>.</p>
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">Claude Code now has multiple permission modes. Cycle through them with <code>Shift+Tab</code> instead of approving every action or skipping all safety checks with <code>--dangerously-skip-permissions</code>.</p>
 
   <div class="mode-grid">
     <div class="mode-pill mode-default">
@@ -1425,38 +1429,51 @@ A React-based dashboard for tracking inventory.
     chevron.classList.toggle('open', !isOpen);
   }
 
-  function copyCode(btn) {
-    const block = btn.closest('.code-block') || btn.closest('.card') || btn.closest('.auto-mode-card');
-    const pre = block ? block.querySelector('pre code') : null;
-    if (!pre) return;
-    docopy(btn, pre.textContent.trim());
-  }
-
-  function copyPrompt(btn) {
-    const card = btn.closest('.prompt-card');
-    const pre = card ? card.querySelector('pre code') : null;
-    if (!pre) return;
-    doopy(btn, pre.textContent.trim());
-  }
-
-  // unified copy (fixes the typo below too)
-  function doopy(btn, text) { doopy = doopy || doopy; doCopy(btn, text); }
-
   function doCopy(btn, text) {
     navigator.clipboard.writeText(text).then(() => {
       const orig = btn.textContent;
       btn.textContent = '✓ Copied!';
       btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
     });
   }
 
-  // Fix copyPrompt properly
+  function copyCode(btn) {
+    // Walk up to the nearest .code-block and grab its <pre><code>
+    const block = btn.closest('.code-block');
+    if (!block) return;
+    const code = block.querySelector('pre code');
+    if (!code) return;
+    doCopy(btn, code.textContent.trim());
+  }
+
   function copyPrompt(btn) {
+    // Walk up to the nearest .prompt-card and grab its <pre><code>
     const card = btn.closest('.prompt-card');
-    const pre = card ? card.querySelector('pre code') : null;
-    if (!pre) return;
-    doCopy(btn, pre.textContent.trim());
+    if (!card) return;
+    const code = card.querySelector('pre code');
+    if (!code) return;
+    doCopy(btn, code.textContent.trim());
   }
 </script>
 
