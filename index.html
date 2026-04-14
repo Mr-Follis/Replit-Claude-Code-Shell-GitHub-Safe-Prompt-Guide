@@ -102,6 +102,24 @@ body {
   line-height: 1.75;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+
+/* Keep specific elements left-aligned */
+.code-block pre,
+.tldr ol,
+ul.plain-list,
+.ref-table,
+.trouble-a,
+.skill-desc,
+.pad p,
+.auto-mode-body p,
+.update-banner p,
+.availability-note,
+.collapse-trigger,
+.header-sub,
+.header-meta {
+  text-align: left;
 }
 
 body::before {
@@ -120,9 +138,9 @@ body::before {
    LAYOUT
 ═══════════════════════════════════════ */
 .container {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 6vw, 80px) 80px;
+  padding: 0 clamp(20px, 5vw, 60px) 80px;
   position: relative;
   z-index: 1;
 }
@@ -204,26 +222,28 @@ header h1 span { color: var(--amber); }
 }
 
 /* ═══════════════════════════════════════
+
+/* ═══════════════════════════════════════
    NAV BUTTONS
 ═══════════════════════════════════════ */
 .nav-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  margin-bottom: 8px;
+}
+.nav-grid:last-of-type {
   margin-bottom: clamp(24px, 4vw, 40px);
 }
-
-@media (max-width: 600px) {
-  .nav-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 560px) {
+  .nav-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .ql {
   background: var(--bg2);
   border: 1px solid var(--border);
   color: var(--text-dim);
-  padding: 12px 10px;
+  padding: 13px 8px;
   border-radius: 8px;
   font-size: 13px;
   text-decoration: none;
@@ -237,7 +257,6 @@ header h1 span { color: var(--amber); }
   text-align: center;
   box-shadow: var(--shadow);
 }
-
 .ql:hover {
   background: var(--bg3);
   border-color: var(--border2);
@@ -245,35 +264,30 @@ header h1 span { color: var(--amber); }
   transform: translateY(-1px);
 }
 
-.ql.ql-blue {
-  background: var(--blue-dim);
-  border-color: var(--blue-border);
-  color: var(--blue);
+/* Row 1 daily use — amber tint */
+.ql-daily {
+  background: linear-gradient(135deg, var(--bg2), var(--amber-soft));
+  border-color: rgba(245,166,35,0.25);
+  color: var(--text);
+  font-weight: 600;
 }
-.ql.ql-blue:hover {
-  background: rgba(96,165,250,0.12);
-  border-color: var(--blue);
+.ql-daily:hover {
+  background: linear-gradient(135deg, var(--bg3), rgba(245,166,35,0.12));
+  border-color: var(--amber-dim);
+  color: var(--amber);
+  transform: translateY(-1px);
 }
-
-.ql.ql-purple {
-  background: rgba(167,139,250,0.08);
-  border-color: rgba(167,139,250,0.25);
-  color: var(--purple);
-}
-.ql.ql-purple:hover {
-  background: rgba(167,139,250,0.14);
-  border-color: var(--purple);
+@media (prefers-color-scheme: light) {
+  .ql-daily { border-color: rgba(180,83,9,0.25); }
 }
 
-.ql.ql-red {
-  background: rgba(248,113,113,0.06);
-  border-color: rgba(248,113,113,0.2);
-  color: var(--red);
-}
-.ql.ql-red:hover {
-  background: rgba(248,113,113,0.12);
-  border-color: var(--red);
-}
+/* Coloured row 2 variants */
+.ql-blue  { background: var(--blue-dim); border-color: var(--blue-border); color: var(--blue); }
+.ql-blue:hover  { background: rgba(96,165,250,0.12); border-color: var(--blue); transform: translateY(-1px); }
+.ql-purple { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.25); color: var(--purple); }
+.ql-purple:hover { background: rgba(167,139,250,0.14); border-color: var(--purple); transform: translateY(-1px); }
+.ql-red   { background: rgba(248,113,113,0.06); border-color: rgba(248,113,113,0.2); color: var(--red); }
+.ql-red:hover   { background: rgba(248,113,113,0.12); border-color: var(--red); transform: translateY(-1px); }
 
 .ql-new {
   font-size: 9px;
@@ -285,19 +299,8 @@ header h1 span { color: var(--amber); }
   border-radius: 3px;
   line-height: 1.4;
 }
-
-.ql-new-blue {
-  background: var(--blue-dim);
-  color: var(--blue);
-  border: 1px solid var(--blue-border);
-}
-
-.ql-new-purple {
-  background: rgba(167,139,250,0.1);
-  color: var(--purple);
-  border: 1px solid rgba(167,139,250,0.25);
-}
-
+.ql-new-blue   { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+.ql-new-purple { background: rgba(167,139,250,0.1); color: var(--purple); border: 1px solid rgba(167,139,250,0.25); }
 
 /* ═══════════════════════════════════════
    WORKFLOW DIAGRAM
@@ -1023,12 +1026,12 @@ footer a:hover { text-decoration: underline; }
 
   <!-- QUICK JUMP -->
   <div class="nav-grid">
-    <!-- Row 1: Workflow -->
-    <a href="#install" class="ql">⚙️ Install</a>
-    <a href="#morning" class="ql">☀️ Kick-Off</a>
-    <a href="#evening" class="ql">🌙 Wrap-Up</a>
-    <a href="#claudemd-tips" class="ql">📝 CLAUDE.md Tips</a>
-    <!-- Row 2: Features + Reference -->
+    <a href="#install" class="ql ql-daily">⚙️ Install</a>
+    <a href="#morning" class="ql ql-daily">☀️ Kick-Off</a>
+    <a href="#evening" class="ql ql-daily">🌙 Wrap-Up</a>
+    <a href="#claudemd-tips" class="ql ql-daily">📝 CLAUDE.md</a>
+  </div>
+  <div class="nav-grid">
     <a href="#auto" class="ql ql-blue">⚡ Auto Mode <span class="ql-new ql-new-blue">New</span></a>
     <a href="#skills" class="ql ql-purple">🧠 Skills <span class="ql-new ql-new-purple">New</span></a>
     <a href="#mistakes" class="ql ql-red">⚠️ Mistakes</a>
