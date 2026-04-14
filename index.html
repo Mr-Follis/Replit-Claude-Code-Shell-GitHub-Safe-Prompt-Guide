@@ -788,6 +788,80 @@ ul.plain-list li::before {
 }
 
 /* ═══════════════════════════════════════
+   SKILL CARDS
+═══════════════════════════════════════ */
+.skill-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.skill-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.skill-cmd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--amber);
+}
+
+.skill-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.skill-badge-builtin {
+  background: var(--amber-glow);
+  border: 1px solid var(--amber-dim);
+  color: var(--amber);
+}
+
+.skill-badge-popular {
+  background: var(--green-dim);
+  border: 1px solid rgba(74,222,128,0.3);
+  color: var(--green);
+}
+
+.skill-badge-community {
+  background: var(--blue-dim);
+  border: 1px solid var(--blue-border);
+  color: var(--blue);
+}
+
+@media (prefers-color-scheme: light) {
+  .skill-badge-popular { border-color: rgba(21,128,61,0.3); }
+}
+
+.skill-desc {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
    INNER PAD
 ═══════════════════════════════════════ */
 .pad { padding: clamp(14px, 3vw, 22px); }
@@ -895,6 +969,7 @@ footer a:hover { text-decoration: underline; }
     <a href="#morning" class="ql">☀️ Morning Kick-Off</a>
     <a href="#evening" class="ql">🌙 Wrap-Up</a>
     <a href="#auto" class="ql ql-highlight">⚡ Auto Mode (New)</a>
+    <a href="#skills" class="ql ql-highlight" style="background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.25);color:var(--purple);">🧠 Skills (New)</a>
     <a href="#reference" class="ql">📊 Quick Reference</a>
   </div>
 
@@ -1216,6 +1291,358 @@ git push</code></pre>
 
   <hr class="divider">
 
+  <!-- ═══ SKILLS ═══ -->
+  <span class="anchor" id="skills"></span>
+  <div class="section-header">
+    <span class="section-icon">🧠</span>
+    <h2>Claude Code Skills <span class="new-badge" style="font-size:10px;vertical-align:middle;">New in 2026</span></h2>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">Skills are <code>SKILL.md</code> files that give Claude a specialised playbook for a specific task. Invoke them with a <code>/slash-command</code> and Claude loads the instructions on demand without bloating your context window during the rest of the session. If you keep pasting the same long prompt repeatedly, a skill is the fix.</p>
+
+  <!-- HOW THEY WORK -->
+  <div class="card card-amber" style="margin-bottom:16px;">
+    <div class="pad">
+      <p style="margin-bottom:12px;"><strong style="color:var(--text);">Where skills live:</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code># Personal skills — available across ALL your projects
+~/.claude/skills/your-skill-name/SKILL.md
+
+# Project skills — only available in this repo
+your-project/.claude/skills/your-skill-name/SKILL.md</code></pre>
+      </div>
+      <div class="spacer"></div>
+      <p style="color:var(--text-dim);font-size:15px;">Invoke any skill by typing <code>/skill-name</code> in Claude Code. Claude also loads them automatically when it recognises the task matches the skill description.</p>
+    </div>
+  </div>
+
+
+  <!-- BUNDLED SKILLS -->
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">📦 Built-in Skills — already available in every session</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>These ship with Claude Code and require no installation. Most people don't know they exist. Just type the slash command.</p>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/debug</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/debug')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Diagnoses errors with root cause analysis and a fix plan before touching any code. Run this first whenever something breaks instead of asking Claude to "just fix it".</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/simplify</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/simplify')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Reviews code for reuse, quality, and efficiency then rewrites it. The code you get back is already the second draft. Add this to your CLAUDE.md to run it automatically after every change.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/batch</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/batch')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Runs the same task across multiple files or inputs in one go. Useful for renaming conventions, reformatting, or applying a fix across a whole directory.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/compact</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/compact')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Summarises the conversation and compresses context. Run this in long sessions when you feel Claude starting to drift or forget earlier instructions.</p>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/claude-api</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/claude-api')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Generates correct Anthropic API calls with streaming, tool use, and error handling already built in. Use this whenever you're building something that calls Claude from your own code.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP 10 COMMUNITY SKILLS -->
+  <div class="card" style="margin-top:8px;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">⭐ Top 10 Skills — verified picks for web/SaaS dev</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>All 10 are from Anthropic's official repo or Vercel's official repo — verified real with correct install commands. Browse more at <a href="https://skills.sh" target="_blank" style="color:var(--amber);">skills.sh</a>.</p>
+        <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Install format: <code>npx skills add owner/repo --skill skill-name -a claude-code</code></p>
+
+        <!-- CATEGORY: UI & DESIGN -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;margin-top:4px;">
+          <span style="font-size:13px;font-weight:700;color:var(--purple);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;">🎨 UI & Design</span>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/frontend-design</span>
+              <span class="skill-badge skill-badge-popular">214k installs</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Gives Claude a proper design philosophy before writing any UI code. Without it you get Inter font, purple gradient, no personality. With it you get bold aesthetic choices, distinctive typography, and components that look like a designer reviewed them. #1 most impactful skill for frontend work.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill frontend-design -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/web-design-guidelines</span>
+              <span class="skill-badge skill-badge-popular">198k installs</span>
+              <span class="skill-badge skill-badge-community">Vercel Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Audits your UI code against 100+ accessibility and UX rules before handing it back. Think of it as a senior UX reviewer sitting in the loop. Pairs perfectly with frontend-design — one generates, the other quality-checks.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <!-- CATEGORY: CODE QUALITY -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;margin-top:20px;">
+          <span style="font-size:13px;font-weight:700;color:var(--blue);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;">⚙️ Code Quality</span>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/vercel-react-best-practices</span>
+              <span class="skill-badge skill-badge-popular">229k installs</span>
+              <span class="skill-badge skill-badge-community">Vercel Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Applies 57 performance and best practice rules to React and Next.js code. The #2 most installed skill on skills.sh. If you're building React/Node SaaS this one should be in every project without question.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/vercel-composition-patterns</span>
+              <span class="skill-badge skill-badge-popular">95k installs</span>
+              <span class="skill-badge skill-badge-community">Vercel Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Replaces the boolean prop hell pattern with compound component patterns in React. If you've ever ended up with a component that takes 12 props and does something slightly different for each combination, this is the fix.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add vercel-labs/agent-skills --skill vercel-composition-patterns -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/webapp-testing</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Tests your web app in a real browser using Playwright. Claude can navigate your running app, fill forms, click buttons, and verify features end-to-end without you manually QA-ing every change.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill webapp-testing -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <!-- CATEGORY: DOCUMENTS -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;margin-top:20px;">
+          <span style="font-size:13px;font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;">📄 Documents</span>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+        </div>
+
+        <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px;">These four power Claude's document capabilities — install them all in one go:</p>
+        <div class="code-block" style="margin-bottom:14px;">
+          <div class="code-header">
+            <span class="code-lang">bash — install all 4 document skills</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>npx skills add anthropics/skills --skill pdf --skill docx --skill xlsx --skill pptx -a claude-code</code></pre>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/pdf</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Full PDF lifecycle — extract text and tables, create new PDFs, merge/split documents, rotate pages, add watermarks, fill forms, and OCR scanned documents. Powers the PDF feature in Claude.ai under the hood.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill pdf -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/docx</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Creates and edits Word documents with tables of contents, headers/footers, images, tracked changes, and find-and-replace. Zero formatting errors guaranteed. Good for proposals, reports, and client deliverables.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill docx -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/xlsx</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Creates Excel spreadsheets with formulas, charts, conditional formatting, and pivot tables — with a zero formula error guarantee (no #REF!, #DIV/0! etc.). Good for financial reports, data exports, and client-facing data.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill xlsx -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <!-- CATEGORY: TOOLING -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;margin-top:20px;">
+          <span style="font-size:13px;font-weight:700;color:var(--green);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;">🛠️ Tooling</span>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/skill-creator</span>
+              <span class="skill-badge skill-badge-popular">105k installs</span>
+              <span class="skill-badge skill-badge-builtin">Anthropic Official</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Walks you through building your own skills interactively — use case definition, frontmatter generation, instruction writing, and validation. Once you've used a few skills and spotted a repeated workflow, this is the fastest way to turn it into a skill of your own.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header"><span class="code-lang">bash</span></div>
+            <pre><code>npx skills add anthropics/skills --skill skill-creator -a claude-code</code></pre>
+          </div>
+        </div>
+
+        <div class="update-banner" style="margin-top:16px;margin-bottom:0;">
+          <span class="update-icon">🔍</span>
+          <p>Browse thousands more at <a href="https://skills.sh" target="_blank" style="color:var(--amber);"><strong>skills.sh</strong></a> — the official skills marketplace. Filter by category, agent, and install count.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATE YOUR OWN -->
+  <div class="card" style="margin-top:8px;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">✏️ Create Your Own Skill — the most powerful option</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>If you keep pasting the same instructions into every session, turn it into a skill. Create a folder and a single <code>SKILL.md</code> file:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash — create the folder</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>mkdir -p ~/.claude/skills/my-skill
+touch ~/.claude/skills/my-skill/SKILL.md</code></pre>
+        </div>
+        <div class="spacer"></div>
+        <p><strong style="color:var(--text);">Then edit SKILL.md with this structure:</strong></p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">markdown — SKILL.md template</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>---
+name: my-skill
+description: >
+  Use this when [describe when Claude should auto-trigger this].
+  Also invoked with /my-skill.
+---
+
+## What this skill does
+[Explain the goal in plain English]
+
+## Steps
+1. [Step one]
+2. [Step two]
+3. [Step three]
+
+## Rules
+- [Any constraints or things to avoid]
+- Always commit changes before starting
+- Report what was changed at the end</code></pre>
+        </div>
+        <div class="spacer"></div>
+        <div class="availability-note">
+          <span class="note-icon">💡</span>
+          <span><strong>Tip:</strong> Keep each skill focused on one task. A skill that does one thing reliably is worth ten bloated ones that sort of do everything. The description field is what Claude uses to decide when to auto-invoke it, so write it the way you'd naturally ask for the task.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD TO CLAUDE.MD -->
+  <div class="update-banner" style="margin-top:16px;">
+    <span class="update-icon">💡</span>
+    <p><strong>Pro tip:</strong> Add your most-used skills to your CLAUDE.md under Project-Specific Rules so Claude knows to use them automatically. For example: <code>Use /simplify after every code change before reporting back.</code></p>
+  </div>
+
+  <hr class="divider">
+
   <!-- ═══ REFERENCE ═══ -->
   <span class="anchor" id="reference"></span>
   <div class="section-header">
@@ -1238,6 +1665,7 @@ git push</code></pre>
         <tr><td>End of Session</td><td>Use the Wrap-Up Prompt</td></tr>
         <tr><td>During Session</td><td>Just work. Rules live in CLAUDE.md already</td></tr>
         <tr><td>Long Tasks</td><td>Press Shift+Tab to switch permission mode</td></tr>
+        <tr><td>Repeated Tasks</td><td>Create a skill in <code>~/.claude/skills/</code> and invoke with <code>/skill-name</code></td></tr>
       </tbody>
     </table>
   </div>
@@ -1257,6 +1685,7 @@ git push</code></pre>
       <li><strong>Rules live in CLAUDE.md.</strong> No need to repeat them every session</li>
       <li><strong>File too big?</strong> Kick-off prompt auto-archives old logs to CLAUDE_ARCHIVE.md</li>
       <li><strong>Long tasks:</strong> Press Shift+Tab to cycle permission modes. Auto Mode available on Team/Enterprise/API plans</li>
+      <li><strong>Skills:</strong> Use <code>/debug</code>, <code>/simplify</code> built-in, or install community skills with <code>npx skills add frontend-design</code></li>
     </ol>
   </div>
 
