@@ -2261,16 +2261,36 @@ A React-based dashboard for tracking inventory.
   }
 
   function copyCode(btn) {
-    // Walk up to the nearest .code-block and grab its <pre><code>
-    const block = btn.closest('.code-block');
-    if (!block) return;
-    const code = block.querySelector('pre code');
-    if (!code) return;
-    doCopy(btn, code.textContent.trim());
+    // 1. Button is inside a .code-block (code-header copy btn)
+    let block = btn.closest('.code-block');
+    if (block) {
+      const code = block.querySelector('pre code');
+      if (code) { doCopy(btn, code.textContent.trim()); return; }
+    }
+
+    // 2. Button is in a .skill-header — find the next .code-block sibling in the .skill-card
+    const skillCard = btn.closest('.skill-card');
+    if (skillCard) {
+      const code = skillCard.querySelector('.code-block pre code');
+      if (code) { doCopy(btn, code.textContent.trim()); return; }
+    }
+
+    // 3. Button is in a .prompt-card header
+    const promptCard = btn.closest('.prompt-card');
+    if (promptCard) {
+      const code = promptCard.querySelector('pre code');
+      if (code) { doCopy(btn, code.textContent.trim()); return; }
+    }
+
+    // 4. Fallback — find nearest pre code anywhere in the parent card
+    const card = btn.closest('.card, .auto-mode-card');
+    if (card) {
+      const code = card.querySelector('pre code');
+      if (code) { doCopy(btn, code.textContent.trim()); return; }
+    }
   }
 
   function copyPrompt(btn) {
-    // Walk up to the nearest .prompt-card and grab its <pre><code>
     const card = btn.closest('.prompt-card');
     if (!card) return;
     const code = card.querySelector('pre code');
