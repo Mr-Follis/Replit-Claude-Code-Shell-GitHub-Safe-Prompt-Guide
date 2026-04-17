@@ -1158,12 +1158,12 @@ footer a:hover { text-decoration: underline; }
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v2.2</span>
+      <span class="version-badge">v2.3</span>
       <span class="new-badge">✦ Updated April 2026</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.2 · Last updated: April 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.3 · Last updated: April 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1209,6 +1209,11 @@ footer a:hover { text-decoration: underline; }
           <p>Image resolution jumped to 3.75MP (from 1.15MP). Screenshots, diagrams, and design mockups now come through at real fidelity.</p>
         </div>
 
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">📂 Three-file setup</div>
+          <p>Community contribution from Tim. Split CLAUDE.md into CLAUDE.md + CONTEXT.md + ROADMAP.md. Lighter on tokens, scales better. Migration section included for existing projects.</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1221,7 +1226,8 @@ footer a:hover { text-decoration: underline; }
     <a href="#claudemd-tips" class="ql ql-daily">📝 CLAUDE.md</a>
   </div>
   <div class="nav-grid">
-    <a href="#auto" class="ql ql-blue">⚡ Auto Mode <span class="ql-new ql-new-blue">New</span></a>
+    <a href="#checkpoint-script" class="ql ql-blue">⚡ Checkpoint</a>
+    <a href="#auto" class="ql ql-blue">🔒 Auto Mode <span class="ql-new ql-new-blue">New</span></a>
     <a href="#skills" class="ql ql-purple">🧠 Skills <span class="ql-new ql-new-purple">New</span></a>
     <a href="#mistakes" class="ql ql-red">⚠️ Mistakes</a>
     <a href="#reference" class="ql">📊 Reference</a>
@@ -1316,20 +1322,293 @@ footer a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <div class="card">
+  <div class="update-banner" style="background:linear-gradient(135deg, var(--bg2), rgba(167,139,250,0.05));border-color:rgba(167,139,250,0.25);">
+    <span class="update-icon">✨</span>
+    <p><strong style="color:var(--purple);">New approach (April 2026):</strong> A community contribution from <strong style="color:var(--text);">Tim</strong> suggests splitting CLAUDE.md into three focused files instead of one. Lighter on tokens, scales better on bigger projects. Both options available below. Read the tip in "Writing a Good CLAUDE.md" below for when to use which.</p>
+  </div>
+
+  <div class="card" style="border:2px solid rgba(74,222,128,0.35);background:linear-gradient(135deg,var(--bg2),rgba(74,222,128,0.03));box-shadow:0 0 20px rgba(74,222,128,0.08);">
     <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">📄 First-Time Setup: Create CLAUDE.md <span class="trigger-label">once per project</span></span>
+      <span class="trigger-left">✅ First-Time Setup (Recommended): Three-File Setup <span class="trigger-label" style="background:rgba(74,222,128,0.15);color:var(--green);border-color:rgba(74,222,128,0.3);">start here</span></span>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content">
       <div class="pad">
-        <p>Copy this entire prompt into Claude Code. It will create your CLAUDE.md with all safety rules built in.</p>
+        <p>Splits your project into three focused files that never need archiving. Claude loads only what's relevant to the task.</p>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">CLAUDE.md</span>
+              <span class="skill-badge skill-badge-builtin">Rules only</span>
+            </div>
+          </div>
+          <p class="skill-desc">Stays tiny forever. Contains just the rules Claude must follow every session, plus an instruction to read CONTEXT.md and ROADMAP.md at session start.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">CONTEXT.md</span>
+              <span class="skill-badge skill-badge-popular">Current state</span>
+            </div>
+          </div>
+          <p class="skill-desc">A living snapshot of the project now. Tech stack, what's been built, current status, known issues. Rewritten in place when things change, never appended to. Grows with scope not time, so it plateaus once the project matures.</p>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:16px;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">ROADMAP.md</span>
+              <span class="skill-badge skill-badge-community">Forward plan</span>
+            </div>
+          </div>
+          <p class="skill-desc">Future only. Upcoming phases, architectural commitments, locked-in decisions with dates. Never contaminated with current state so the two don't mix.</p>
+        </div>
+
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Paste this into Claude to create all three files:</p>
         <div class="code-block">
           <div class="code-header">
             <span class="code-lang">prompt</span>
             <button class="copy-btn" onclick="copyCode(this)">📋 Copy All</button>
           </div>
-          <pre><code>Create a CLAUDE.md file in the project root with this content:
+          <pre><code>Create three files in the project root with this content:
+
+=== FILE 1: CLAUDE.md ===
+# Project: [Project Name]
+
+## Rules for Claude (Always Follow)
+
+### Session Start
+- Always read CONTEXT.md at the start of every session for current project state.
+- Read ROADMAP.md if the task relates to future plans or phases.
+- Read RECENT.md if it exists, for conversation context from the last session.
+
+### GitHub Safety
+- Always commit working code before starting edits.
+- If a change may break existing functionality, create a new branch.
+- Write clear, descriptive commit messages.
+
+### Preserve Functionality
+- Do not remove or alter working features unless explicitly instructed.
+- If a change risks regression, stop and explain before proceeding.
+
+### Code Changes
+- Keep changes incremental and well-commented.
+- Highlight what was added, removed, or updated.
+
+### Verification
+- After edits, run tests or basic checks.
+- Report any errors or warnings.
+
+### CONTEXT.md Maintenance
+- When something significant changes, update CONTEXT.md in place.
+- Do not append a session log. Rewrite the affected sections instead.
+
+### General
+- Treat GitHub as the single source of truth.
+- All steps must be safe, reversible, and transparent.
+
+=== FILE 2: CONTEXT.md ===
+# Project Context
+
+## Overview
+[What this project does in one or two sentences]
+
+## Tech Stack
+- [Framework, language, database, key libraries]
+
+## Project Structure
+- [Key folders and what lives in them]
+
+## Current Status
+- Status: [In Progress / Stable / Needs Review]
+- Last checkpoint: [Date]
+- Current branch: main
+
+## What's Built
+- [Feature or module done]
+- [Another feature done]
+
+## Pending Tasks
+- [ ] [Task 1]
+- [ ] [Task 2]
+
+## Known Issues
+- [None yet]
+
+## Design Decisions
+- [Any significant architectural or design choices made and why]
+
+=== FILE 3: ROADMAP.md ===
+# Project Roadmap
+
+## Locked-In Decisions
+- [Anything committed to that shouldn't change without discussion]
+
+## Next Phase
+- [ ] [What's being worked on next]
+
+## Future Phases
+- [ ] [Things planned but not started]
+
+## Out of Scope
+- [Things explicitly not being built, to prevent scope creep]</code></pre>
+        </div>
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">After Claude creates the files, commit them:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>git add CLAUDE.md CONTEXT.md ROADMAP.md
+git commit -m "feat: three-file Claude Code setup"
+git push</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="opacity:0.85;border-style:dashed;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left" style="color:var(--text-muted);">📦 First-Time Setup (Legacy): Single File <span class="trigger-label" style="background:var(--bg3);color:var(--text-muted);">older approach, still works</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+
+        <!-- APPROACH TOGGLE -->
+        <div class="mode-grid" style="margin-bottom:20px;">
+          <div class="mode-pill mode-auto" style="cursor:default;">
+            <div class="mode-name">✦ Recommended: Three-File Setup</div>
+            <div class="mode-desc">CLAUDE.md + CONTEXT.md + ROADMAP.md. Lighter on tokens, scales better on bigger projects. Contributed by Tim from the community.</div>
+          </div>
+          <div class="mode-pill mode-default" style="cursor:default;">
+            <div class="mode-name">Quick Start: Single File</div>
+            <div class="mode-desc">One CLAUDE.md does everything. Good for small projects or if you just want to get going fast. Can migrate to three-file later.</div>
+          </div>
+        </div>
+
+        <!-- THREE FILE SETUP -->
+        <div class="update-banner" style="margin-bottom:16px;">
+          <span class="update-icon">💡</span>
+          <p><strong>Why three files?</strong> A single CLAUDE.md grows with every session. Three files each do one job, none of them balloon. CLAUDE.md holds rules only and never changes. CONTEXT.md holds current project state and gets rewritten in place, not appended to. ROADMAP.md holds future plans. As Tim put it: "a session log grows with time, CONTEXT.md grows with scope. Time is unbounded, scope plateaus."</p>
+        </div>
+
+        <p style="font-weight:600;color:var(--text);font-size:15px;margin-bottom:10px;">Step 1: Copy this prompt into Claude Code to create all three files:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">prompt — creates CLAUDE.md + CONTEXT.md + ROADMAP.md</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy All</button>
+          </div>
+          <pre><code>Please create three files in the project root:
+
+--- CLAUDE.md ---
+# Rules for Claude (Always Follow)
+
+## Session Management
+- At the start of every session, read CLAUDE.md, CONTEXT.md, and ROADMAP.md.
+- If RECENT.md exists, read it too to see what was actively being discussed.
+- At any natural pause point, run: checkpoint "short description"
+- If the session gets too long and /compact isn't helping, run: handoff
+
+## GitHub Safety
+- Always commit the current working code before starting edits.
+- If a change may break existing functionality, create a new branch.
+- Write clear, descriptive commit messages for all changes.
+
+## Preserve Functionality
+- Do not remove or alter working features unless explicitly instructed.
+- If a change risks regression, stop and explain before proceeding.
+
+## Code Changes
+- Keep changes incremental and well-commented.
+- Highlight what was added, removed, or updated.
+
+## Verification
+- After edits, run tests or basic checks to confirm nothing is broken.
+- Report any errors, warnings, or issues that appear.
+
+## General
+- Treat GitHub as the single source of truth.
+- All steps must be safe, reversible, and transparent.
+
+## Project-Specific Rules
+[Add coding conventions, libraries to use, naming conventions etc.]
+
+--- CONTEXT.md ---
+# Project Context
+
+## Project Overview
+[Brief description of what this project does]
+
+## Tech Stack
+- [List technologies, frameworks, dependencies]
+
+## Project Structure
+[Key folders and files]
+
+## Current Status
+- Status: [In Progress / Stable / Needs Review]
+- Current Branch: main
+
+## What's Been Built
+[Key features and components completed so far]
+
+## Key Design Decisions
+[Important architectural or design choices made, and why]
+
+## Current Handoff State
+[What was actively being worked on, any mid-task state]
+
+## Known Issues
+- [None yet]
+
+--- ROADMAP.md ---
+# Project Roadmap
+
+## Pending Tasks
+- [ ] [Task 1]
+- [ ] [Task 2]
+
+## Upcoming Phases
+[Features or work not yet started]
+
+## Locked-In Decisions
+[Architectural commitments with dates]
+
+## Out of Scope
+[Things explicitly decided not to build]</code></pre>
+        </div>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 2: Add the checkpoint script to your project root:</p>
+        <p style="color:var(--text-dim);font-size:14px;margin-bottom:10px;">See the <a href="#checkpoint-script" style="color:var(--amber);">Checkpoint Script section</a> below for the full script. Save it as <code>claude-backup.sh</code> in your project root, then run:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>chmod +x claude-backup.sh
+git add .
+git commit -m "docs: add three-file CLAUDE setup and checkpoint script"
+git push</code></pre>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- SINGLE FILE FALLBACK -->
+        <details style="margin-top:8px;">
+          <summary style="cursor:pointer;font-size:14px;font-weight:600;color:var(--text-muted);padding:10px 0;">Quick Start: Single CLAUDE.md (click to expand)</summary>
+          <div style="margin-top:12px;">
+            <p style="color:var(--text-dim);font-size:14px;margin-bottom:10px;">If you just want to get going fast without the three-file setup, use this. You can migrate to three files later using the migration prompt below.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">prompt</span>
+                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+              </div>
+              <pre><code>Create a CLAUDE.md file in the project root with this content:
 
 # Project: [Project Name]
 
@@ -1347,15 +1626,12 @@ footer a:hover { text-decoration: underline; }
 
 ### Preserve Functionality
 - Do not remove or alter working features unless explicitly instructed.
-- If a change risks regression, stop and explain before proceeding.
 
 ### Code Changes
 - Keep changes incremental and well-commented.
-- Highlight what was added, removed, or updated.
 
 ### Verification
 - After edits, run tests or basic checks to confirm nothing is broken.
-- Report any errors, warnings, or issues that appear.
 
 ### General
 - Treat GitHub as the single source of truth.
@@ -1364,55 +1640,152 @@ footer a:hover { text-decoration: underline; }
 ---
 
 ## Project Overview
-[Brief description of what this project does]
+[Brief description]
 
 ## Tech Stack
-- [List technologies, frameworks, dependencies]
-
-## Project Structure
-[Key folders and files]
-
----
+- [Technologies]
 
 ## Current Status
-- Status: [In Progress / Stable / Needs Review]
+- Status: [In Progress / Stable]
 - Last Session: [Date]
 - Current Branch: main
 
 ## Pending Tasks
 - [ ] [Task 1]
-- [ ] [Task 2]
-
-## Known Issues
-- [None yet]
-
----
 
 ## Session Log
-
 ### [Date] - Initial Setup
-- Tasks Completed:
-  - Created CLAUDE.md
-- Fixes Applied:
-  - None
-- Notes:
-  - Project initialized
-
----
+- Created CLAUDE.md
 
 ## Project-Specific Rules
-[Add any coding conventions or requirements specific to this project]</code></pre>
-        </div>
-        <div class="spacer"></div>
-        <p style="font-weight:600;color:var(--text);font-size:15px;">After Claude creates the file, commit it:</p>
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-lang">bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+[Your conventions here]</code></pre>
+            </div>
           </div>
-          <pre><code>git add CLAUDE.md
-git commit -m "docs: add CLAUDE.md with project rules and session tracking"
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ MIGRATION SECTION ═══ -->
+  <span class="anchor" id="migrate"></span>
+  <div class="update-banner" style="background:linear-gradient(135deg, var(--bg2), rgba(248,113,113,0.04));border-color:rgba(248,113,113,0.25);margin-top:20px;">
+    <span class="update-icon">⚠️</span>
+    <p><strong style="color:var(--red);">Already using the single-file setup?</strong> Read the migration section below BEFORE changing anything. Following the steps in order keeps your project safe.</p>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">🔄 Migrating from Single File to Three-File Setup <span class="trigger-label">existing projects</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>Three steps, two copy-pastes. Your original CLAUDE.md is safely backed up on GitHub in Step 1, so you can <code>git revert</code> at any point if something looks wrong.</p>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Step 1: Backup first</span>
+              <span class="skill-badge skill-badge-popular">Safety net</span>
+            </div>
+          </div>
+          <p class="skill-desc">Commit your current CLAUDE.md to GitHub before anything else. This is your rollback point if anything goes wrong in Step 2.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header">
+              <span class="code-lang">bash , run in Replit Shell</span>
+              <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <pre><code>git add CLAUDE.md
+git commit -m "chore: backup CLAUDE.md before three-file migration"
 git push</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Step 2: Run the migration prompt</span>
+              <span class="skill-badge skill-badge-builtin">One paste, Claude does the rest</span>
+            </div>
+          </div>
+          <p class="skill-desc">Paste this into Claude. It reads your current CLAUDE.md, creates the three new files, archives your old Session Log, and shows you the final state before committing. If anything looks wrong you can roll back with <code>git revert</code>.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header">
+              <span class="code-lang">prompt</span>
+              <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <pre><code>Please migrate my project from the single CLAUDE.md setup to the three-file setup (CLAUDE.md + CONTEXT.md + ROADMAP.md). Do all of this in one go:
+
+1. Read my current CLAUDE.md in full.
+
+2. Create CONTEXT.md containing:
+   - Project overview
+   - Tech stack
+   - Project structure (key folders)
+   - Current status (in progress, last checkpoint, branch)
+   - What's built so far
+   - Pending tasks
+   - Known issues
+   - Any significant design decisions
+
+3. Create ROADMAP.md containing:
+   - Locked-in decisions (with dates where known)
+   - Next phase
+   - Future phases
+   - Out of scope items
+
+4. Move my existing Session Log into a new file called CLAUDE_ARCHIVE.md. Do NOT delete it.
+
+5. Rewrite CLAUDE.md to contain only:
+   - The rules section (keep all existing rules)
+   - An instruction at the top telling you to read CONTEXT.md at session start, and to read ROADMAP.md if the task relates to future plans
+   - An instruction to update CONTEXT.md in place when something significant changes (not append)
+
+6. Once all four files are created, show me:
+   - The file size of each file
+   - A one-line summary of what ended up in each
+   - Confirmation that nothing was deleted, only moved or rewritten
+
+7. Do NOT run any git commands. I will review the files and commit them myself in Step 3.</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Step 3: Review and commit</span>
+              <span class="skill-badge skill-badge-community">Final</span>
+            </div>
+          </div>
+          <p class="skill-desc">Open each file and check nothing important is missing. Your rules should all still be in CLAUDE.md. Your project history should be in CLAUDE_ARCHIVE.md. If anything looks wrong, run the rollback command at the bottom of this section. If everything looks good, commit all four files.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <pre><code>git add CLAUDE.md CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md
+git commit -m "feat: migrate to three-file Claude Code setup"
+git push</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;background:rgba(248,113,113,0.04);border-color:rgba(248,113,113,0.25);">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd" style="color:var(--red);">Rollback (if anything looks wrong)</span>
+            </div>
+          </div>
+          <p class="skill-desc">If Step 2 produced something you're not happy with, roll back to your Step 1 backup. This undoes everything.</p>
+          <div class="code-block" style="margin-top:10px;">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+            <pre><code>git checkout CLAUDE.md
+rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
+          </div>
         </div>
       </div>
     </div>
@@ -1428,6 +1801,14 @@ git push</code></pre>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">The template gets you started but how you fill it in makes all the difference. A poorly written CLAUDE.md is almost as bad as not having one , Claude will follow vague rules vaguely. Here's what actually works.</p>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">📝 Show CLAUDE.md writing tips <span class="trigger-label">rules · structure · pro tips</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad" style="padding-bottom:0;">
 
   <div class="card">
     <button class="collapse-trigger" onclick="toggleCollapse(this)">
@@ -1546,7 +1927,12 @@ git push</code></pre>
           <li><strong>Keep the rules section short.</strong> 10 sharp rules outperform 40 vague ones. Claude reads every rule every session , make each one count.</li>
           <li><strong>Put environment-specific stuff in Project-Specific Rules,</strong> not the main rules. Things like "we use Supabase not Firebase" belong there, not at the top.</li>
           <li><strong>Archive early, not when it breaks.</strong> Don't wait until Claude starts drifting. Archive logs at 25k characters rather than waiting for 30k.</li>
+          <li><strong>Scope not time (for three-file setup):</strong> A session log grows with time, CONTEXT.md grows with scope. Time is unbounded, scope plateaus once the project matures. If you find CONTEXT.md still growing every session, you're probably appending instead of rewriting in place. <em style="color:var(--text-muted);">(Credit: Tim, community contribution)</em></li>
         </ul>
+      </div>
+    </div>
+  </div>
+
       </div>
     </div>
   </div>
@@ -1562,22 +1948,48 @@ git push</code></pre>
 
   <div class="update-banner">
     <span class="update-icon">🆕</span>
-    <p><strong>April 2026 Update:</strong> File size check is Step 1. Large CLAUDE.md files slow Claude Code down. Old session logs get auto-archived to <code>CLAUDE_ARCHIVE.md</code>.</p>
+    <p><strong>Updated for three-file setup:</strong> Now reads CLAUDE.md, CONTEXT.md, ROADMAP.md and RECENT.md (if it exists). If you're still on the single-file setup, the old prompt still works fine.</p>
   </div>
 
   <div class="prompt-card">
     <div class="prompt-header">
-      <span class="prompt-title">☀️ Start of Session</span>
+      <span class="prompt-title">☀️ Start of Session (three-file setup)</span>
       <button class="copy-btn" onclick="copyPrompt(this)">📋 Copy</button>
     </div>
     <div class="code-block" style="border:none;border-radius:0;">
       <pre><code>I'm starting a new coding session. Please:
+1. Read CLAUDE.md for project rules.
+2. Read CONTEXT.md for current project state.
+3. Read ROADMAP.md for pending tasks and upcoming work.
+4. If RECENT.md exists, read it to see what was actively being discussed.
+5. Run `git pull` to ensure we're up-to-date.
+6. Run `git status` and `git log --oneline -5` to see recent activity.
+7. Summarise where we left off and what's pending.
+8. Suggest the best next step.</code></pre>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">Still on single CLAUDE.md? Use this kick-off instead</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="prompt-card" style="border:none;border-radius:0;box-shadow:none;margin:0;">
+        <div class="prompt-header">
+          <span class="prompt-title">☀️ Start of Session (single file)</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">📋 Copy</button>
+        </div>
+        <div class="code-block" style="border:none;border-radius:0;">
+          <pre><code>I'm starting a new coding session. Please:
 1. Check CLAUDE.md file size - if over 30k chars, trim by moving old session logs to CLAUDE_ARCHIVE.md
 2. Read CLAUDE.md for project context, rules, and pending tasks.
 3. Run `git pull` to ensure we're up-to-date.
 4. Run `git status` and `git log --oneline -5` to see recent activity.
 5. Summarise where we left off and what's pending.
 6. Suggest the best next step.</code></pre>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1587,16 +1999,58 @@ git push</code></pre>
   <span class="anchor" id="evening"></span>
   <div class="section-header">
     <span class="section-icon">🌙</span>
-    <h2>End-of-Day Wrap-Up Prompt</h2>
+    <h2>End-of-Day Wrap-Up</h2>
   </div>
 
-  <div class="prompt-card">
-    <div class="prompt-header">
-      <span class="prompt-title">🌙 End of Session</span>
-      <button class="copy-btn" onclick="copyPrompt(this)">📋 Copy</button>
+  <div class="update-banner">
+    <span class="update-icon">✦</span>
+    <p><strong>Three-file setup users:</strong> Replace the wrap-up prompt with a single word. Type <code>checkpoint</code> to Claude and it handles everything automatically. See the <a href="#checkpoint-script" style="color:var(--amber);">Checkpoint Script section</a> for setup.</p>
+  </div>
+
+  <!-- CHECKPOINT CARD -->
+  <div class="auto-mode-card" style="margin-bottom:16px;">
+    <div class="auto-mode-header">
+      <span>⚡</span>
+      <h3>The checkpoint command</h3>
+      <span class="new-badge">Replaces wrap-up prompt</span>
     </div>
-    <div class="code-block" style="border:none;border-radius:0;">
-      <pre><code>I'm finishing for the day. Please:
+    <div class="auto-mode-body">
+      <p>Once the checkpoint script is set up, just type this to Claude at any natural pause point during or at the end of a session:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">say to claude</span>
+          <button class="copy-btn" onclick="doCopy(this, 'checkpoint')">📋 Copy</button>
+        </div>
+        <pre><code>checkpoint</code></pre>
+      </div>
+      <div class="spacer"></div>
+      <p>Claude runs the script which automatically:</p>
+      <ul class="plain-list" style="margin-bottom:14px;">
+        <li>Generates RECENT.md from the last 25 conversation turns</li>
+        <li>Warns you if any code files are newer than CONTEXT.md</li>
+        <li>Runs git add, commit and push in one shot</li>
+      </ul>
+      <p>If the session gets too long and <code>/compact</code> isn't helping, type <code>handoff</code> instead. Claude prints a ready-to-paste prompt for a fresh session that picks up instantly from CONTEXT.md and RECENT.md.</p>
+      <div class="availability-note">
+        <span class="note-icon">💡</span>
+        <span>You don't have to wait until the end of the day. Checkpoint at any natural pause point, after a feature, after a bug fix, whenever you'd want a safe rollback point. The more often the better.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">Still on single CLAUDE.md? Use the wrap-up prompt instead</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="prompt-card" style="border:none;border-radius:0;box-shadow:none;margin:0;">
+        <div class="prompt-header">
+          <span class="prompt-title">🌙 End of Session (single file)</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">📋 Copy</button>
+        </div>
+        <div class="code-block" style="border:none;border-radius:0;">
+          <pre><code>I'm finishing for the day. Please:
 1. Confirm all changes are committed to GitHub.
 2. If anything is in progress, save it on a separate branch.
 3. Update CLAUDE.md:
@@ -1609,12 +2063,212 @@ git push</code></pre>
 4. Commit CLAUDE.md: "docs: update CLAUDE.md session log [date]"
 5. Run `git push`
 6. Confirm the project is in a safe state.</code></pre>
+        </div>
+      </div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- ═══ AUTO MODE ═══ -->
+  <!-- ═══ CHECKPOINT SCRIPT ═══ -->
+  <span class="anchor" id="checkpoint-script"></span>
+  <div class="section-header">
+    <span class="section-icon">⚙️</span>
+    <h2>Checkpoint Script <span class="new-badge" style="font-size:10px;vertical-align:middle;">Community</span></h2>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:16px;line-height:1.6;">Contributed by Tim from the community. Drop this script into your project root and typing <code>checkpoint</code> to Claude replaces the entire wrap-up prompt. One word does everything.</p>
+
+  <div class="update-banner" style="margin-bottom:16px;">
+    <span class="update-icon">✅</span>
+    <p><strong>Good news for Replit users:</strong> The script uses <code>~/workspace</code> which is the standard Replit project path. It works out of the box across all Replit apps with no changes needed. <em style="color:var(--text-muted);">(Confirmed by Tim across 4+ Replit projects.)</em></p>
+  </div>
+
+  <!-- THE THREE COMMANDS -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="pad">
+      <p style="font-weight:700;color:var(--text);font-size:15px;margin-bottom:16px;">There are three commands you'll use day to day:</p>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-title-row">
+            <span class="skill-cmd">checkpoint</span>
+            <span class="skill-badge skill-badge-popular">Most used</span>
+          </div>
+          <button class="copy-btn" onclick="doCopy(this, 'checkpoint')">📋 Copy</button>
+        </div>
+        <p class="skill-desc">Create a backup at any natural pause point. Type <code>checkpoint "what you just did"</code> to Claude. Claude runs the script which generates RECENT.md, warns if CONTEXT.md is stale, then commits and pushes everything to GitHub in one shot.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-title-row">
+            <span class="skill-cmd">claude --resume</span>
+            <span class="skill-badge skill-badge-builtin">Continue conversation</span>
+          </div>
+          <button class="copy-btn" onclick="doCopy(this, 'claude --resume')">📋 Copy</button>
+        </div>
+        <p class="skill-desc">When you come back later and want to pick up the exact conversation. Start Claude Code fresh in the terminal, then run <code>claude --resume</code>. Good for short breaks or same-day continuation.</p>
+      </div>
+
+      <div class="skill-card" style="margin-bottom:0;">
+        <div class="skill-header">
+          <div class="skill-title-row">
+            <span class="skill-cmd">handoff</span>
+            <span class="skill-badge skill-badge-community">Fresh session</span>
+          </div>
+          <button class="copy-btn" onclick="doCopy(this, 'handoff')">📋 Copy</button>
+        </div>
+        <p class="skill-desc">When a conversation has got very long and Claude is slowing down, or you're starting a new day. Instead of resuming, type <code>handoff</code> to Claude. It starts a brand new session and bootstraps itself from CONTEXT.md and RECENT.md so you get a fast clean session without losing context.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">📄 claude-backup.sh — full script</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad" style="padding-bottom:0;">
+        <p>Save this as <code>claude-backup.sh</code> in your project root. Works on Replit as-is, no path changes needed.</p>
+      </div>
+      <div class="code-block" style="border-left:none;border-right:none;border-bottom:none;border-radius:0;">
+        <div class="code-header">
+          <span class="code-lang">bash — claude-backup.sh</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy All</button>
+        </div>
+        <pre><code>#!/bin/bash
+SESSION_DIR="$HOME/.claude/projects/$(echo "$HOME/workspace" | sed 's|/|-|g')"
+BACKUP_FILE="$HOME/workspace/claude-session-backup.jsonl"
+CONTEXT_FILE="$HOME/workspace/CONTEXT.md"
+RECENT_FILE="$HOME/workspace/RECENT.md"
+RECENT_TURNS=25
+
+case "$1" in
+  checkpoint)
+    shift
+    CURRENT=$(ls -t "$SESSION_DIR"/*.jsonl 2>/dev/null | head -1)
+    if [ -z "$CURRENT" ]; then
+      echo "No active session found."
+      exit 1
+    fi
+    cp "$CURRENT" "$BACKUP_FILE"
+    echo "Backed up: $(basename "$CURRENT") ($(du -h "$BACKUP_FILE" | cut -f1))"
+
+    if jq -n -r --argjson n "$RECENT_TURNS" '
+      [inputs
+       | select(.type == "user" or .type == "assistant")
+       | .message.content as $c
+       | {
+           role: .type,
+           text: (
+             if ($c | type) == "string" then $c
+             elif ($c | type) == "array" then
+               [$c[] | select(.type == "text") | .text] | join("\n")
+             else "" end
+           )
+         }
+       | select(.text | length > 0)
+      ] as $all
+      | ($all[-$n:]) as $tail
+      | "# RECENT.md — auto-generated transcript tail\n\n"
+        + "_Last \($tail | length) conversation turns from the most recent session._  \n"
+        + "_Auto-overwritten on every checkpoint._\n\n"
+        + "---\n\n"
+        + ([$tail[]
+            | (if .role == "user" then "## 👤 USER" else "## 🤖 CLAUDE" end)
+              + "\n\n" + .text + "\n\n---\n\n"
+          ] | join(""))
+    ' "$CURRENT" > "$RECENT_FILE" 2>/dev/null && [ -s "$RECENT_FILE" ]; then
+      echo "Wrote RECENT.md ($(wc -l < "$RECENT_FILE") lines)"
+    else
+      echo "WARNING: failed to write RECENT.md (jq missing or jsonl unparseable)"
+    fi
+
+    cd ~/workspace
+    if [ -f "$CONTEXT_FILE" ]; then
+      NEWEST_CODE=$(find app components lib middleware.ts next.config.ts 2>/dev/null \
+        -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.json' \) \
+        -newer "$CONTEXT_FILE" -print -quit)
+      if [ -n "$NEWEST_CODE" ]; then
+        echo ""
+        echo "WARNING: CONTEXT.md may be stale — code modified more recently."
+        echo "  Ask Claude to refresh CONTEXT.md before checkpointing."
+        echo ""
+      fi
+    else
+      echo "WARNING: CONTEXT.md not found. Ask Claude to create one."
+    fi
+
+    if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+      git add -A
+      git commit -m "Checkpoint: $*" 2>/dev/null
+      git push 2>/dev/null
+      echo "Code committed and pushed."
+    fi
+    ;;
+  handoff)
+    if [ ! -f "$CONTEXT_FILE" ]; then
+      echo "No CONTEXT.md found. Ask Claude to create one first."
+      exit 1
+    fi
+    cat &lt;&lt;'EOF'
+Please read ~/workspace/CONTEXT.md to get up to speed on this project, then
+confirm in one or two sentences what you understand the current state to be
+and what's outstanding. After that, we'll continue from where the previous
+session left off.
+EOF
+    ;;
+  restore)
+    if [ ! -f "$BACKUP_FILE" ]; then
+      echo "No backup found."
+      exit 1
+    fi
+    mkdir -p "$SESSION_DIR"
+    CURRENT=$(ls -t "$SESSION_DIR"/*.jsonl 2>/dev/null | head -1)
+    if [ -n "$CURRENT" ]; then
+      cp "$BACKUP_FILE" "$CURRENT"
+      echo "Restored to: $(basename "$CURRENT")"
+    else
+      NEW_ID=$(uuidgen 2>/dev/null || cat /proc/sys/kernel/random/uuid)
+      cp "$BACKUP_FILE" "$SESSION_DIR/${NEW_ID}.jsonl"
+      echo "Restored as new session: ${NEW_ID}"
+    fi
+    echo "Run 'claude --resume' to continue."
+    ;;
+  *)
+    echo "Usage:"
+    echo "  $0 checkpoint \"description\"  - Backup + generate RECENT.md + commit + push"
+    echo "  $0 handoff                    - Print bootstrap prompt for a fresh session"
+    echo "  $0 restore                    - Restore the backed-up session file"
+    ;;
+esac</code></pre>
+      </div>
+      <div class="pad" style="padding-top:16px;">
+        <p style="font-weight:600;color:var(--text);font-size:14px;margin-bottom:10px;">After saving the script, make it executable:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code>chmod +x claude-backup.sh
+git add claude-backup.sh
+git commit -m "feat: add checkpoint script"
+git push</code></pre>
+        </div>
+        <div class="spacer"></div>
+        <div class="availability-note">
+          <span class="note-icon">🙏</span>
+          <span>Script contributed by Tim. Thanks Tim! The <code>jq</code> command needs to be available in your environment for RECENT.md generation. In Replit it should already be installed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+
   <span class="anchor" id="auto"></span>
   <div class="section-header">
     <span class="section-icon">⚡</span>
@@ -2113,11 +2767,11 @@ description: >
       </thead>
       <tbody>
         <tr><td>Every Session</td><td>Install Claude Code and start it with the curl command</td></tr>
-        <tr><td>New Project</td><td>Run the First-Time Setup to create CLAUDE.md</td></tr>
-        <tr><td>Good CLAUDE.md</td><td>Short, specific rules , add one every time you correct Claude twice</td></tr>
-        <tr><td>Start of Session</td><td>Use the Kick-Off Prompt (checks file size first)</td></tr>
-        <tr><td>End of Session</td><td>Use the Wrap-Up Prompt , never skip it</td></tr>
-        <tr><td>During Session</td><td>Just work. Rules live in CLAUDE.md already</td></tr>
+        <tr><td>New Project</td><td>Create CLAUDE.md + CONTEXT.md + ROADMAP.md using First-Time Setup</td></tr>
+        <tr><td>Good CLAUDE.md</td><td>Rules only, keep it short. Project state lives in CONTEXT.md now</td></tr>
+        <tr><td>Start of Session</td><td>Use the Kick-Off Prompt (reads all three files)</td></tr>
+        <tr><td>End of Session</td><td>Type <code>checkpoint</code> to Claude. Replaces the wrap-up prompt entirely</td></tr>
+        <tr><td>Session too long</td><td>Type <code>handoff</code> to Claude for a fresh session bootstrap</td></tr>
         <tr><td>Something breaks</td><td>Run <code>/debug</code> before asking Claude to fix anything</td></tr>
         <tr><td>Long Tasks</td><td>Press Shift+Tab to switch permission mode</td></tr>
         <tr><td>Repeated Tasks</td><td>Create a skill in <code>~/.claude/skills/</code> and invoke with <code>/skill-name</code></td></tr>
@@ -2362,8 +3016,27 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.2</span>
+              <span class="skill-cmd">v2.3</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">April 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Three-file setup (CLAUDE.md + CONTEXT.md + ROADMAP.md) added as recommended approach, contributed by Tim from the community</li>
+            <li>Safe migration prompt for existing single-file users</li>
+            <li>Checkpoint script (claude-backup.sh) added, replaces wrap-up prompt with a single word</li>
+            <li>Updated Morning Kick-Off for three-file setup, old single-file prompt kept as fallback</li>
+            <li>Wrap-Up section updated, checkpoint command is now the primary method</li>
+            <li>Auto Mode expanded to Max plan users with Opus 4.7</li>
+            <li>New built-in skills: /ultrareview and /less-permission-prompts</li>
+            <li>Claude Code minimum version updated to v2.1.111</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.2</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">April 2026</span>
             </div>
           </div>
@@ -2429,7 +3102,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.2 · Last updated: April 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.3 · Last updated: April 2026</p>
   </footer>
 </div>
 
