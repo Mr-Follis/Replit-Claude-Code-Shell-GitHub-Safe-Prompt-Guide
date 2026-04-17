@@ -1791,153 +1791,6 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
     </div>
   </div>
 
-  <hr class="divider">
-
-  <!-- ═══ CLAUDE.MD TIPS ═══ -->
-  <span class="anchor" id="claudemd-tips"></span>
-  <div class="section-header">
-    <span class="section-icon">📝</span>
-    <h2>Writing a Good CLAUDE.md</h2>
-  </div>
-
-  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">The template gets you started but how you fill it in makes all the difference. A poorly written CLAUDE.md is almost as bad as not having one , Claude will follow vague rules vaguely. Here's what actually works.</p>
-
-  <div class="card">
-    <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">📝 Show CLAUDE.md writing tips <span class="trigger-label">rules · structure · pro tips</span></span>
-      <span class="chevron">▼</span>
-    </button>
-    <div class="collapse-content">
-      <div class="pad" style="padding-bottom:0;">
-
-  <div class="card">
-    <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">✅ Rules that actually work</span>
-      <span class="chevron">▼</span>
-    </button>
-    <div class="collapse-content">
-      <div class="pad">
-        <p>The best rules are short, specific, and tell Claude what to do rather than what not to do.</p>
-
-        <div class="skill-card">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd" style="color:var(--green);">✓ Good</span>
-            </div>
-          </div>
-          <div class="code-block" style="margin-top:0;">
-            <div class="code-header"><span class="code-lang">markdown</span></div>
-            <pre><code>- Always commit working code before starting any edits
-- Use functional React components only , no class components
-- Run `npm test` before every commit
-- If a change risks breaking existing features, create a branch first
-- Use /simplify after every code change before reporting back</code></pre>
-          </div>
-        </div>
-
-        <div class="skill-card" style="margin-bottom:0;">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd" style="color:var(--red);">✗ Too vague</span>
-            </div>
-          </div>
-          <div class="code-block" style="margin-top:0;">
-            <div class="code-header"><span class="code-lang">markdown</span></div>
-            <pre><code>- Be careful with the code
-- Don't break things
-- Write good code
-- Be safe</code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:8px;">
-    <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">📐 What goes where in CLAUDE.md</span>
-      <span class="chevron">▼</span>
-    </button>
-    <div class="collapse-content">
-      <div class="pad">
-        <div class="skill-card">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd">Rules for Claude</span>
-              <span class="skill-badge skill-badge-builtin">Always loaded</span>
-            </div>
-          </div>
-          <p class="skill-desc">Short, direct instructions Claude must follow every session. Keep these to things that are genuinely always true , GitHub safety rules, commit conventions, never-do-this boundaries. If it only applies sometimes, put it in Project-Specific Rules instead.</p>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd">Project Overview + Tech Stack</span>
-              <span class="skill-badge skill-badge-builtin">Always loaded</span>
-            </div>
-          </div>
-          <p class="skill-desc">Claude uses this to make better decisions. Be specific , "React 18 + Node.js + PostgreSQL + Tailwind" is more useful than "web app". List the key folders too so Claude knows where to look without asking.</p>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd">Current Status + Pending Tasks</span>
-              <span class="skill-badge skill-badge-community">Updated each session</span>
-            </div>
-          </div>
-          <p class="skill-desc">This is the most valuable part for daily use. Keep it current. If you left a branch half-finished or hit a blocker, note it here. Claude uses this to pick up exactly where you left off without you having to re-explain context.</p>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd">Session Log</span>
-              <span class="skill-badge skill-badge-community">Updated each session</span>
-            </div>
-          </div>
-          <p class="skill-desc">This is your history. Claude uses it to understand what changed and why. Keep entries concise , bullet points not paragraphs. Archive to CLAUDE_ARCHIVE.md when it gets over 30k characters or performance starts to dip.</p>
-        </div>
-
-        <div class="skill-card" style="margin-bottom:0;">
-          <div class="skill-header">
-            <div class="skill-title-row">
-              <span class="skill-cmd">Project-Specific Rules</span>
-              <span class="skill-badge skill-badge-popular">Most impactful section</span>
-            </div>
-          </div>
-          <p class="skill-desc">This is where you teach Claude your stack and your preferences. API patterns, component conventions, which libraries to use for what, naming conventions, deployment notes. The more specific this is, the better every session gets. Add to it whenever Claude does something you have to correct.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:8px;">
-    <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">💡 Pro tips for better CLAUDE.md results</span>
-      <span class="chevron">▼</span>
-    </button>
-    <div class="collapse-content">
-      <div class="pad">
-        <ul class="plain-list">
-          <li><strong>Write rules the way you'd tell a new developer.</strong> If you wouldn't say it out loud to a colleague, it's probably too vague for Claude.</li>
-          <li><strong>When Claude does something wrong, add a rule.</strong> The best CLAUDE.md files grow from real corrections. If you have to correct Claude twice, that's a rule.</li>
-          <li><strong>Reference your skills in the rules.</strong> E.g. "Use /simplify after every code change" or "Use /debug before attempting any fix." This makes skills automatic.</li>
-          <li><strong>Keep the rules section short.</strong> 10 sharp rules outperform 40 vague ones. Claude reads every rule every session , make each one count.</li>
-          <li><strong>Put environment-specific stuff in Project-Specific Rules,</strong> not the main rules. Things like "we use Supabase not Firebase" belong there, not at the top.</li>
-          <li><strong>Archive early, not when it breaks.</strong> Don't wait until Claude starts drifting. Archive logs at 25k characters rather than waiting for 30k.</li>
-          <li><strong>Scope not time (for three-file setup):</strong> A session log grows with time, CONTEXT.md grows with scope. Time is unbounded, scope plateaus once the project matures. If you find CONTEXT.md still growing every session, you're probably appending instead of rewriting in place. <em style="color:var(--text-muted);">(Credit: Tim, community contribution)</em></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
 
   <!-- ═══ MORNING ═══ -->
   <span class="anchor" id="morning"></span>
@@ -2798,6 +2651,153 @@ description: >
     </ol>
   </div>
 
+  <hr class="divider">
+
+  <!-- ═══ CLAUDE.MD TIPS ═══ -->
+  <span class="anchor" id="claudemd-tips"></span>
+  <div class="section-header">
+    <span class="section-icon">📝</span>
+    <h2>Writing a Good CLAUDE.md</h2>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">The template gets you started but how you fill it in makes all the difference. A poorly written CLAUDE.md is almost as bad as not having one , Claude will follow vague rules vaguely. Here's what actually works.</p>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">📝 Show CLAUDE.md writing tips <span class="trigger-label">rules · structure · pro tips</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad" style="padding-bottom:0;">
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">✅ Rules that actually work</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>The best rules are short, specific, and tell Claude what to do rather than what not to do.</p>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd" style="color:var(--green);">✓ Good</span>
+            </div>
+          </div>
+          <div class="code-block" style="margin-top:0;">
+            <div class="code-header"><span class="code-lang">markdown</span></div>
+            <pre><code>- Always commit working code before starting any edits
+- Use functional React components only , no class components
+- Run `npm test` before every commit
+- If a change risks breaking existing features, create a branch first
+- Use /simplify after every code change before reporting back</code></pre>
+          </div>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd" style="color:var(--red);">✗ Too vague</span>
+            </div>
+          </div>
+          <div class="code-block" style="margin-top:0;">
+            <div class="code-header"><span class="code-lang">markdown</span></div>
+            <pre><code>- Be careful with the code
+- Don't break things
+- Write good code
+- Be safe</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">📐 What goes where in CLAUDE.md</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Rules for Claude</span>
+              <span class="skill-badge skill-badge-builtin">Always loaded</span>
+            </div>
+          </div>
+          <p class="skill-desc">Short, direct instructions Claude must follow every session. Keep these to things that are genuinely always true , GitHub safety rules, commit conventions, never-do-this boundaries. If it only applies sometimes, put it in Project-Specific Rules instead.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Project Overview + Tech Stack</span>
+              <span class="skill-badge skill-badge-builtin">Always loaded</span>
+            </div>
+          </div>
+          <p class="skill-desc">Claude uses this to make better decisions. Be specific , "React 18 + Node.js + PostgreSQL + Tailwind" is more useful than "web app". List the key folders too so Claude knows where to look without asking.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Current Status + Pending Tasks</span>
+              <span class="skill-badge skill-badge-community">Updated each session</span>
+            </div>
+          </div>
+          <p class="skill-desc">This is the most valuable part for daily use. Keep it current. If you left a branch half-finished or hit a blocker, note it here. Claude uses this to pick up exactly where you left off without you having to re-explain context.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Session Log</span>
+              <span class="skill-badge skill-badge-community">Updated each session</span>
+            </div>
+          </div>
+          <p class="skill-desc">This is your history. Claude uses it to understand what changed and why. Keep entries concise , bullet points not paragraphs. Archive to CLAUDE_ARCHIVE.md when it gets over 30k characters or performance starts to dip.</p>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">Project-Specific Rules</span>
+              <span class="skill-badge skill-badge-popular">Most impactful section</span>
+            </div>
+          </div>
+          <p class="skill-desc">This is where you teach Claude your stack and your preferences. API patterns, component conventions, which libraries to use for what, naming conventions, deployment notes. The more specific this is, the better every session gets. Add to it whenever Claude does something you have to correct.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">💡 Pro tips for better CLAUDE.md results</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <ul class="plain-list">
+          <li><strong>Write rules the way you'd tell a new developer.</strong> If you wouldn't say it out loud to a colleague, it's probably too vague for Claude.</li>
+          <li><strong>When Claude does something wrong, add a rule.</strong> The best CLAUDE.md files grow from real corrections. If you have to correct Claude twice, that's a rule.</li>
+          <li><strong>Reference your skills in the rules.</strong> E.g. "Use /simplify after every code change" or "Use /debug before attempting any fix." This makes skills automatic.</li>
+          <li><strong>Keep the rules section short.</strong> 10 sharp rules outperform 40 vague ones. Claude reads every rule every session , make each one count.</li>
+          <li><strong>Put environment-specific stuff in Project-Specific Rules,</strong> not the main rules. Things like "we use Supabase not Firebase" belong there, not at the top.</li>
+          <li><strong>Archive early, not when it breaks.</strong> Don't wait until Claude starts drifting. Archive logs at 25k characters rather than waiting for 30k.</li>
+          <li><strong>Scope not time (for three-file setup):</strong> A session log grows with time, CONTEXT.md grows with scope. Time is unbounded, scope plateaus once the project matures. If you find CONTEXT.md still growing every session, you're probably appending instead of rewriting in place. <em style="color:var(--text-muted);">(Credit: Tim, community contribution)</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
   <hr class="divider">
 
   <!-- ═══ COMMON MISTAKES ═══ -->
