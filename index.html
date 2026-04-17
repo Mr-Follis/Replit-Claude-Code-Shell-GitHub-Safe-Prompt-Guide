@@ -226,6 +226,101 @@ header h1 span { color: var(--amber); }
 /* ═══════════════════════════════════════
 
 /* ═══════════════════════════════════════
+   WHAT'S NEW BANNER
+═══════════════════════════════════════ */
+.whats-new-banner {
+  background: linear-gradient(135deg, var(--bg2), rgba(74,222,128,0.04));
+  border: 1px solid rgba(74,222,128,0.25);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+@media (prefers-color-scheme: light) {
+  .whats-new-banner { border-color: rgba(21,128,61,0.25); }
+}
+
+.whats-new-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+
+.whats-new-trigger:hover { background: rgba(74,222,128,0.04); }
+
+.whats-new-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.whats-new-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(74,222,128,0.6);
+  flex-shrink: 0;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.whats-new-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.whats-new-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.whats-new-body {
+  border-top: 1px solid rgba(74,222,128,0.15);
+}
+
+.whats-new-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.whats-new-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.whats-new-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════
    NAV BUTTONS
 ═══════════════════════════════════════ */
 .nav-grid {
@@ -1071,6 +1166,53 @@ footer a:hover { text-decoration: underline; }
     <p class="header-meta">v2.2 · Last updated: April 2026 · by Mr-Follis</p>
   </header>
 
+  <!-- WHAT'S NEW BANNER -->
+  <div class="whats-new-banner">
+    <button class="whats-new-trigger" onclick="toggleCollapse(this)">
+      <div class="whats-new-left">
+        <span class="whats-new-dot"></span>
+        <span class="whats-new-label">What's New</span>
+        <span class="whats-new-pill">Claude Code + Opus 4.7 · April 16, 2026</span>
+      </div>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content whats-new-body">
+      <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">⚡ Auto Mode now on Max</div>
+          <p>Auto mode has expanded to Max plan subscribers when using Opus 4.7. Previously Team/Enterprise/API only.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🔍 /ultrareview</div>
+          <p>New built-in skill. Spins up parallel reviewer agents for deep code review. Run on your current branch or any PR number.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🛡️ /less-permission-prompts</div>
+          <p>New built-in skill. Scans your session history and builds an allowlist so you stop approving the same actions every time.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🚀 Claude Opus 4.7</div>
+          <p>3x coding performance over 4.6. New xhigh effort default in Claude Code. Run <code>claude update</code> to get v2.1.111+.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🎯 xhigh effort level</div>
+          <p>New effort level between high and max, now the default in Claude Code. Use <code>/effort</code> to adjust via an interactive slider.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">👁️ Better vision</div>
+          <p>Image resolution jumped to 3.75MP (from 1.15MP). Screenshots, diagrams, and design mockups now come through at real fidelity.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- QUICK JUMP -->
   <div class="nav-grid">
     <a href="#install" class="ql ql-daily">⚙️ Install</a>
@@ -1504,7 +1646,7 @@ git push</code></pre>
     <div class="auto-mode-header">
       <span>⚡</span>
       <h3>Auto Mode: the big one</h3>
-      <span class="new-badge">Research Preview</span>
+      <span class="new-badge">Updated April 2026</span>
     </div>
     <div class="auto-mode-body">
       <p>Launched 24 March 2026. Auto mode is the middle ground everyone was waiting for. A dedicated classifier model reviews every tool call before it runs. Safe stuff goes through without interrupting you. Risky stuff gets blocked and Claude finds a different approach.</p>
@@ -1529,7 +1671,7 @@ git push</code></pre>
       <p>Then press <code>Shift+Tab</code> to cycle to it in any session. The current mode shows in the status bar.</p>
       <div class="availability-note">
         <span class="note-icon">⚠️</span>
-        <span><strong>Availability:</strong> Team, Enterprise, and API plans only. Not available on Pro or Max, or on Bedrock/Vertex. Still a research preview so Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
+        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7). Not available on Pro, or on Bedrock/Vertex. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
       </div>
     </div>
   </div>
@@ -1628,6 +1770,30 @@ your-project/.claude/skills/your-skill-name/SKILL.md</code></pre>
             <button class="copy-btn" onclick="doCopy(this, '/claude-api')">📋 Copy</button>
           </div>
           <p class="skill-desc">Generates correct Anthropic API calls with streaming, tool use, and error handling already built in. Use this whenever you're building something that calls Claude from your own code.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/ultrareview</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+              <span class="skill-badge skill-badge-popular">New in Opus 4.7</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/ultrareview')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Spins up a fleet of reviewer agents in the cloud to do a thorough multi-agent code review. Run with no arguments to review your current branch, or <code>/ultrareview &lt;PR#&gt;</code> to review a specific GitHub PR. Flags real logic bugs, not just style issues.</p>
+        </div>
+
+        <div class="skill-card" style="margin-bottom:0;">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">/less-permission-prompts</span>
+              <span class="skill-badge skill-badge-builtin">Built-in</span>
+              <span class="skill-badge skill-badge-popular">New in Opus 4.7</span>
+            </div>
+            <button class="copy-btn" onclick="doCopy(this, '/less-permission-prompts')">📋 Copy</button>
+          </div>
+          <p class="skill-desc">Scans your session transcripts for common read-only Bash and MCP tool calls you keep approving, then proposes a prioritised allowlist to add to <code>.claude/settings.json</code>. Run it once after a few sessions to stop approving the same things repeatedly.</p>
         </div>
       </div>
     </div>
@@ -2060,7 +2226,7 @@ description: >
       </div>
       <div class="trouble-item">
         <div class="trouble-q">❌ Auto Mode not available</div>
-        <div class="trouble-a">Auto mode requires Team, Enterprise, or API plan. Not on Pro or Max. Make sure Claude Code is updated to v2.1.83 or later by re-running the install command.</div>
+        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7). Not available on Pro. Make sure Claude Code is updated to v2.1.111 or later by running <code>claude update</code>.</div>
       </div>
     </div>
   </div>
