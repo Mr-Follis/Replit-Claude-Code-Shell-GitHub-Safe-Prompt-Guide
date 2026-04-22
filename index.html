@@ -1084,7 +1084,6 @@ footer a:hover { text-decoration: underline; }
   background: var(--bg3);
   border: 1px solid var(--border2);
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: var(--shadow);
   transition: all 0.15s;
 }
@@ -1092,6 +1091,16 @@ footer a:hover { text-decoration: underline; }
 .float-group:hover {
   border-color: var(--amber-dim);
   transform: translateX(-2px);
+}
+
+/* Round the main button left corners to match the group */
+.float-group .float-btn-main {
+  border-radius: 10px 0 0 10px;
+}
+
+/* Round the mini button right corners to match the group */
+.float-group .float-btn-mini {
+  border-radius: 0 10px 10px 0;
 }
 
 .float-btn {
