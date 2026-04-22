@@ -476,6 +476,44 @@ header h1 span { color: var(--amber); }
   flex-wrap: wrap;
 }
 
+/* Daily-use section headers (Install, Kick-Off, Wrap-Up) get an amber accent */
+.section-header-daily {
+  position: relative;
+  padding-left: 16px;
+  border-left: 4px solid var(--amber);
+  background: linear-gradient(90deg, var(--amber-soft), transparent 60%);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+.section-header-daily .section-icon {
+  filter: drop-shadow(0 0 8px rgba(245,166,35,0.4));
+}
+
+.section-header-daily h2 {
+  color: var(--text);
+}
+
+.daily-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  background: var(--amber-soft);
+  border: 1px solid var(--amber-dim);
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
 /* ═══════════════════════════════════════
    CARDS
 ═══════════════════════════════════════ */
@@ -1341,9 +1379,9 @@ footer a:hover { text-decoration: underline; }
 
   <!-- ═══ INSTALL ═══ -->
   <span class="anchor" id="install"></span>
-  <div class="section-header">
+  <div class="section-header section-header-daily">
     <span class="section-icon">📥</span>
-    <h2>Installing Claude Code in Replit</h2>
+    <h2>Installing Claude Code in Replit <span class="daily-pill">✦ Daily</span></h2>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:16px;line-height:1.6;">Open the <strong>Shell</strong> tab in Replit and run this every session. Replit resets between sessions so this is always required.</p>
@@ -1872,9 +1910,9 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
 
   <!-- ═══ MORNING ═══ -->
   <span class="anchor" id="morning"></span>
-  <div class="section-header">
+  <div class="section-header section-header-daily">
     <span class="section-icon">☀️</span>
-    <h2>Morning Kick-Off Prompt</h2>
+    <h2>Morning Kick-Off Prompt <span class="daily-pill">✦ Daily</span></h2>
   </div>
 
   <div class="update-banner">
@@ -1928,9 +1966,9 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
 
   <!-- ═══ EVENING ═══ -->
   <span class="anchor" id="evening"></span>
-  <div class="section-header">
+  <div class="section-header section-header-daily">
     <span class="section-icon">🌙</span>
-    <h2>End-of-Day Wrap-Up</h2>
+    <h2>End-of-Day Wrap-Up <span class="daily-pill">✦ Daily</span></h2>
   </div>
 
   <div class="update-banner">
