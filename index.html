@@ -1078,49 +1078,101 @@ footer a:hover { text-decoration: underline; }
   z-index: 100;
 }
 
-.float-btn {
+/* Grouped compound buttons */
+.float-group {
+  display: flex;
   background: var(--bg3);
   border: 1px solid var(--border2);
-  color: var(--text-dim);
-  width: 44px;
-  height: 44px;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.15s;
+}
+
+.float-group:hover {
+  border-color: var(--amber-dim);
+  transform: translateX(-2px);
+}
+
+.float-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.15s;
-  box-shadow: var(--shadow);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.float-btn-main {
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+}
+
+.float-btn-mini {
+  width: 28px;
+  height: 38px;
+  font-size: 11px;
+  border-left: 1px solid var(--border);
+  color: var(--text-muted);
 }
 
 .float-btn:hover {
   background: var(--amber-glow);
-  border-color: var(--amber-dim);
   color: var(--amber);
+}
+
+/* Standalone btn (back to top) gets its own rounded style */
+.float-nav > .float-btn {
+  width: 38px;
+  height: 38px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  font-size: 16px;
+  box-shadow: var(--shadow);
+}
+
+.float-nav > .float-btn:hover {
+  border-color: var(--amber-dim);
   transform: translateX(-2px);
 }
 
-/* Tooltip on hover */
+/* Tooltip on hover - forced high contrast so it never gets unreadable */
 .float-btn::before {
   content: attr(data-tip);
   position: absolute;
-  right: 52px;
-  background: var(--bg4);
-  border: 1px solid var(--border2);
-  color: var(--text);
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f1419;
+  border: 1px solid #3a4050;
+  color: #ffffff !important;
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 10;
+  letter-spacing: 0.01em;
+}
+
+@media (prefers-color-scheme: light) {
+  .float-btn::before {
+    background: #1a1f2e;
+    border-color: #2d3142;
+    color: #ffffff !important;
+  }
 }
 
 .float-btn:hover::before {
@@ -1212,6 +1264,16 @@ footer a:hover { text-decoration: underline; }
         <div class="whats-new-item">
           <div class="whats-new-item-title">📂 Three-file setup</div>
           <p>Community contribution from Tim. Split CLAUDE.md into CLAUDE.md + CONTEXT.md + ROADMAP.md. Lighter on tokens, scales better. Migration section included for existing projects.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">📋 /recap command</div>
+          <p>New Claude Code command. Type <code>/recap</code> after a break to get a quick summary of the current session. Complements the checkpoint flow, useful for short breaks where you don't want to start fresh.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">⚡ Faster /resume</div>
+          <p>Claude Code v2.1.116 made <code>/resume</code> up to 67% faster on 40MB+ session files. Big checkpoint files are much less of a problem now.</p>
         </div>
 
       </div>
@@ -3107,11 +3169,20 @@ A React-based dashboard for tracking inventory.
 </div>
 
 <div class="float-nav">
-  <a href="#install" class="float-btn" data-tip="⚙️ Install">⚙️</a>
-  <a href="#morning" class="float-btn" data-tip="☀️ Kick-Off">☀️</a>
-  <a href="#evening" class="float-btn" data-tip="🌙 Wrap-Up">🌙</a>
+  <div class="float-group">
+    <a href="#install" class="float-btn float-btn-main" data-tip="Jump to Install">⚙️</a>
+    <button class="float-btn float-btn-mini" data-tip="Copy install command" onclick="copyFloat('install')">📋</button>
+  </div>
+  <div class="float-group">
+    <a href="#morning" class="float-btn float-btn-main" data-tip="Jump to Kick-Off">☀️</a>
+    <button class="float-btn float-btn-mini" data-tip="Copy Kick-Off prompt" onclick="copyFloat('morning')">📋</button>
+  </div>
+  <div class="float-group">
+    <a href="#evening" class="float-btn float-btn-main" data-tip="Jump to Wrap-Up">🌙</a>
+    <button class="float-btn float-btn-mini" data-tip="Copy checkpoint command" onclick="copyFloat('evening')">📋</button>
+  </div>
   <div class="float-divider"></div>
-  <a href="#top" class="float-btn" data-tip="Back to top">↑</a>
+  <a href="#top" class="float-btn float-btn-main" data-tip="Back to top">↑</a>
 </div>
 
 <script>
@@ -3188,6 +3259,34 @@ A React-based dashboard for tracking inventory.
     const code = card.querySelector('pre code');
     if (!code) return;
     doCopy(btn, code.textContent.trim());
+  }
+
+  // Quick copy from the floating sidebar
+  function copyFloat(which) {
+    // Find the button that was clicked for visual feedback
+    const btns = document.querySelectorAll('.float-btn-mini');
+    let clickedBtn = null;
+    btns.forEach(b => { if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(which)) clickedBtn = b; });
+
+    let text = '';
+    if (which === 'install') {
+      text = 'curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude';
+    } else if (which === 'morning') {
+      // Three-file kick-off prompt (the recommended one)
+      text = `I'm starting a new coding session. Please:
+1. Read CLAUDE.md for project rules.
+2. Read CONTEXT.md for current project state.
+3. Read ROADMAP.md for pending tasks and upcoming work.
+4. If RECENT.md exists, read it to see what was actively being discussed.
+5. Run \`git pull\` to ensure we're up-to-date.
+6. Run \`git status\` and \`git log --oneline -5\` to see recent activity.
+7. Summarise where we left off and what's pending.
+8. Suggest the best next step.`;
+    } else if (which === 'evening') {
+      // Checkpoint command for three-file setup
+      text = 'checkpoint';
+    }
+    if (clickedBtn && text) doCopy(clickedBtn, text);
   }
 </script>
 
