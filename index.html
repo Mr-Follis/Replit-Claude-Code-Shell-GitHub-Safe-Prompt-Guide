@@ -1396,6 +1396,11 @@ footer a:hover { text-decoration: underline; }
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:16px;line-height:1.6;">Open the <strong>Shell</strong> tab in Replit and run this every session. Replit resets between sessions so this is always required.</p>
 
+  <div class="update-banner" style="margin-bottom:16px;background:linear-gradient(135deg, var(--bg2), rgba(74,222,128,0.04));border-color:rgba(74,222,128,0.25);">
+    <span class="update-icon">✓</span>
+    <p><strong>Updated April 2026:</strong> The install command now includes a PATH export. The native installer puts <code>claude</code> at <code>~/.local/bin</code> which isn't in Replit's default PATH. Without the export, you'd see <code>bash: claude: command not found</code> after install.</p>
+  </div>
+
   <div class="card card-amber">
     <div style="padding:10px clamp(14px,3vw,20px) 4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
       <span class="new-badge">Native Installer</span>
@@ -1408,7 +1413,7 @@ footer a:hover { text-decoration: underline; }
           <span class="code-lang">bash</span>
           <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
         </div>
-        <pre><code>curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude</code></pre>
+        <pre><code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></pre>
       </div>
     </div>
   </div>
@@ -2767,7 +2772,7 @@ description: >
   <div class="tldr">
     <div class="tldr-header">// THE SHORT VERSION</div>
     <ol>
-      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude</code></li>
+      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></li>
       <li><strong>New project:</strong> Create CLAUDE.md using the First-Time Setup above</li>
       <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
       <li><strong>Rules live in CLAUDE.md.</strong> No need to repeat them every session</li>
@@ -3343,7 +3348,7 @@ A React-based dashboard for tracking inventory.
 
     let text = '';
     if (which === 'install') {
-      text = 'curl -fsSL https://claude.ai/install.sh | bash && source ~/.bashrc && claude';
+      text = 'curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude';
     } else if (which === 'morning') {
       // Three-file kick-off prompt (the recommended one)
       text = `I'm starting a new coding session. Please:
