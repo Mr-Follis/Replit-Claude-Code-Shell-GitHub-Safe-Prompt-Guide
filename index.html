@@ -1340,6 +1340,16 @@ footer a:hover { text-decoration: underline; }
           <p>The <code>/cost</code> and <code>/stats</code> commands have been merged into a single <code>/usage</code> command. Both still work as shortcuts but open the new unified usage tab.</p>
         </div>
 
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.08), rgba(167,139,250,0.05), rgba(96,165,250,0.08));border:1px solid rgba(245,166,35,0.3);">
+          <div class="whats-new-item-title" style="font-size:14px;color:var(--amber);">🎉 Code w/ Claude 2026 (May 6, London)</div>
+          <p style="margin-bottom:10px;">Anthropic's annual Claude Code event landed yesterday with three things worth knowing about:</p>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">⏰ Routines:</strong> give Claude Code a prompt + cadence (hourly, nightly, weekly) and it runs on schedule. Or trigger it from API calls and GitHub events. e.g. "every night at 2am, pull the top bug from Linear, attempt a fix, open a draft PR."</li>
+            <li><strong style="color:var(--text);">💭 Dreaming:</strong> Claude can review past sessions overnight, spot patterns, and create new memories automatically. Similar concept to Tim's RECENT.md but more autonomous. Public beta for Managed Agents.</li>
+            <li><strong style="color:var(--text);">🔧 CI auto-fix:</strong> automatically files fix PRs when your CI fails. Less manual triage.</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1988,18 +1998,18 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
 
   <div class="update-banner">
     <span class="update-icon">✦</span>
-    <p><strong>Three-file setup users:</strong> Replace the wrap-up prompt with a single word. Type <code>checkpoint</code> to Claude and it handles everything automatically. See the <a href="#checkpoint-script" style="color:var(--amber);">Checkpoint Script section</a> for setup.</p>
+    <p><strong>Three-file setup users:</strong> You have two options below depending on whether it's a quick mid-session save or a proper end-of-day wrap-up. Both use the <code>checkpoint</code> script under the hood. See the <a href="#checkpoint-script" style="color:var(--amber);">Checkpoint Script section</a> for setup.</p>
   </div>
 
-  <!-- CHECKPOINT CARD -->
+  <!-- QUICK CHECKPOINT (mid-session) -->
   <div class="auto-mode-card" style="margin-bottom:16px;">
     <div class="auto-mode-header">
       <span>⚡</span>
-      <h3>The checkpoint command</h3>
-      <span class="new-badge">Replaces wrap-up prompt</span>
+      <h3>Quick checkpoint (mid-session)</h3>
+      <span class="new-badge">Lightweight save</span>
     </div>
     <div class="auto-mode-body">
-      <p>Once the checkpoint script is set up, just type this to Claude at any natural pause point during or at the end of a session:</p>
+      <p>Use this at any natural pause point during a session, after a feature, after a bug fix, whenever you'd want a safe rollback point. Takes seconds.</p>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">say to claude</span>
@@ -2014,11 +2024,53 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
         <li>Warns you if any code files are newer than CONTEXT.md</li>
         <li>Runs git add, commit and push in one shot</li>
       </ul>
-      <p>If the session gets too long and <code>/compact</code> isn't helping, type <code>handoff</code> instead. Claude prints a ready-to-paste prompt for a fresh session that picks up instantly from CONTEXT.md and RECENT.md.</p>
       <div class="availability-note">
         <span class="note-icon">💡</span>
-        <span>You don't have to wait until the end of the day. Checkpoint at any natural pause point, after a feature, after a bug fix, whenever you'd want a safe rollback point. The more often the better.</span>
+        <span>The more often you checkpoint, the better. Each one is a safe rollback point and keeps RECENT.md fresh for next session.</span>
       </div>
+    </div>
+  </div>
+
+  <!-- FULL END-OF-DAY WRAP-UP -->
+  <div class="auto-mode-card" style="margin-bottom:16px;border-color:rgba(167,139,250,0.3);background:linear-gradient(135deg,var(--bg2),rgba(167,139,250,0.04));">
+    <div class="auto-mode-header">
+      <span>🌙</span>
+      <h3>Full end-of-day wrap-up</h3>
+      <span class="new-badge" style="background:rgba(167,139,250,0.15);color:var(--purple);border-color:rgba(167,139,250,0.3);">Deeper save</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>At the end of a working day or before a long break, use this fuller prompt. It does everything <code>checkpoint</code> does but also asks Claude to update CONTEXT.md properly, summarise the day, and flag anything that needs picking up next session.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">prompt</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>End of day wrap-up. Please do this in order:
+
+1. Review what we accomplished today, list it briefly.
+2. Update CONTEXT.md to reflect the new state:
+   - Move anything completed out of Pending Tasks into What's Built
+   - Add any new known issues to Known Issues
+   - Update Current Status, last checkpoint date, and current branch
+   - If any design decisions were made today, capture them
+3. If anything is in progress and not yet committed, save it on a separate branch.
+4. Update ROADMAP.md if any priorities or phases shifted today.
+5. Run the checkpoint script: type checkpoint with a short description of today's main outcome.
+6. Confirm everything is pushed to GitHub and the project is in a safe state.
+7. Tell me what's the obvious next thing to pick up tomorrow.</code></pre>
+      </div>
+      <div class="spacer"></div>
+      <div class="availability-note">
+        <span class="note-icon">💡</span>
+        <span>Use this once a day at most. The lightweight <code>checkpoint</code> is fine for everything else.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HANDOFF (LONG SESSION) -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="pad" style="padding:14px 18px;">
+      <p style="margin:0;font-size:14px;color:var(--text-dim);"><strong style="color:var(--text);">⤴️ Long session running slow?</strong> If <code>/compact</code> isn't helping, type <code>handoff</code> to Claude. It prints a bootstrap prompt for a fresh session that picks up instantly from CONTEXT.md and RECENT.md.</p>
     </div>
   </div>
 
