@@ -1265,11 +1265,11 @@ footer a:hover { text-decoration: underline; }
   <header id="top">
     <div class="header-top">
       <span class="version-badge">v2.3</span>
-      <span class="new-badge">✦ Updated April 2026</span>
+      <span class="new-badge">✦ Updated May 2026 · Opus 4.8</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.3 · Last updated: April 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.4 · Last updated: May 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1278,16 +1278,47 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Code + Opus 4.7 · April 16, 2026</span>
+        <span class="whats-new-pill">Claude Opus 4.8 + Dynamic Workflows · May 28, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(167,139,250,0.08), rgba(96,165,250,0.10));border:2px solid rgba(245,166,35,0.4);box-shadow:0 0 24px rgba(245,166,35,0.08);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Opus 4.8 (May 28, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Anthropic's fastest cadence yet, 41 days after 4.7.</strong> Same $5/$25 pricing, 1M token context, and modest but tangible benchmark gains. Anthropic themselves called it "a modest but tangible improvement", which is refreshingly honest. The bigger story is what shipped alongside it:</p>
+          <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
+            <li><strong style="color:var(--text);">🎯 Better honesty:</strong> 4x reduction in unreported code flaws. Opus 4.8 is more likely to flag uncertainties and less likely to make unsupported claims.</li>
+            <li><strong style="color:var(--text);">📈 Coding gains:</strong> 88.6% on SWE-bench Verified (up from 87.6%). Agentic coding score jumped from 64.3% to 69.2%.</li>
+            <li><strong style="color:var(--text);">⚙️ Default effort changed to "high":</strong> previously "xhigh" on 4.7. Use <code>/effort</code> to adjust. New <code>ultracode</code> level also available.</li>
+          </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);"><strong>Action needed:</strong> Run <code>claude update</code> to get to v2.1.154+ which is required for Opus 4.8. Existing setup still works, this is just an upgrade.</p>
+        </div>
+
+        <div class="whats-new-item" style="border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.04);">
+          <div class="whats-new-item-title">🔥 Dynamic Workflows</div>
+          <p>New Claude Code feature (research preview) that spins up parallel subagents to tackle very large-scale problems. Can run for days on a single goal. Pairs nicely with the existing checkpoint workflow.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🎛️ Effort control UI</div>
+          <p>New control alongside the model selector on claude.ai and Cowork. Pick how much effort Claude puts into a response without typing <code>/effort</code>.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">⚡ Fast mode 3x cheaper</div>
+          <p>Opus 4.8 fast mode runs at 2.5x speed for $10/$50 per million tokens. Previously $30/$150 on 4.7. Research preview, contact your account manager for access.</p>
+        </div>
+
+        <div class="whats-new-item" style="border-color:rgba(248,113,113,0.25);background:rgba(248,113,113,0.04);">
+          <div class="whats-new-item-title">⚠️ Heads up: agentic prompt injection</div>
+          <p>Opus 4.8 is slightly LESS robust to prompt injection in agentic contexts than 4.7 (9.6% vs 6.0% attack success in red-teaming). If running untrusted input through agents, review your sandboxing.</p>
+        </div>
+
         <div class="whats-new-item">
           <div class="whats-new-item-title">⚡ Auto Mode now on Max</div>
-          <p>Auto mode has expanded to Max plan subscribers when using Opus 4.7. Previously Team/Enterprise/API only.</p>
+          <p>Auto mode has expanded to Max plan subscribers when using Opus 4.7 or 4.8. Previously Team/Enterprise/API only.</p>
         </div>
 
         <div class="whats-new-item">
@@ -2336,7 +2367,7 @@ git push</code></pre>
     <div class="auto-mode-header">
       <span>⚡</span>
       <h3>Auto Mode: the big one</h3>
-      <span class="new-badge">Updated April 2026</span>
+      <span class="new-badge">Updated May 2026 · Opus 4.8</span>
     </div>
     <div class="auto-mode-body">
       <p>Launched 24 March 2026. Auto mode is the middle ground everyone was waiting for. A dedicated classifier model reviews every tool call before it runs. Safe stuff goes through without interrupting you. Risky stuff gets blocked and Claude finds a different approach.</p>
@@ -2361,7 +2392,7 @@ git push</code></pre>
       <p>Then press <code>Shift+Tab</code> to cycle to it in any session. The current mode shows in the status bar.</p>
       <div class="availability-note">
         <span class="note-icon">⚠️</span>
-        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7). Not available on Pro, or on Bedrock/Vertex. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
+        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7 or 4.8). Not available on Pro, or on Bedrock/Vertex. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
       </div>
     </div>
   </div>
@@ -3063,7 +3094,7 @@ description: >
       </div>
       <div class="trouble-item">
         <div class="trouble-q">❌ Auto Mode not available</div>
-        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7). Not available on Pro. Make sure Claude Code is updated to v2.1.111 or later by running <code>claude update</code>.</div>
+        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7 or 4.8). Not available on Pro. Make sure Claude Code is updated to v2.1.154 or later (required for Opus 4.8) by running <code>claude update</code>.</div>
       </div>
     </div>
   </div>
@@ -3199,8 +3230,29 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.3</span>
+              <span class="skill-cmd">v2.4</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">May 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Updated for Claude Opus 4.8 release (May 28, 2026), new hero card in What's New</li>
+            <li>Dynamic Workflows added to What's New (parallel subagents in Claude Code)</li>
+            <li>Effort control UI in claude.ai and Cowork explained</li>
+            <li>Fast mode price cut documented (3x cheaper on 4.8)</li>
+            <li>Honesty improvements covered (4x reduction in unreported code flaws)</li>
+            <li>Warning added about agentic prompt injection robustness on 4.8 vs 4.7</li>
+            <li>Minimum Claude Code version bumped to v2.1.154 for Opus 4.8 in Auto Mode and Troubleshooting</li>
+            <li>Default effort level changed to "high" (was "xhigh" on 4.7), <code>ultracode</code> level mentioned</li>
+            <li>End-of-Day Wrap-Up restructured with separate "quick checkpoint" and "full end-of-day" flows</li>
+            <li>Floating sidebar now has 4 compound buttons including the new End-of-Day prompt</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.3</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">April 2026</span>
             </div>
           </div>
@@ -3285,7 +3337,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.3 · Last updated: April 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.4 · Last updated: May 2026</p>
   </footer>
 </div>
 
