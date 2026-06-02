@@ -1366,6 +1366,11 @@ footer a:hover { text-decoration: underline; }
           <p>Opus 4.8 fast mode runs at 2.5x speed for $10/$50 per million tokens. Previously $30/$150 on 4.7. Research preview, contact your account manager for access.</p>
         </div>
 
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">☁️ Auto Mode on Bedrock + Vertex + Foundry</div>
+          <p>As of May 30, 2026, Auto Mode is available on AWS Bedrock, Google Vertex, and Microsoft Foundry for Opus 4.7 and 4.8. Opt in with <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>.</p>
+        </div>
+
         <div class="whats-new-item" style="border-color:rgba(248,113,113,0.25);background:rgba(248,113,113,0.04);">
           <div class="whats-new-item-title">⚠️ Heads up: agentic prompt injection</div>
           <p>Opus 4.8 is slightly LESS robust to prompt injection in agentic contexts than 4.7 (9.6% vs 6.0% attack success in red-teaming). If running untrusted input through agents, review your sandboxing.</p>
@@ -2447,7 +2452,7 @@ git push</code></pre>
       <p>Then press <code>Shift+Tab</code> to cycle to it in any session. The current mode shows in the status bar.</p>
       <div class="availability-note">
         <span class="note-icon">⚠️</span>
-        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7 or 4.8). Not available on Pro, or on Bedrock/Vertex. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
+        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7 or 4.8). Not available on Pro. As of May 30, 2026 also available on Bedrock, Vertex, and Foundry, opt in by setting <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
       </div>
     </div>
   </div>
@@ -3149,7 +3154,7 @@ description: >
       </div>
       <div class="trouble-item">
         <div class="trouble-q">❌ Auto Mode not available</div>
-        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7 or 4.8). Not available on Pro. Make sure Claude Code is updated to v2.1.154 or later (required for Opus 4.8) by running <code>claude update</code>.</div>
+        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7 or 4.8). Not available on Pro. Also available on Bedrock, Vertex, and Foundry as of May 30, 2026, opt in with <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Make sure Claude Code is updated to v2.1.154 or later (required for Opus 4.8) by running <code>claude update</code>.</div>
       </div>
     </div>
   </div>
