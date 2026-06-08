@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.4.3 · Last updated: June 8, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.4.4 · Last updated: June 8, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1499,7 +1499,7 @@ footer a:hover { text-decoration: underline; }
 
   <div class="update-banner" style="margin-bottom:16px;background:linear-gradient(135deg, var(--bg2), rgba(74,222,128,0.04));border-color:rgba(74,222,128,0.25);">
     <span class="update-icon">✓</span>
-    <p><strong>Updated June 2026:</strong> The install command now includes a PATH export AND writes it to <code>~/.bashrc</code> for the session. This silences the "Native installation exists but ~/.local/bin is not in your PATH" warning that the installer prints, and keeps <code>claude</code> available throughout the session.</p>
+    <p><strong>Heads up about the install warning:</strong> The installer will print "Native installation exists but ~/.local/bin is not in your PATH" before claude launches. This is cosmetic, the <code>export PATH</code> in our command handles it for the session and <code>claude</code> launches fine. (We tried writing to <code>~/.bashrc</code> in v2.4.2 to silence the warning but Replit makes that file read-only, which broke the install. Reverted in v2.4.4.)</p>
   </div>
 
   <div class="card card-amber">
@@ -1514,7 +1514,7 @@ footer a:hover { text-decoration: underline; }
           <span class="code-lang">bash</span>
           <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
         </div>
-        <pre><code>curl -fsSL https://claude.ai/install.sh | bash && echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && export PATH="$HOME/.local/bin:$PATH" && claude</code></pre>
+        <pre><code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></pre>
       </div>
     </div>
   </div>
@@ -2915,7 +2915,7 @@ description: >
   <div class="tldr">
     <div class="tldr-header">// THE SHORT VERSION</div>
     <ol>
-      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && export PATH="$HOME/.local/bin:$PATH" && claude</code></li>
+      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></li>
       <li><strong>New project:</strong> Create CLAUDE.md using the First-Time Setup above</li>
       <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
       <li><strong>Rules live in CLAUDE.md.</strong> No need to repeat them every session</li>
@@ -3287,11 +3287,25 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card" style="border-color:rgba(248,113,113,0.3);background:rgba(248,113,113,0.04);">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.4.4</span>
+              <span class="skill-badge skill-badge-popular">Current · Hotfix</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 8, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Reverted the v2.4.2 install command change, the <code>echo &gt;&gt; ~/.bashrc</code> bit failed on Replit because <code>/home/runner/.bashrc</code> is read-only, breaking the rest of the chained command and stopping <code>claude</code> from launching</li>
+            <li>Install command is now back to the simpler v2.4.1 form: curl + PATH export + claude. The installer's "not in your PATH" warning is cosmetic and harmless</li>
+            <li>Install banner note rewritten to be honest about what the warning is and why it appears</li>
+          </ul>
+        </div>
+
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.4.3</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 8, 2026</span>
             </div>
           </div>
@@ -3440,7 +3454,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.4.3 · Last updated: June 8, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.4.4 · Last updated: June 8, 2026</p>
   </footer>
 </div>
 
@@ -3559,7 +3573,7 @@ A React-based dashboard for tracking inventory.
 
     let text = '';
     if (which === 'install') {
-      text = `curl -fsSL https://claude.ai/install.sh | bash && echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && export PATH="$HOME/.local/bin:$PATH" && claude`;
+      text = `curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude`;
     } else if (which === 'morning') {
       // Three-file kick-off prompt (the recommended one)
       text = `I'm starting a new coding session. Please:
