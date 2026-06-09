@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.4.4 · Last updated: June 8, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.5 · Last updated: June 9, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,32 +1333,47 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Opus 4.8 + Dynamic Workflows · May 28, 2026</span>
+        <span class="whats-new-pill">Claude Fable 5 · Claude 5 family · June 9, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
-        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(167,139,250,0.08), rgba(96,165,250,0.10));border:2px solid rgba(245,166,35,0.4);box-shadow:0 0 24px rgba(245,166,35,0.08);">
-          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Opus 4.8 (May 28, 2026)</div>
-          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Anthropic's fastest cadence yet, 41 days after 4.7.</strong> Same $5/$25 pricing, 1M token context, and modest but tangible benchmark gains. Anthropic themselves called it "a modest but tangible improvement", which is refreshingly honest. The bigger story is what shipped alongside it:</p>
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(167,139,250,0.10), rgba(96,165,250,0.12));border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Fable 5 is here (June 9, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">The first model in the Claude 5 family, a new Mythos-class tier above Opus.</strong> The public version of Claude Mythos with safeguards built in, and a massive coding leap: 80.3% on SWE-Bench Pro vs 69.2% for Opus 4.8. Built for long-horizon work, in Claude Code it can run for days: planning across stages, delegating to subagents, and checking its own work.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
-            <li><strong style="color:var(--text);">🎯 Better honesty:</strong> 4x reduction in unreported code flaws. Opus 4.8 is more likely to flag uncertainties and less likely to make unsupported claims.</li>
-            <li><strong style="color:var(--text);">📈 Coding gains:</strong> 88.6% on SWE-bench Verified (up from 87.6%). Agentic coding score jumped from 64.3% to 69.2%.</li>
-            <li><strong style="color:var(--text);">⚙️ Default effort changed to "high":</strong> previously "xhigh" on 4.7. Use <code>/effort</code> to adjust. New <code>ultracode</code> level also available.</li>
+            <li><strong style="color:var(--text);">⏰ Free window, act now:</strong> included on Pro, Max, Team, and seat-based Enterprise plans at NO extra cost until June 22. From June 23 it's pulled from those plans and requires usage credits until further notice. If you want to try the most powerful generally available model, this is the fortnight.</li>
+            <li><strong style="color:var(--text);">💰 Usage warning:</strong> within subscription plans Fable 5 burns roughly double the usage of Opus. Worth it for hard problems, overkill for small tweaks.</li>
+            <li><strong style="color:var(--text);">🛡️ Safety fallback:</strong> queries flagged as cybersecurity or biology risk get auto-routed to Opus 4.8 (you aren't charged Fable prices for rerouted requests).</li>
+            <li><strong style="color:var(--text);">🔧 Use it in Claude Code:</strong> run <code>claude update</code> then pick it via <code>/model</code>. API model id is <code>claude-fable-5</code>, priced $10/$50 per MTok, double Opus 4.8.</li>
           </ul>
-          <p style="margin:0;font-size:13px;color:var(--text-muted);"><strong>Action needed:</strong> Run <code>claude update</code> to get to v2.1.154+ which is required for Opus 4.8. Existing setup still works, this is just an upgrade.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🛟 --safe-mode flag</div>
+          <p>New in Claude Code (June 2026). Start with <code>claude --safe-mode</code> to disable ALL customisations (CLAUDE.md, plugins, skills, hooks, MCP servers) for troubleshooting. Great for working out whether a problem is Claude or your setup.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">📁 /cd command</div>
+          <p>New in Claude Code (June 2026). Move a session to a new working directory mid-session without breaking the prompt cache. Handy when a task spans more than one project folder.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🚀 Claude Opus 4.8 (May 28)</div>
+          <p>Still the subscription workhorse. 88.6% SWE-bench Verified, better honesty (4x fewer unreported code flaws), default effort "high". Requires Claude Code v2.1.154+, run <code>claude update</code>.</p>
         </div>
 
         <div class="whats-new-item" style="border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.04);">
           <div class="whats-new-item-title">🔥 Dynamic Workflows</div>
-          <p>New Claude Code feature (research preview) that spins up parallel subagents to tackle very large-scale problems. Can run for days on a single goal. Pairs nicely with the existing checkpoint workflow.</p>
+          <p>Claude Code research preview that spins up parallel subagents to tackle very large-scale problems. Can run for days on a single goal. Pairs nicely with the checkpoint workflow, and Fable 5 makes it stronger.</p>
         </div>
 
         <div class="whats-new-item">
           <div class="whats-new-item-title">🎛️ Effort control UI</div>
-          <p>New control alongside the model selector on claude.ai and Cowork. Pick how much effort Claude puts into a response without typing <code>/effort</code>.</p>
+          <p>Control alongside the model selector on claude.ai and Cowork. Pick how much effort Claude puts into a response without typing <code>/effort</code>.</p>
         </div>
 
         <div class="whats-new-item">
@@ -1377,68 +1392,8 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="whats-new-item">
-          <div class="whats-new-item-title">⚡ Auto Mode now on Max</div>
-          <p>Auto mode has expanded to Max plan subscribers when using Opus 4.7 or 4.8. Previously Team/Enterprise/API only.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">🔍 /ultrareview</div>
-          <p>New built-in skill. Spins up parallel reviewer agents for deep code review. Run on your current branch or any PR number.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">🛡️ /less-permission-prompts</div>
-          <p>New built-in skill. Scans your session history and builds an allowlist so you stop approving the same actions every time.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">🚀 Claude Opus 4.7</div>
-          <p>3x coding performance over 4.6. New xhigh effort default in Claude Code. Run <code>claude update</code> to get v2.1.111+.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">🎯 xhigh effort level</div>
-          <p>New effort level between high and max, now the default in Claude Code. Use <code>/effort</code> to adjust via an interactive slider.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">👁️ Better vision</div>
-          <p>Image resolution jumped to 3.75MP (from 1.15MP). Screenshots, diagrams, and design mockups now come through at real fidelity.</p>
-        </div>
-
-        <div class="whats-new-item">
           <div class="whats-new-item-title">📂 Three-file setup</div>
           <p>Community contribution from Tim. Split CLAUDE.md into CLAUDE.md + CONTEXT.md + ROADMAP.md. Lighter on tokens, scales better. Migration section included for existing projects.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">📋 /recap command</div>
-          <p>New Claude Code command. Type <code>/recap</code> after a break to get a quick summary of the current session. Complements the checkpoint flow, useful for short breaks where you don't want to start fresh.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">⚡ Faster /resume</div>
-          <p>Claude Code v2.1.116 made <code>/resume</code> up to 67% faster on 40MB+ session files. Big checkpoint files are much less of a problem now.</p>
-        </div>
-
-        <div class="whats-new-item" style="border-color:rgba(74,222,128,0.4);background:rgba(74,222,128,0.04);">
-          <div class="whats-new-item-title">🛠️ Claude Code degradation fixed</div>
-          <p>Anthropic confirmed three bugs caused performance issues in Claude Code over the past month, all resolved in v2.1.116 (April 20). Run <code>claude update</code> to make sure you're on the fix. They've also reset usage limits for all subscribers as of April 23 to make up for it.</p>
-        </div>
-
-        <div class="whats-new-item">
-          <div class="whats-new-item-title">📊 /usage command</div>
-          <p>The <code>/cost</code> and <code>/stats</code> commands have been merged into a single <code>/usage</code> command. Both still work as shortcuts but open the new unified usage tab.</p>
-        </div>
-
-        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.08), rgba(167,139,250,0.05), rgba(96,165,250,0.08));border:1px solid rgba(245,166,35,0.3);">
-          <div class="whats-new-item-title" style="font-size:14px;color:var(--amber);">🎉 Code w/ Claude 2026 (May 6, London)</div>
-          <p style="margin-bottom:10px;">Anthropic's annual Claude Code event landed yesterday with three things worth knowing about:</p>
-          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
-            <li><strong style="color:var(--text);">⏰ Routines:</strong> give Claude Code a prompt + cadence (hourly, nightly, weekly) and it runs on schedule. Or trigger it from API calls and GitHub events. e.g. "every night at 2am, pull the top bug from Linear, attempt a fix, open a draft PR."</li>
-            <li><strong style="color:var(--text);">💭 Dreaming:</strong> Claude can review past sessions overnight, spot patterns, and create new memories automatically. Similar concept to Tim's RECENT.md but more autonomous. Public beta for Managed Agents.</li>
-            <li><strong style="color:var(--text);">🔧 CI auto-fix:</strong> automatically files fix PRs when your CI fails. Less manual triage.</li>
-          </ul>
         </div>
 
       </div>
@@ -1731,7 +1686,7 @@ git push</code></pre>
         <p style="font-weight:600;color:var(--text);font-size:15px;margin-bottom:10px;">Step 1: Copy this prompt into Claude Code to create all three files:</p>
         <div class="code-block">
           <div class="code-header">
-            <span class="code-lang">prompt — creates CLAUDE.md + CONTEXT.md + ROADMAP.md</span>
+            <span class="code-lang">prompt, creates CLAUDE.md + CONTEXT.md + ROADMAP.md</span>
             <button class="copy-btn" onclick="copyCode(this)">📋 Copy All</button>
           </div>
           <pre><code>Please create three files in the project root:
@@ -2253,7 +2208,7 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
 
   <div class="card">
     <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">📄 claude-backup.sh — full script</span>
+      <span class="trigger-left">📄 claude-backup.sh, full script</span>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content">
@@ -2262,7 +2217,7 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
       </div>
       <div class="code-block" style="border-left:none;border-right:none;border-bottom:none;border-radius:0;">
         <div class="code-header">
-          <span class="code-lang">bash — claude-backup.sh</span>
+          <span class="code-lang">bash, claude-backup.sh</span>
           <button class="copy-btn" onclick="copyCode(this)">📋 Copy All</button>
         </div>
         <pre><code>#!/bin/bash
@@ -2299,7 +2254,7 @@ case "$1" in
        | select(.text | length > 0)
       ] as $all
       | ($all[-$n:]) as $tail
-      | "# RECENT.md — auto-generated transcript tail\n\n"
+      | "# RECENT.md, auto-generated transcript tail\n\n"
         + "_Last \($tail | length) conversation turns from the most recent session._  \n"
         + "_Auto-overwritten on every checkpoint._\n\n"
         + "---\n\n"
@@ -2320,7 +2275,7 @@ case "$1" in
         -newer "$CONTEXT_FILE" -print -quit)
       if [ -n "$NEWEST_CODE" ]; then
         echo ""
-        echo "WARNING: CONTEXT.md may be stale — code modified more recently."
+        echo "WARNING: CONTEXT.md may be stale, code modified more recently."
         echo "  Ask Claude to refresh CONTEXT.md before checkpointing."
         echo ""
       fi
@@ -3287,11 +3242,28 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.5</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 9, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Updated for Claude Fable 5 release (June 9, 2026), the first Claude 5 family model, new Mythos-class tier above Opus</li>
+            <li>New hero card covering the free subscription window (Pro/Max/Team until June 22), double-usage warning, safety fallback to Opus 4.8, and how to select it in Claude Code via <code>/model</code></li>
+            <li>New cards for Claude Code's <code>--safe-mode</code> flag and <code>/cd</code> command (June 2026 release)</li>
+            <li>Opus 4.8 hero compressed to a regular card, still the subscription workhorse</li>
+            <li>Pruned 8 stale 4.7-era cards from What's New (xhigh, better vision, /recap, faster /resume, degradation fix, /usage, Auto Mode on Max, ultrareview/less-permission-prompts) to keep the banner focused, those features are all still documented in their own sections</li>
+          </ul>
+        </div>
+
         <div class="skill-card" style="border-color:rgba(248,113,113,0.3);background:rgba(248,113,113,0.04);">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.4.4</span>
-              <span class="skill-badge skill-badge-popular">Current · Hotfix</span>
+              <span class="skill-badge" style="background:rgba(248,113,113,0.12);color:var(--red);border-color:rgba(248,113,113,0.3);">Hotfix</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 8, 2026</span>
             </div>
           </div>
@@ -3454,7 +3426,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.4.4 · Last updated: June 8, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.5 · Last updated: June 9, 2026</p>
   </footer>
 </div>
 
