@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.5 · Last updated: June 9, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.6 · Last updated: June 16, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1408,9 +1408,10 @@ footer a:hover { text-decoration: underline; }
     <a href="#claudemd-tips" class="ql ql-daily">📝 CLAUDE.md</a>
   </div>
   <div class="nav-grid">
+    <a href="#ssh" class="ql ql-purple">🔌 SSH <span class="ql-new ql-new-purple">New</span></a>
     <a href="#checkpoint-script" class="ql ql-blue">⚡ Checkpoint</a>
-    <a href="#auto" class="ql ql-blue">🔒 Auto Mode <span class="ql-new ql-new-blue">New</span></a>
-    <a href="#skills" class="ql ql-purple">🧠 Skills <span class="ql-new ql-new-purple">New</span></a>
+    <a href="#auto" class="ql ql-blue">🔒 Auto Mode</a>
+    <a href="#skills" class="ql ql-purple">🧠 Skills</a>
     <a href="#mistakes" class="ql ql-red">⚠️ Mistakes</a>
     <a href="#reference" class="ql">📊 Reference</a>
   </div>
@@ -1853,6 +1854,182 @@ git push</code></pre>
       </div>
     </div>
   </div>
+
+  <hr class="divider">
+
+  <!-- ═══ SSH STABLE SESSIONS ═══ -->
+  <span class="anchor" id="ssh"></span>
+  <div class="section-header">
+    <span class="section-icon">🔌</span>
+    <h2>Stable Sessions over SSH</h2>
+  </div>
+
+  <div class="update-banner" style="background:linear-gradient(135deg, var(--bg2), rgba(167,139,250,0.05));border-color:rgba(167,139,250,0.25);">
+    <span class="update-icon">✨</span>
+    <p><strong style="color:var(--purple);">Community contribution.</strong> A method for stopping Claude Code sessions dying when your connection drops. Not yet tested on our own setup, so treat it as a recommended approach to try rather than a guaranteed recipe. Requires a paid Replit plan (SSH is not on the free tier).</p>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">If you run Claude Code in Replit's browser Shell, the session often dies when the connection drops. The browser terminal is a thin client over a websocket, so a network blip, a backgrounded tab, or your laptop sleeping can tear it down and kill whatever was running. The fix: connect to the same Replit container from your own computer's terminal over SSH instead. Nothing moves off Replit, your code, database, secrets and runtime stay exactly where they are. You just reach the container through a far more stable connection that also survives the container hibernating.</p>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="pad" style="padding:14px 18px;">
+      <p style="margin:0;font-size:14px;color:var(--text-dim);"><strong style="color:var(--text);">Why not tmux?</strong> tmux is the usual tool for surviving disconnects, but on newer Replit Apps it conflicts with Claude Code's interface and is more trouble than it's worth. SSH solves it more completely and survives hibernation, which tmux cannot.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">1️⃣ One-time setup: SSH key + config <span class="trigger-label">do once, works for all apps</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>This key lets your computer prove who it is to Replit. You only do this once, the same key works for every Replit app on your account.</p>
+
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 1: Create the key (on your computer's Terminal)</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>ssh-keygen -t ed25519 -f ~/.ssh/replit -q -N ""</code></pre>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);">If it asks "Overwrite?", you already have a key with that name, type <code>n</code> and reuse the existing one.</p>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 2: Display the public key to copy it</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>cat ~/.ssh/replit.pub</code></pre>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);">Copy the whole line starting with <code>ssh-ed25519</code>.</p>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 3: Add the key to Replit (account-wide, once)</p>
+        <ul class="plain-list">
+          <li>Open any Replit app, click the <strong>+</strong> button at the top, search for <strong>SSH</strong></li>
+          <li>If SSH doesn't appear you're likely on a free plan, where it isn't available</li>
+          <li>In the SSH pane, open the <strong>Keys</strong> tab, click <strong>New SSH key</strong></li>
+          <li>Give it a label (e.g. "my laptop"), paste the <code>ssh-ed25519</code> line into the Key field, click <strong>Add SSH key</strong></li>
+        </ul>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 4: Set up your SSH config (once)</p>
+        <p>Create and open the config file:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/config && chmod 600 ~/.ssh/config
+nano ~/.ssh/config</code></pre>
+        </div>
+        <p>Paste in exactly this block, then save with Ctrl+O, Enter, Ctrl+X:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">~/.ssh/config</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>Host *.replit.dev
+   Port 22
+   IdentityFile ~/.ssh/replit
+   StrictHostKeyChecking accept-new</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">2️⃣ Per app: connect and make a shortcut <span class="trigger-label">~30 seconds per app</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 1: Connect the first time</p>
+        <ul class="plain-list">
+          <li>Open the app in Replit so its container is running (give a sleeping app 20 to 30 seconds to wake)</li>
+          <li>In the app, open the <strong>SSH pane → Connect tab → Connect manually</strong></li>
+          <li>Copy the whole command, it looks like <code>ssh -i ~/.ssh/replit -p 22 USER@HOST.replit.dev</code></li>
+          <li>Paste it into your computer's Terminal and press Enter. First time you may get an authenticity prompt, type <code>yes</code></li>
+          <li>You should land at <code>~/workspace$</code>. Run <code>ls</code> to confirm you see your app's files</li>
+        </ul>
+        <p style="font-size:14px;color:var(--text-muted);">Harmless: you may see <code>setlocale: cannot change locale</code> lines. Cosmetic, ignore them.</p>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Step 2: Save it as a one-word command</p>
+        <p>Typing the long command each time is tedious. Save it as an alias named after the app. Replace <code>APPNAME</code> with a lowercase name and paste the whole connect command you copied:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>echo 'alias APPNAME="PASTE_WHOLE_CONNECT_COMMAND"' >> ~/.zshrc
+source ~/.zshrc</code></pre>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);">Example: <code>echo 'alias reviseninja="ssh -i ~/.ssh/replit -p 22 USER@HOST.replit.dev"' >> ~/.zshrc</code>. Keep the single quotes outside and double quotes inside exactly as shown. Don't trim any part of Replit's command.</p>
+        <p>Now you connect to that app just by typing its name. Add one alias line per app.</p>
+        <p style="font-size:14px;color:var(--text-muted);">If an alias stops working later, Replit occasionally moves a container to a new address. Grab a fresh "Connect manually" command and update that one alias line. Your key never changes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">3️⃣ Daily routine <span class="trigger-label">cold start to working</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <ul class="plain-list">
+          <li>Open the app in Replit (wakes the container)</li>
+          <li>In your Terminal, type the app's alias and Enter</li>
+          <li>Start Claude Code:</li>
+        </ul>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, in the container</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>claude          # start fresh
+claude -c       # resume your most recent conversation
+claude --resume # pick a past conversation from a list</code></pre>
+        </div>
+        <div class="availability-note">
+          <span class="note-icon">💡</span>
+          <span>Claude Code saves your conversation automatically and continuously inside the container, and the container persists between visits. So <code>claude -c</code> picks up exactly where you left off, no manual save needed. SSH, the GitHub token, and Claude Code's own login all persist per container, so opening a new terminal does not make you log in again.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">4️⃣ GitHub backups over SSH <span class="trigger-label">optional but recommended</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>Connecting solves stability. Separately, push your work to GitHub so you can recover if a container is ever rebuilt or wiped. The GitHub token is a different thing from the SSH key: the SSH key connects your computer to the container (account-wide), the GitHub token lets the container talk to GitHub (stored per container, so each app needs its own).</p>
+
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Set your git identity (per container)</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, in the container</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>git config --global user.email "you@example.com"
+git config --global user.name "Your Name"</code></pre>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);">Use the email verified on your GitHub account, or commits won't link to your profile.</p>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Create a Personal Access Token</p>
+        <ul class="plain-list">
+          <li>Go to <strong>github.com/settings/tokens → Generate new token (classic)</strong></li>
+          <li>Name it clearly, set an expiry, tick the <strong>repo</strong> scope</li>
+          <li>Generate and copy it immediately (shown once, starts with <code>ghp_</code>)</li>
+        </ul>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">Store it so you're only asked once</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, in the container</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>git config --global credential.helper store</code></pre>
+        </div>
+        <p>Then run any git command. When prompted, username is your GitHub username, password is the <code>ghp_</code> token (not your account password). After that git saves it and never asks again in that container.</p>
+
+        <div class="availability-note" style="background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.2);">
+          <span class="note-icon">⚠️</span>
+          <span><strong>Backup vs restore, keep these straight.</strong> Backup/checkpoint pushes your conversation and commits code to GitHub, safe to run anytime. Restore OVERWRITES the container's current sessions with the last backed-up copy, only run it after an actual wipe. Do NOT run restore when you open a session, the auto-saved history is already there, just connect and run <code>claude -c</code>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
 
 
   <!-- ═══ MIGRATION SECTION ═══ -->
@@ -3245,8 +3422,24 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.5</span>
+              <span class="skill-cmd">v2.6</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 16, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New "Stable Sessions over SSH" section, community contribution, for stopping Claude Code sessions dying when your connection drops</li>
+            <li>Connect to your Replit container from your own terminal over SSH instead of the flaky browser Shell, nothing moves off Replit and it survives container hibernation</li>
+            <li>Broken into one-time setup, per-app shortcut, daily routine, and GitHub backups, all collapsible</li>
+            <li>Marked as not-yet-tested on our own setup, and clearly flagged as paid-Replit-plan only (SSH is not on the free tier)</li>
+            <li>New SSH nav button added to the second row</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.5</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 9, 2026</span>
             </div>
           </div>
@@ -3426,7 +3619,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.5 · Last updated: June 9, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.6 · Last updated: June 16, 2026</p>
   </footer>
 </div>
 
