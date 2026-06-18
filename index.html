@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.6 · Last updated: June 16, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.6.1 · Last updated: June 17, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,22 +1333,22 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Fable 5 · Claude 5 family · June 9, 2026</span>
+        <span class="whats-new-pill">Fable 5 suspended · Opus 4.8 is current top model · June 17, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
-        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(167,139,250,0.10), rgba(96,165,250,0.12));border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
-          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Fable 5 is here (June 9, 2026)</div>
-          <p style="margin-bottom:10px;"><strong style="color:var(--text);">The first model in the Claude 5 family, a new Mythos-class tier above Opus.</strong> The public version of Claude Mythos with safeguards built in, and a massive coding leap: 80.3% on SWE-Bench Pro vs 69.2% for Opus 4.8. Built for long-horizon work, in Claude Code it can run for days: planning across stages, delegating to subagents, and checking its own work.</p>
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(248,113,113,0.10), rgba(245,166,35,0.06)); border:2px solid rgba(248,113,113,0.4);box-shadow:0 0 24px rgba(248,113,113,0.08);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--red);">🚫 Claude Fable 5 access suspended (June 12, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Heads up if you saw the earlier Fable 5 news:</strong> Fable 5 launched June 9 but was suspended just three days later. The US government issued an export control directive citing national security, ordering Anthropic to suspend access for any foreign national, whether inside or outside the US. Because Anthropic can't filter users by nationality in real time, they disabled Fable 5 (and Mythos 5) for ALL customers worldwide to comply.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
-            <li><strong style="color:var(--text);">⏰ Free window, act now:</strong> included on Pro, Max, Team, and seat-based Enterprise plans at NO extra cost until June 22. From June 23 it's pulled from those plans and requires usage credits until further notice. If you want to try the most powerful generally available model, this is the fortnight.</li>
-            <li><strong style="color:var(--text);">💰 Usage warning:</strong> within subscription plans Fable 5 burns roughly double the usage of Opus. Worth it for hard problems, overkill for small tweaks.</li>
-            <li><strong style="color:var(--text);">🛡️ Safety fallback:</strong> queries flagged as cybersecurity or biology risk get auto-routed to Opus 4.8 (you aren't charged Fable prices for rerouted requests).</li>
-            <li><strong style="color:var(--text);">🔧 Use it in Claude Code:</strong> run <code>claude update</code> then pick it via <code>/model</code>. API model id is <code>claude-fable-5</code>, priced $10/$50 per MTok, double Opus 4.8.</li>
+            <li><strong style="color:var(--text);">✅ Everything else still works:</strong> Opus 4.8, Sonnet, Haiku and all other Claude models are unaffected. Only Fable 5 and Mythos 5 are down. Your Claude Code workflow carries on as normal on Opus 4.8.</li>
+            <li><strong style="color:var(--text);">🌍 Likely blocked anyway for non-US users:</strong> even if restored, the directive bars access by any foreign national including those outside the US, so most international users wouldn't get access under the current order regardless.</li>
+            <li><strong style="color:var(--text);">⏳ Anthropic is contesting it:</strong> they're complying with the legal order but call it a likely misunderstanding and say they're working to restore access as soon as possible. Status: <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" style="color:var(--amber);">anthropic.com/news/fable-mythos-access</a></li>
           </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">We'll update this card if access is restored. For now, stick with Opus 4.8 as your top model in Claude Code.</p>
         </div>
 
         <div class="whats-new-item">
@@ -3419,11 +3419,26 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card" style="border-color:rgba(248,113,113,0.3);background:rgba(248,113,113,0.04);">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.6.1</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 17, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Replaced the Fable 5 hero card with a suspension notice. Fable 5 and Mythos 5 were disabled worldwide on June 12 after a US government export control directive citing national security</li>
+            <li>Card now makes clear that Opus 4.8 and all other models are unaffected, and that the directive likely blocks non-US users even if access is restored</li>
+            <li>Banner pill updated to "Fable 5 suspended, Opus 4.8 is current top model"</li>
+            <li>Links to Anthropic's official statement for anyone wanting the full picture</li>
+          </ul>
+        </div>
+
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.6</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 16, 2026</span>
             </div>
           </div>
@@ -3619,7 +3634,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.6 · Last updated: June 16, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.6.1 · Last updated: June 17, 2026</p>
   </footer>
 </div>
 
