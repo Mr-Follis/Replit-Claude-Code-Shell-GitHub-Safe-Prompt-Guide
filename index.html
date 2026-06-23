@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.6.1 · Last updated: June 17, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.6.2 · Last updated: June 23, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Fable 5 suspended · Opus 4.8 is current top model · June 17, 2026</span>
+        <span class="whats-new-pill">Fable 5 still suspended (tentative signs of return) · Opus 4.8 current · June 23, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1341,11 +1341,12 @@ footer a:hover { text-decoration: underline; }
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(248,113,113,0.10), rgba(245,166,35,0.06)); border:2px solid rgba(248,113,113,0.4);box-shadow:0 0 24px rgba(248,113,113,0.08);">
-          <div class="whats-new-item-title" style="font-size:15px;color:var(--red);">🚫 Claude Fable 5 access suspended (June 12, 2026)</div>
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--red);">🚫 Claude Fable 5 still suspended (update June 23, 2026)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">Heads up if you saw the earlier Fable 5 news:</strong> Fable 5 launched June 9 but was suspended just three days later. The US government issued an export control directive citing national security, ordering Anthropic to suspend access for any foreign national, whether inside or outside the US. Because Anthropic can't filter users by nationality in real time, they disabled Fable 5 (and Mythos 5) for ALL customers worldwide to comply.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
             <li><strong style="color:var(--text);">✅ Everything else still works:</strong> Opus 4.8, Sonnet, Haiku and all other Claude models are unaffected. Only Fable 5 and Mythos 5 are down. Your Claude Code workflow carries on as normal on Opus 4.8.</li>
-            <li><strong style="color:var(--text);">🌍 Likely blocked anyway for non-US users:</strong> even if restored, the directive bars access by any foreign national including those outside the US, so most international users wouldn't get access under the current order regardless.</li>
+            <li><strong style="color:var(--green);">🟡 Tentative signs of a return:</strong> as of June 23 the directive is still legally in force, but Fable 5 reappeared in the Claude Android app's model picker with a softer "temporarily rate-limiting" error instead of a hard block, and Trump signalled after meeting Anthropic's CEO at the G7 that he'd eased his concerns. Nothing confirmed, but the temperature has dropped.</li>
+            <li><strong style="color:var(--text);">🌍 Likely blocked anyway for non-US users:</strong> even if restored under the current order, the directive bars access by any foreign national including those outside the US, so most international users still wouldn't get access until the order itself changes.</li>
             <li><strong style="color:var(--text);">⏳ Anthropic is contesting it:</strong> they're complying with the legal order but call it a likely misunderstanding and say they're working to restore access as soon as possible. Status: <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" style="color:var(--amber);">anthropic.com/news/fable-mythos-access</a></li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">We'll update this card if access is restored. For now, stick with Opus 4.8 as your top model in Claude Code.</p>
@@ -3419,11 +3420,25 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.6.2</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 23, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Updated the Fable 5 suspension card with tentative signs of a return: the model reappeared in the Claude Android app picker with a softer "rate-limiting" error, and Trump signalled at the G7 he'd eased his concerns</li>
+            <li>Made clear the directive is still legally in force and nothing is confirmed, Opus 4.8 remains the top model to use</li>
+            <li>Banner pill updated to reflect the "still suspended, tentative signs of return" status</li>
+          </ul>
+        </div>
+
         <div class="skill-card" style="border-color:rgba(248,113,113,0.3);background:rgba(248,113,113,0.04);">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.6.1</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">June 17, 2026</span>
             </div>
           </div>
@@ -3634,7 +3649,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.6.1 · Last updated: June 17, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.6.2 · Last updated: June 23, 2026</p>
   </footer>
 </div>
 
