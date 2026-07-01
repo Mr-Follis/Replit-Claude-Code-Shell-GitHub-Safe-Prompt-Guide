@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.7 · Last updated: July 1, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.7.1 · Last updated: July 1, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Fable 5 is back, globally · in Claude Code now · July 1, 2026</span>
+        <span class="whats-new-pill">Sonnet 5 is the new default · Fable 5 back globally · July 1, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1351,6 +1351,18 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">🛡️ Same safety design as before:</strong> queries flagged as high-risk cyber or biology auto-route to Opus 4.8. A new improved classifier addresses the specific bypass that triggered the whole episode.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">Worth trying while it's on your plan allowance this week. For everyday small tweaks, Opus 4.8 is still the sensible default (Fable burns roughly double the usage).</p>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.10), rgba(74,222,128,0.05)); border:2px solid rgba(96,165,250,0.4);box-shadow:0 0 24px rgba(96,165,250,0.08);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5 (June 30, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">The new everyday default, and probably the one you'll want for most Replit work.</strong> Sonnet 5 gets close to Opus 4.8 on agentic coding but costs a lot less. It's now the default model on Free and Pro, and available on Max, Team, and Enterprise, plus in Claude Code. API id is <code>claude-sonnet-5</code>.</p>
+          <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
+            <li><strong style="color:var(--text);">💰 Cheap through August 31:</strong> introductory pricing of $2/$10 per million tokens (in/out), then $3/$15 after. Cheaper than Opus 4.8, GPT-5.5, and Gemini 3.1 Pro.</li>
+            <li><strong style="color:var(--text);">🎯 When to use which:</strong> Sonnet 5 at high or xhigh effort for most agentic coding, keep Opus 4.8 for tasks where a small accuracy gain is worth the cost, and Fable 5 for the really hard long-horizon stuff.</li>
+            <li><strong style="color:var(--text);">🧠 Genuinely more agentic:</strong> testers say it finishes complex tasks previous Sonnets would stop short on, and checks its own output without being asked.</li>
+            <li><strong style="color:var(--text);">⚠️ Tokenizer change:</strong> Sonnet 5 uses a revised tokenizer that can count the same input as 1.0 to 1.35x the tokens, so the price cut is slightly offset on some workloads.</li>
+          </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code>, then pick it via <code>/model</code>. For day-to-day building on Replit this is likely your best value default now.</p>
         </div>
 
         <div class="whats-new-item">
@@ -3421,11 +3433,25 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.7.1</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 1, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Added a Claude Sonnet 5 card (released June 30). It's the new default on Free and Pro, close to Opus 4.8 on agentic coding but cheaper, and likely the best value default for everyday Replit work</li>
+            <li>Covered introductory pricing ($2/$10 per MTok through Aug 31), when to use Sonnet 5 vs Opus 4.8 vs Fable 5, and the revised-tokenizer gotcha</li>
+            <li>Banner pill updated to "Sonnet 5 is the new default, Fable 5 back globally"</li>
+          </ul>
+        </div>
+
         <div class="skill-card" style="border-color:rgba(74,222,128,0.4);background:rgba(74,222,128,0.04);">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.7</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 1, 2026</span>
             </div>
           </div>
@@ -3695,7 +3721,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.7 · Last updated: July 1, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.7.1 · Last updated: July 1, 2026</p>
   </footer>
 </div>
 
