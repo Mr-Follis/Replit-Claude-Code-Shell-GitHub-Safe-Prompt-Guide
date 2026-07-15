@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.7.4 · Last updated: July 10, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.7.5 · Last updated: July 15, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Fable 5 window ends July 12 · rate limit boost ends July 13 · July 10, 2026</span>
+        <span class="whats-new-pill">New /doctor checkup · Sonnet 5 is the default · July 15, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1341,16 +1341,16 @@ footer a:hover { text-decoration: underline; }
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(245,166,35,0.06), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
-          <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🎉 Claude Fable 5 is back (update July 8, 2026)</div>
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🎉 Claude Fable 5 is back (update July 15, 2026)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">After 19 days offline, Fable 5 is restored.</strong> The US Department of Commerce lifted the export controls, and Anthropic is bringing Fable 5 back starting today, July 1, to users <strong style="color:var(--green);">globally</strong> (not US-only) across the Claude Platform, Claude.ai, Claude Code, and Claude Cowork. The whole export-control saga that started June 12 is over.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
             <li><strong style="color:var(--text);">🌍 Global, including non-US users:</strong> unlike the earlier fears of a US-citizens-only restart, this lift is worldwide. If you're outside the US you should get access too.</li>
-            <li><strong style="color:var(--text);">💸 Free window EXTENDED to July 12:</strong> the subscription allowance (up to 50% of weekly limits on Pro/Max/Team) was due to end July 7, but after backlash Anthropic extended it to July 12. So it's still included on your plan for now. After July 12 it moves to usage credits (API rates, $10/$50 per MTok, double Opus 4.8). The good news: Anthropic says the credits move is temporary, driven by very high demand, and a Claude Code lead engineer confirmed they aim to restore Fable to standard subscriptions "as soon as capacity allows", not a permanent paywall.</li>
+            <li><strong style="color:var(--text);">💸 Now on usage credits:</strong> the subscription allowance (up to 50% of weekly limits on Pro/Max/Team) ran to July 12 after Anthropic extended it once from July 7. That window has now closed, so Fable 5 needs usage credits (API rates, $10/$50 per MTok, double Opus 4.8). The good news: Anthropic says the credits move is temporary, driven by very high demand, and a Claude Code lead engineer confirmed they aim to restore Fable to standard subscriptions "as soon as capacity allows", not a permanent paywall.</li>
             <li><strong style="color:var(--text);">🔧 Use it in Claude Code:</strong> run <code>claude update</code>, then pick it via <code>/model</code>. It's the strongest coding model available, 80.3% on SWE-Bench Pro vs 69.2% for Opus 4.8, and built for long-horizon agentic work.</li>
             <li><strong style="color:var(--text);">☁️ Cloud platforms coming back soon:</strong> AWS Bedrock, Google Cloud, and Microsoft Foundry access is being re-enabled as fast as Anthropic can.</li>
             <li><strong style="color:var(--text);">🛡️ Same safety design as before:</strong> queries flagged as high-risk cyber or biology auto-route to Opus 4.8. A new improved classifier addresses the specific bypass that triggered the whole episode.</li>
           </ul>
-          <p style="margin:0;font-size:13px;color:var(--text-muted);">Worth trying while it's still on your plan allowance through July 12, especially for hard long-horizon work. For everyday building, Sonnet 5 or Opus 4.8 remain the sensible defaults (Fable burns roughly double the usage).</p>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">For everyday building, Sonnet 5 or Opus 4.8 remain the sensible defaults. Reach for Fable 5 (via usage credits) on genuinely hard, long-horizon work where it measurably wins, it burns roughly double the usage of Opus.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.10), rgba(74,222,128,0.05)); border:2px solid rgba(96,165,250,0.4);box-shadow:0 0 24px rgba(96,165,250,0.08);">
@@ -1366,14 +1366,14 @@ footer a:hover { text-decoration: underline; }
           <p style="margin:0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to v2.1.197 or later, then pick it via <code>/model</code>. For day-to-day building on Replit this is likely your best value default now.</p>
         </div>
 
-        <div class="whats-new-item" style="border-color:rgba(245,166,35,0.35);background:rgba(245,166,35,0.05);">
-          <div class="whats-new-item-title">⏰ Two deadlines next week</div>
-          <p style="margin-bottom:8px;">Worth knowing if you're on Pro, Max, or Team:</p>
-          <ul class="plain-list" style="margin-bottom:8px;font-size:13px;">
-            <li><strong style="color:var(--text);">July 12:</strong> Fable 5's included subscription allowance ends, moves to usage credits after that.</li>
-            <li><strong style="color:var(--text);">July 13:</strong> the 50% weekly usage limit boost (running since May 13) expires.</li>
-          </ul>
-          <p style="margin:0;font-size:13px;color:var(--text-muted);">Anthropic also reset everyone's 5-hour and weekly rate limits on July 10, so you're starting from a clean meter right now. Good week to get the demanding work done.</p>
+        <div class="whats-new-item" style="border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.04);">
+          <div class="whats-new-item-title">🩺 /doctor (alias /checkup)</div>
+          <p>New in Claude Code. Runs a full setup checkup: installation health, unused skills, MCP servers and plugins weighed against their context cost, and slow hooks. Most useful bit for us: it deduplicates local CLAUDE.md files against checked-in ones and proposes trimming content Claude could work out from the codebase anyway. Reports findings first and asks before changing anything. Pairs nicely with the three-file setup philosophy of keeping context lean.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🤖 Subagents run in the background</div>
+          <p>Subagents now run in the background by default, so Claude carries on working while they run and gets notified when they finish. Previously a gradual rollout, now the default behaviour.</p>
         </div>
 
         <div class="whats-new-item">
@@ -3447,8 +3447,23 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.7.4</span>
+              <span class="skill-cmd">v2.7.5</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 15, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New card for <code>/doctor</code> (alias <code>/checkup</code>), a full setup health check that also proposes trimming CLAUDE.md content Claude could derive from the codebase. Fits the three-file philosophy of keeping context lean</li>
+            <li>New card noting subagents now run in the background by default</li>
+            <li>Removed the deadlines card now both dates (July 12 and 13) have passed</li>
+            <li>Fable 5 card updated: the extended subscription window closed July 12, so it's on usage credits now. Kept the note that this is temporary and capacity-driven</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.7.4</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 10, 2026</span>
             </div>
           </div>
@@ -3759,7 +3774,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.7.4 · Last updated: July 10, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.7.5 · Last updated: July 15, 2026</p>
   </footer>
 </div>
 
