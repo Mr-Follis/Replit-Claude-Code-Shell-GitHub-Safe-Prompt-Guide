@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.7.5 · Last updated: July 15, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.7.6 · Last updated: July 21, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">New /doctor checkup · Sonnet 5 is the default · July 15, 2026</span>
+        <span class="whats-new-pill">/verify and /code-review now manual · Sonnet 5 default · July 21, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1374,6 +1374,11 @@ footer a:hover { text-decoration: underline; }
         <div class="whats-new-item">
           <div class="whats-new-item-title">🤖 Subagents run in the background</div>
           <p>Subagents now run in the background by default, so Claude carries on working while they run and gets notified when they finish. Previously a gradual rollout, now the default behaviour.</p>
+        </div>
+
+        <div class="whats-new-item" style="border-color:rgba(248,113,113,0.25);background:rgba(248,113,113,0.04);">
+          <div class="whats-new-item-title">🔧 /verify and /code-review are now manual</div>
+          <p>Heads up if your workflow relied on these running automatically: Claude no longer fires <code>/verify</code> or <code>/code-review</code> on its own. You now invoke them explicitly when you want them. Same change <code>/simplify</code> had earlier. If your CLAUDE.md said something like "verify after every change", update it to call <code>/verify</code> yourself, or just run it manually at natural checkpoints.</p>
         </div>
 
         <div class="whats-new-item">
@@ -3447,8 +3452,21 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.7.5</span>
+              <span class="skill-cmd">v2.7.6</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 21, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New card: <code>/verify</code> and <code>/code-review</code> no longer run automatically, you invoke them explicitly now (same change <code>/simplify</code> had earlier)</li>
+            <li>Flagged that anyone with a CLAUDE.md rule relying on auto-verification should update it to call the skill manually</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.7.5</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 15, 2026</span>
             </div>
           </div>
@@ -3774,7 +3792,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.7.5 · Last updated: July 15, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.7.6 · Last updated: July 21, 2026</p>
   </footer>
 </div>
 
