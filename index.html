@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.7.6 · Last updated: July 21, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.8 · Last updated: July 24, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,12 +1333,25 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">/verify and /code-review now manual · Sonnet 5 default · July 21, 2026</span>
+        <span class="whats-new-pill">Claude Opus 5 is here · replaces Opus 4.8 · July 24, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.08), rgba(74,222,128,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Opus 5 is here (July 24, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Anthropic's fourth model in under two months, and the new Opus-tier flagship replacing Opus 4.8.</strong> Near Fable 5 intelligence at half Fable's price, same $5/$25 per MTok rate as 4.8. It's now the default model on Claude Max and the strongest model available to Pro users. API id is <code>claude-opus-5</code>.</p>
+          <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
+            <li><strong style="color:var(--text);">⚠️ Breaking change, thinking is now ON by default:</strong> unlike Opus 4.8 where extended thinking needed opting into, Opus 5 thinks by default and the effort parameter controls how much. Since <code>max_tokens</code> caps thinking plus response text combined, review any hardcoded token budgets, requests can run out of room if you haven't accounted for thinking tokens.</li>
+            <li><strong style="color:var(--text);">🎛️ Low/medium/high effort toggle:</strong> per-request setting to trade cost for capability. Scale down for routine tasks, dial up for hard architectural work.</li>
+            <li><strong style="color:var(--text);">🛡️ Big security improvement:</strong> prompt injection attack success on the Gray Swan benchmark fell from 5.5% (Opus 4.8) to 2.0%. In browser environments via Cowork, attack success dropped from 31.5% to 3.7%. Anthropic calls it the most aligned model it's released.</li>
+            <li><strong style="color:var(--text);">📚 1M-token context</strong>, same as Sonnet 5. Fast mode available at $10/$50 per MTok for roughly 2.5x the speed.</li>
+            <li><strong style="color:var(--text);">🎯 Not a strict upgrade on every benchmark:</strong> Fable 5 still edges it on a few evaluations (DeepSWE, Humanity's Last Exam without tools). Think of Opus 5 as the new excellent everyday default, Fable 5 remains the escalation point for the hardest long-horizon work.</li>
+          </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code>, then pick it via <code>/model</code>. Given the price is unchanged from 4.8 but the capability jump is real, this is a straightforward upgrade for most Claude Code work.</p>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(245,166,35,0.06), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🎉 Claude Fable 5 is back (update July 15, 2026)</div>
@@ -1358,7 +1371,7 @@ footer a:hover { text-decoration: underline; }
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">The new everyday default, and probably the one you'll want for most Replit work.</strong> Sonnet 5 gets close to Opus 4.8 on agentic coding but costs a lot less. It's now the default model on Free and Pro, and available on Max, Team, and Enterprise, plus in Claude Code. API id is <code>claude-sonnet-5</code>.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
             <li><strong style="color:var(--text);">💰 Cheap through August 31:</strong> introductory pricing of $2/$10 per million tokens (in/out), then $3/$15 after. Cheaper than Opus 4.8, GPT-5.5, and Gemini 3.1 Pro.</li>
-            <li><strong style="color:var(--text);">🎯 When to use which:</strong> Sonnet 5 at high or xhigh effort for most agentic coding, keep Opus 4.8 for tasks where a small accuracy gain is worth the cost, and Fable 5 for the really hard long-horizon stuff.</li>
+            <li><strong style="color:var(--text);">🎯 When to use which (updated for Opus 5):</strong> Sonnet 5 at high or xhigh effort for most everyday agentic coding, it's cheapest. Opus 5 for anything where you want more headroom, same price as 4.8 but a real capability jump, it's now the sensible upgrade path. Fable 5 for the hardest long-horizon work where it still edges ahead.</li>
             <li><strong style="color:var(--text);">🧠 Genuinely more agentic:</strong> testers say it finishes complex tasks previous Sonnets would stop short on, and checks its own output without being asked.</li>
             <li><strong style="color:var(--text);">📚 Native 1M-token context in Claude Code:</strong> big enough for repository-level understanding without carefully managing what's in context. Handy for larger Replit projects.</li>
             <li><strong style="color:var(--text);">⚠️ Tokenizer change:</strong> Sonnet 5 uses a revised tokenizer that can count the same input as 1.0 to 1.35x the tokens, so the price cut is slightly offset on some workloads.</li>
@@ -1392,8 +1405,8 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="whats-new-item">
-          <div class="whats-new-item-title">🚀 Claude Opus 4.8 (May 28)</div>
-          <p>Still the subscription workhorse. 88.6% SWE-bench Verified, better honesty (4x fewer unreported code flaws), default effort "high". Requires Claude Code v2.1.154+, run <code>claude update</code>.</p>
+          <div class="whats-new-item-title">🕰️ Claude Opus 4.8 (May 28, superseded)</div>
+          <p>Was the subscription workhorse from May 28 to July 24. Replaced by Opus 5 at the same price with a real capability jump. Still works fine if you're on an older Claude Code version, but there's no reason to stick with it once you can update.</p>
         </div>
 
         <div class="whats-new-item" style="border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.04);">
@@ -3449,11 +3462,27 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card" style="border-color:rgba(245,166,35,0.4);background:rgba(245,166,35,0.04);">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.8</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 24, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Claude Opus 5 launched, new hero card at the top of What's New. Same price as Opus 4.8 ($5/$25 per MTok), near Fable 5 intelligence, now default on Max and strongest on Pro</li>
+            <li>Flagged the breaking change: thinking is on by default now, review any hardcoded max_tokens budgets since thinking and response text share the same cap</li>
+            <li>Covered the new low/medium/high effort toggle, the big security improvement (prompt injection attack success down from 5.5% to 2.0% on Gray Swan), and the 1M-token context window</li>
+            <li>Updated the "when to use which" guidance for the new four-model lineup: Sonnet 5 for cheap everyday work, Opus 5 as the new sensible upgrade path, Fable 5 for the hardest long-horizon tasks</li>
+            <li>Opus 4.8 card marked as superseded</li>
+          </ul>
+        </div>
+
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.7.6</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 21, 2026</span>
             </div>
           </div>
@@ -3792,7 +3821,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.7.6 · Last updated: July 21, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.8 · Last updated: July 24, 2026</p>
   </footer>
 </div>
 
