@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.8 · Last updated: July 24, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.8.1 · Last updated: August 11, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Opus 5 is here · replaces Opus 4.8 · July 24, 2026</span>
+        <span class="whats-new-pill">Focus view + /fork · Opus 5 is current · August 11, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1351,6 +1351,16 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">🎯 Not a strict upgrade on every benchmark:</strong> Fable 5 still edges it on a few evaluations (DeepSWE, Humanity's Last Exam without tools). Think of Opus 5 as the new excellent everyday default, Fable 5 remains the escalation point for the hardest long-horizon work.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code>, then pick it via <code>/model</code>. Given the price is unchanged from 4.8 but the capability jump is real, this is a straightforward upgrade for most Claude Code work.</p>
+        </div>
+
+        <div class="whats-new-item" style="border-color:rgba(96,165,250,0.3);background:rgba(96,165,250,0.04);">
+          <div class="whats-new-item-title">🎯 Focus view</div>
+          <p>New in Claude Code (Aug 3). Collapses tool activity into compact summaries so your chat isn't a wall of tool calls, keeping you focused on the actual conversation. Turn it on if the transcript's been feeling noisy.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🍴 /fork</div>
+          <p>Spin off a separate background session from your current conversation while you keep working in the original. Handy for trying something experimental on the side without losing your main thread.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(245,166,35,0.06), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
@@ -3462,11 +3472,25 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.8.1</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">August 11, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New card for Focus view, collapses tool activity into compact summaries so the transcript is less noisy</li>
+            <li>New card for <code>/fork</code>, spins off a background session while you keep working in the current one</li>
+            <li>Considered a note on Claude's new text watermarking (EU AI Act compliance, applies to models launched Aug 2, 2026 onward) but left it out, it doesn't affect anything in the actual Claude Code workflow this guide covers</li>
+          </ul>
+        </div>
+
         <div class="skill-card" style="border-color:rgba(245,166,35,0.4);background:rgba(245,166,35,0.04);">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.8</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">July 24, 2026</span>
             </div>
           </div>
@@ -3821,7 +3845,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.8 · Last updated: July 24, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.8.1 · Last updated: August 11, 2026</p>
   </footer>
 </div>
 
