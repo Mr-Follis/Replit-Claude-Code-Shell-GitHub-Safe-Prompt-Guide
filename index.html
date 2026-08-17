@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.8.1 · Last updated: August 11, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9 · Last updated: August 17, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Focus view + /fork · Opus 5 is current · August 11, 2026</span>
+        <span class="whats-new-pill">Auto mode is now the default · Opus 5 is current · August 17, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1351,6 +1351,18 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">🎯 Not a strict upgrade on every benchmark:</strong> Fable 5 still edges it on a few evaluations (DeepSWE, Humanity's Last Exam without tools). Think of Opus 5 as the new excellent everyday default, Fable 5 remains the escalation point for the hardest long-horizon work.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code>, then pick it via <code>/model</code>. Given the price is unchanged from 4.8 but the capability jump is real, this is a straightforward upgrade for most Claude Code work.</p>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.10), rgba(74,222,128,0.06)); border:2px solid rgba(96,165,250,0.4);box-shadow:0 0 24px rgba(96,165,250,0.08);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Auto mode is now the DEFAULT (August 14, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Big change to how Claude Code behaves out of the box.</strong> Auto mode is now the default permission mode for new sessions on Pro, Max, and Team plans. Instead of asking for approval at every step, Claude Code proceeds unless an action is judged irreversible, destructive, or aimed outside your environment.</p>
+          <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
+            <li><strong style="color:var(--text);">✅ Now on Pro:</strong> auto mode used to be Team/Enterprise/Max only. It's now available and default on Pro too. Still opt-in for now on Enterprise, API, Bedrock, Vertex, and Foundry (default change coming within a month).</li>
+            <li><strong style="color:var(--text);">🔀 Don't want it?</strong> If you already had a default mode set, Claude asks before switching. Otherwise cycle with <code>Shift+Tab</code> or pin manual mode with <code>defaultMode</code> in settings.</li>
+            <li><strong style="color:var(--text);">💸 Cheaper:</strong> Anthropic stopped charging Pro/Max/Team users for the classifier's extra tokens.</li>
+            <li><strong style="color:var(--text);">🛡️ Why they did it:</strong> their testing found auto mode caught 89% of harmful actions vs 13.6% for humans clicking through prompts. They still recommend human review for production changes.</li>
+          </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">See the Permission Modes section below for how to pin the mode you want.</p>
         </div>
 
         <div class="whats-new-item" style="border-color:rgba(96,165,250,0.3);background:rgba(96,165,250,0.04);">
@@ -2591,8 +2603,8 @@ git push</code></pre>
 
   <div class="mode-grid">
     <div class="mode-pill mode-default">
-      <div class="mode-name">Default</div>
-      <div class="mode-desc">Prompts for every file write and bash command. Safe but slow for longer tasks.</div>
+      <div class="mode-name">Manual</div>
+      <div class="mode-desc">Prompts for every file write and bash command. Safe but slow. This used to be the default, now you pin it yourself if you want it.</div>
     </div>
     <div class="mode-pill mode-edits">
       <div class="mode-name">Accept Edits ⏵⏵</div>
@@ -2603,41 +2615,45 @@ git push</code></pre>
       <div class="mode-desc">Claude plans and asks before doing anything. Good for scoping a task first.</div>
     </div>
     <div class="mode-pill mode-auto">
-      <div class="mode-name">Auto Mode ✦</div>
-      <div class="mode-desc">A background classifier decides what's safe. Risky actions get blocked automatically.</div>
+      <div class="mode-name">Auto Mode ✦ (now default)</div>
+      <div class="mode-desc">A background classifier decides what's safe. Risky actions get blocked automatically. Default for new sessions on Pro, Max, and Team since Aug 14, 2026.</div>
     </div>
   </div>
 
   <div class="auto-mode-card">
     <div class="auto-mode-header">
       <span>⚡</span>
-      <h3>Auto Mode: the big one</h3>
-      <span class="new-badge">Updated May 2026 · Opus 4.8</span>
+      <h3>Auto Mode: now the default</h3>
+      <span class="new-badge">Updated Aug 2026</span>
     </div>
     <div class="auto-mode-body">
-      <p>Launched 24 March 2026. Auto mode is the middle ground everyone was waiting for. A dedicated classifier model reviews every tool call before it runs. Safe stuff goes through without interrupting you. Risky stuff gets blocked and Claude finds a different approach.</p>
+      <p><strong style="color:var(--text);">As of August 14, 2026, auto mode is the default permission mode for new Claude Code sessions on Pro, Max, and Team plans.</strong> It launched as a research preview in March, went generally available on July 10, and is now what Claude Code opens with. Instead of prompting for approval at every step, it proceeds unless an action is judged irreversible, destructive, or aimed outside your environment. A dedicated classifier reviews every tool call before it runs.</p>
+
+      <div class="availability-note" style="background:rgba(74,222,128,0.06);border-color:rgba(74,222,128,0.2);">
+        <span class="note-icon">✅</span>
+        <span><strong>Now on Pro too.</strong> Auto mode used to be Team/Enterprise/Max only. It's now available and default on Pro as well. Still opt-in for now on Enterprise, the API, AWS Bedrock, Google Vertex, and Microsoft Foundry, with the same default change planned for those within a month. Anthropic also stopped charging Pro/Max/Team users for the extra tokens the classifier uses.</span>
+      </div>
 
       <p><strong style="color:var(--text);">What it blocks automatically:</strong></p>
       <ul class="plain-list">
-        <li>Mass file deletions</li>
+        <li>Mass file deletions and other destructive or irreversible actions</li>
         <li>Sensitive data exfiltration</li>
         <li>Suspicious scripts or malicious code execution</li>
         <li>Prompt injection from hostile content in files or web pages</li>
       </ul>
 
-      <p><strong style="color:var(--text);">How to enable it:</strong></p>
+      <p><strong style="color:var(--text);">If you'd rather keep approving each step:</strong> you don't have to accept the new default. If you already had a different default mode set, Claude asks before switching. Otherwise, cycle modes any time with <code>Shift+Tab</code>, or pin one permanently by setting <code>defaultMode</code> in your settings.</p>
       <div class="code-block">
         <div class="code-header">
-          <span class="code-lang">bash</span>
+          <span class="code-lang">say to claude, or set in settings</span>
           <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
         </div>
-        <pre><code>claude --enable-auto-mode</code></pre>
+        <pre><code>/config defaultMode=manual</code></pre>
       </div>
-      <div class="spacer"></div>
-      <p>Then press <code>Shift+Tab</code> to cycle to it in any session. The current mode shows in the status bar.</p>
+
       <div class="availability-note">
         <span class="note-icon">⚠️</span>
-        <span><strong>Availability:</strong> Team, Enterprise, API, and Max plans (Max requires Opus 4.7 or 4.8). Not available on Pro. As of May 30, 2026 also available on Bedrock, Vertex, and Foundry, opt in by setting <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Anthropic recommends using it in isolated environments like containers rather than directly on production machines.</span>
+        <span>Anthropic's own testing found auto mode blocked 89% of harmful actions versus 13.6% for humans clicking through prompts (people habitually approve most prompts, so the click-through becomes a reflex). Still, they recommend human review for production changes, a classifier reduces risk but doesn't eliminate it. Use it in isolated environments like containers rather than directly on production machines.</span>
       </div>
     </div>
   </div>
@@ -3338,8 +3354,8 @@ description: >
         <div class="trouble-a">Run <code>git status</code> to check for uncommitted changes, then <code>git add .</code>, <code>git commit -m "message"</code>, and <code>git push</code>.</div>
       </div>
       <div class="trouble-item">
-        <div class="trouble-q">❌ Auto Mode not available</div>
-        <div class="trouble-a">Auto mode requires Team, Enterprise, API, or Max plan (Max requires Opus 4.7 or 4.8). Not available on Pro. Also available on Bedrock, Vertex, and Foundry as of May 30, 2026, opt in with <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Make sure Claude Code is updated to v2.1.154 or later (required for Opus 4.8) by running <code>claude update</code>.</div>
+        <div class="trouble-q">❓ Auto Mode questions</div>
+        <div class="trouble-a">As of August 14, 2026 auto mode is the default on Pro, Max, and Team plans (it used to exclude Pro entirely). Still opt-in for now on Enterprise, API, Bedrock, Vertex, and Foundry. If you'd rather approve each step, cycle modes with <code>Shift+Tab</code> or pin manual mode with <code>/config defaultMode=manual</code>. Run <code>claude update</code> to make sure you're current.</div>
       </div>
     </div>
   </div>
@@ -3472,11 +3488,27 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card" style="border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.04);">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">August 17, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Auto mode became the default permission mode on Pro, Max, and Team plans (August 14, 2026). Rewrote the Permission Modes section to reflect this: it's no longer an opt-in feature you enable, it's what Claude Code opens with</li>
+            <li>Auto mode is now available on Pro too, previously it excluded Pro entirely</li>
+            <li>Added how to keep the old click-through behaviour: cycle with Shift+Tab or pin <code>defaultMode=manual</code></li>
+            <li>Renamed the old "Default" mode pill to "Manual" to match the new terminology, and noted Anthropic stopped charging Pro/Max/Team for the classifier's tokens</li>
+            <li>New What's New hero card, and updated the Troubleshooting entry which previously said auto mode wasn't available on Pro</li>
+          </ul>
+        </div>
+
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.8.1</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">August 11, 2026</span>
             </div>
           </div>
@@ -3845,7 +3877,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.8.1 · Last updated: August 11, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9 · Last updated: August 17, 2026</p>
   </footer>
 </div>
 
