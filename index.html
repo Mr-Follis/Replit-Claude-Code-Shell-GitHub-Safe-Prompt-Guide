@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.9 · Last updated: August 17, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9.1 · Last updated: August 29, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Auto mode is now the default · Opus 5 is current · August 17, 2026</span>
+        <span class="whats-new-pill">Todo tools off by default on new models · Opus 5 current · August 29, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1373,6 +1373,16 @@ footer a:hover { text-decoration: underline; }
         <div class="whats-new-item">
           <div class="whats-new-item-title">🍴 /fork</div>
           <p>Spin off a separate background session from your current conversation while you keep working in the original. Handy for trying something experimental on the side without losing your main thread.</p>
+        </div>
+
+        <div class="whats-new-item" style="border-color:rgba(248,113,113,0.25);background:rgba(248,113,113,0.04);">
+          <div class="whats-new-item-title">📋 Built-in todo tools now off by default</div>
+          <p>Heads up: as of late August, the task-tracking tools (TaskCreate, TodoWrite and friends) are no longer available on Opus 4.8, Sonnet 5, Fable 5, Opus 5 and newer models. If you relied on Claude keeping its own todo list mid-session, set <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> to bring them back. Tim's three-file setup (CONTEXT.md + ROADMAP.md) covers most of what people used these for anyway.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🔒 --restricted mode</div>
+          <p>New launch flag (<code>claude --restricted</code>, or <code>CLAUDE_CODE_RESTRICTED=1</code>) that runs a locked-down session. Sits alongside <code>--safe-mode</code> in the troubleshooting toolkit for when you want to rule out your own config as the cause of odd behaviour.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(245,166,35,0.06), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
@@ -3488,11 +3498,24 @@ A React-based dashboard for tracking inventory.
     <div class="collapse-content">
       <div class="pad">
 
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9.1</span>
+              <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">August 29, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New card flagging that built-in todo/task tools (TaskCreate, TodoWrite etc.) are now off by default on Opus 4.8, Sonnet 5, Fable 5, Opus 5 and newer, set <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> to restore them</li>
+            <li>New card for <code>--restricted</code> mode, a locked-down launch flag that sits alongside <code>--safe-mode</code> for troubleshooting</li>
+          </ul>
+        </div>
+
         <div class="skill-card" style="border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.04);">
           <div class="skill-header">
             <div class="skill-title-row">
               <span class="skill-cmd">v2.9</span>
-              <span class="skill-badge skill-badge-popular">Current</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">August 17, 2026</span>
             </div>
           </div>
@@ -3877,7 +3900,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.9 · Last updated: August 17, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9.1 · Last updated: August 29, 2026</p>
   </footer>
 </div>
 
