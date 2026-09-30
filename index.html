@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.9.5 · Last updated: September 23, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9.6 · Last updated: September 30, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,12 +1333,29 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Opus 5.5 is here · five-hour limits raised · September 23, 2026</span>
+        <span class="whats-new-pill">Sonnet 5.5 is here · SSH section now tested · September 30, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.14), rgba(74,222,128,0.08)); border:2px solid rgba(96,165,250,0.5);box-shadow:0 0 30px rgba(96,165,250,0.12);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5.5 is here (September 28, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Same price as Sonnet 5, 30%+ faster, and up to 30% cheaper per task because it gets there with fewer tokens.</strong> It beats Sonnet 5 across the board and lands within about two points of Opus 5.5 on coding. API id is <code>claude-sonnet-5-5</code>.</p>
+          <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
+            <li><strong style="color:var(--text);">💰 Price:</strong> $2/$10 per MTok, cache reads $0.20. 1M context.</li>
+            <li><strong style="color:var(--text);">🔧 Getting it in Claude Code:</strong> run <code>claude update</code> to <strong style="color:var(--text);">v2.1.284 or later</strong>, then it's the default Sonnet model. Defaults to <code>medium</code> effort in Claude Code.</li>
+            <li><strong style="color:var(--text);">⚠️ Effort gotcha:</strong> avoid <code>max</code> effort for now, it can burn through its whole thinking budget and fail. <code>xhigh</code> is the reliable top setting. Same applies to Opus 5.5.</li>
+            <li><strong style="color:var(--text);">🎯 Which to use:</strong> Sonnet 5.5 for most everyday building, it's quick and cheap on your limits. Opus 5.5 when the job is big and open-ended and needs sustained judgment.</li>
+          </ul>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 is due "in the coming weeks".</p>
+        </div>
+
+        <div class="whats-new-item" style="grid-column:1/-1;border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.05);">
+          <div class="whats-new-item-title">🩺 /doctor prompt-audit (v2.1.283)</div>
+          <p>Checks your CLAUDE.md, skills, agents and commands for instructions written for older models, and suggests what to change. Worth running once now if your CLAUDE.md dates back a few model generations, as habits like shouting in capitals or over-explaining steps can make newer models worse, not better. Run <code>/doctor prompt-audit</code> (or <code>/checkup prompt-audit</code>) inside Claude Code. It reports first and asks before changing anything.</p>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.16), rgba(96,165,250,0.08), rgba(74,222,128,0.06)); border:2px solid rgba(245,166,35,0.5);box-shadow:0 0 30px rgba(245,166,35,0.12);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Opus 5.5 is here (September 22, 2026)</div>
@@ -1347,7 +1364,7 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">💰 Cheaper than Opus 5 was:</strong> $4/$20 per MTok, down from Opus 5's $5/$25, with cache reads at just $0.20 per MTok. Fable 5.1 is still $10/$50, so this is the big value shift.</li>
             <li><strong style="color:var(--text);">📚 1M context on every plan, Pro included</strong>, with no special suffix and no usage credits needed.</li>
             <li><strong style="color:var(--text);">🔧 Getting it in Claude Code:</strong> run <code>claude update</code> to <strong style="color:var(--text);">v2.1.280 or later</strong>, then it's the default Opus model. Worth doing properly, because older versions quietly carry on giving you Opus 5 without telling you.</li>
-            <li><strong style="color:var(--text);">⚙️ Effort gotcha:</strong> Opus 5.5 defaults to <code>medium</code> effort, not <code>high</code>. If you set a global <code>effortLevel</code> in settings.json it won't apply to this model, you need a separate entry under <code>modelSettings</code>. If your work suddenly feels a bit shallower after updating, this is why.</li>
+            <li><strong style="color:var(--text);">⚙️ Effort gotcha:</strong> Opus 5.5 defaults to <code>medium</code> effort, not <code>high</code>. Effort is now saved per model, so an effort level you set on an older model won't carry over. If work feels a bit shallower after updating, switch to Opus 5.5 and set it with <code>/effort</code>.</li>
             <li><strong style="color:var(--text);">🧠 Thinking is always on now</strong> and can't be disabled, you control depth with effort instead. Also of note if you script against the API: forced tool use now returns an error.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">For Replit work this is now the sensible default for anything meaty, and Sonnet 5 stays the cheap workhorse. Fable 5.1 is much harder to justify at 2.5x the price for most jobs.</p>
@@ -1430,7 +1447,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.10), rgba(74,222,128,0.05)); border:2px solid rgba(96,165,250,0.4);box-shadow:0 0 24px rgba(96,165,250,0.08);">
-          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5 (June 30, 2026)</div>
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🕒 Claude Sonnet 5 (June 30, superseded by Sonnet 5.5)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">The new everyday default, and probably the one you'll want for most Replit work.</strong> Sonnet 5 gets close to Opus 4.8 on agentic coding but costs a lot less. It's now the default model on Free and Pro, and available on Max, Team, and Enterprise, plus in Claude Code. API id is <code>claude-sonnet-5</code>.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
             <li><strong style="color:var(--text);">💰 Pricing, good news:</strong> the $2/$10 per million tokens (in/out) introductory rate was meant to end on August 31 and rise to $3/$15. That rise was cancelled, so <strong style="color:var(--text);">$2/$10 is now the permanent standard rate</strong>. Still the cheapest of the current models bar Haiku.</li>
@@ -1978,14 +1995,19 @@ git push</code></pre>
 
   <div class="update-banner" style="background:linear-gradient(135deg, var(--bg2), rgba(167,139,250,0.05));border-color:rgba(167,139,250,0.25);">
     <span class="update-icon">✨</span>
-    <p><strong style="color:var(--purple);">Community contribution.</strong> A method for stopping Claude Code sessions dying when your connection drops. Not yet tested on our own setup, so treat it as a recommended approach to try rather than a guaranteed recipe. Requires a paid Replit plan (SSH is not on the free tier).</p>
+    <p><strong style="color:var(--purple);">Community contribution, now tested on our own setup (September 2026).</strong> A method for stopping Claude Code sessions dying when your connection drops. Requires a paid Replit plan (SSH is not on the free tier).</p>
   </div>
 
-  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">If you run Claude Code in Replit's browser Shell, the session often dies when the connection drops. The browser terminal is a thin client over a websocket, so a network blip, a backgrounded tab, or your laptop sleeping can tear it down and kill whatever was running. The fix: connect to the same Replit container from your own computer's terminal over SSH instead. Nothing moves off Replit, your code, database, secrets and runtime stay exactly where they are. You just reach the container through a far more stable connection that also survives the container hibernating.</p>
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">If you run Claude Code in Replit's browser Shell, the session often dies when the connection drops. The browser terminal is a thin client over a websocket, so a network blip, a backgrounded tab, or your laptop sleeping can tear it down and kill whatever was running. The fix: connect to the same Replit container from your own computer's terminal over SSH instead. Nothing moves off Replit, your code, database, secrets and runtime stay exactly where they are. You just reach the container through a far more stable connection.</p>
+
+  <div class="availability-note" style="margin-bottom:16px;">
+    <span class="note-icon">🧭</span>
+    <span><strong>Set expectations right:</strong> it doesn't mean you'll never drop. Closing tabs and the browser shell's flaky websocket stop killing your session, but a Wi-Fi drop, your laptop sleeping, or Replit sleeping the app can still cut it, and whatever Claude was doing at that moment stops. The win is that you drop far less, and getting back takes 10 seconds: reconnect, then <code>claude -c</code>, and the conversation is still there.</span>
+  </div>
 
   <div class="card" style="margin-bottom:8px;">
     <div class="pad" style="padding:14px 18px;">
-      <p style="margin:0;font-size:14px;color:var(--text-dim);"><strong style="color:var(--text);">Why not tmux?</strong> tmux is the usual tool for surviving disconnects, but on newer Replit Apps it conflicts with Claude Code's interface and is more trouble than it's worth. SSH solves it more completely and survives hibernation, which tmux cannot.</p>
+      <p style="margin:0;font-size:14px;color:var(--text-dim);"><strong style="color:var(--text);">Why not tmux?</strong> tmux is the usual tool for surviving disconnects, but on newer Replit Apps it conflicts with Claude Code's interface and is more trouble than it's worth. SSH gives you most of the benefit without the interface fights.</p>
     </div>
   </div>
 
@@ -2016,10 +2038,12 @@ git push</code></pre>
         <div class="spacer"></div>
         <p style="font-weight:600;color:var(--text);font-size:15px;">Step 3: Add the key to Replit (account-wide, once)</p>
         <ul class="plain-list">
-          <li>Open any Replit app, click the <strong>+</strong> button at the top, search for <strong>SSH</strong></li>
+          <li>Open any Replit app, click the <strong>+</strong> on the tab bar at the top of the workspace (next to your open tabs like Console and Shell, not the new-project +), and search for <strong>SSH</strong></li>
           <li>If SSH doesn't appear you're likely on a free plan, where it isn't available</li>
           <li>In the SSH pane, open the <strong>Keys</strong> tab, click <strong>New SSH key</strong></li>
           <li>Give it a label (e.g. "my laptop"), paste the <code>ssh-ed25519</code> line into the Key field, click <strong>Add SSH key</strong></li>
+          <li>Can't find the pane? You can also add the key from your profile: <strong>Account → SSH keys → Add SSH key</strong></li>
+          <li>Lost what you copied? The key is still saved, <code>pbcopy &lt; ~/.ssh/replit.pub</code> on a Mac copies it again</li>
         </ul>
 
         <div class="spacer"></div>
@@ -2084,6 +2108,7 @@ source ~/.zshrc</code></pre>
         <ul class="plain-list">
           <li>Open the app in Replit (wakes the container)</li>
           <li>In your Terminal, type the app's alias and Enter</li>
+          <li>Check the prompt before starting Claude. <code>yourname@MacBook ~ %</code> means you're still on your own computer, <code>~/workspace$</code> means you're inside Replit. Claude has to run on the Replit side</li>
           <li>Start Claude Code:</li>
         </ul>
         <div class="code-block">
@@ -2095,6 +2120,36 @@ claude --resume # pick a past conversation from a list</code></pre>
         <div class="availability-note">
           <span class="note-icon">💡</span>
           <span>Claude Code saves your conversation automatically and continuously inside the container, and the container persists between visits. So <code>claude -c</code> picks up exactly where you left off, no manual save needed. SSH, the GitHub token, and Claude Code's own login all persist per container, so opening a new terminal does not make you log in again.</span>
+        </div>
+
+        <div class="spacer"></div>
+        <p style="font-weight:600;color:var(--text);font-size:15px;">"claude: command not found" on your first SSH connect?</p>
+        <p>Normal. The SSH session doesn't always know where Claude Code lives, or it isn't installed in that app yet. This one line handles both, adding the path and installing only if needed:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, in the container</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>export PATH="$HOME/.local/bin:$PATH"; command -v claude >/dev/null || curl -fsSL https://claude.ai/install.sh | bash; claude</code></pre>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);">"No conversation found to continue" from <code>claude -c</code> just means there's nothing to resume yet, run <code>claude</code> to start fresh. Different apps in different Terminal tabs is fine, but never run two Claudes on the same app at once.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">🔑 Second Replit account? <span class="trigger-label">needs its own key</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>Replit won't accept a key that's already attached to another account ("already in use"). Make a second key and copy it in one go:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>ssh-keygen -t ed25519 -f ~/.ssh/replit2 -q -N "" && pbcopy &lt; ~/.ssh/replit2.pub && echo "New key copied"</code></pre>
+        </div>
+        <p>Add it in the other account the same way. Then when you copy that account's connect command, change <code>~/.ssh/replit</code> to <code>~/.ssh/replit2</code> and add <code>-o IdentitiesOnly=yes</code>, so your computer doesn't offer the first key by mistake:</p>
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">bash, your computer</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code>ssh -i ~/.ssh/replit2 -o IdentitiesOnly=yes -p 22 USER@HOST.replit.dev</code></pre>
         </div>
       </div>
     </div>
@@ -3538,8 +3593,23 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.9.5</span>
+              <span class="skill-cmd">v2.9.6</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">September 30, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New lead card for Claude Sonnet 5.5 (September 28), same $2/$10 price as Sonnet 5 but 30%+ faster and cheaper per task, default Sonnet from Claude Code v2.1.284</li>
+            <li>New card for <code>/doctor prompt-audit</code>, which checks CLAUDE.md files for instructions written for older models</li>
+            <li>Stable Sessions over SSH is now tested on our own setup. Added the "claude: command not found" fix, how to tell your computer's prompt from Replit's, where to find the SSH pane, a second-account key guide, and an honest note that SSH means far fewer drops and fast recovery rather than zero drops</li>
+            <li>Simplified the Opus 5.5 effort gotcha now that effort is saved per model</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9.5</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">September 23, 2026</span>
             </div>
           </div>
@@ -3995,7 +4065,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.9.5 · Last updated: September 23, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9.6 · Last updated: September 30, 2026</p>
   </footer>
 </div>
 
