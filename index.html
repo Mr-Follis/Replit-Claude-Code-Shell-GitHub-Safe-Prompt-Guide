@@ -1359,7 +1359,7 @@ footer a:hover { text-decoration: underline; }
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🔍 New section: Review Before Merge</div>
-          <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, writes a short report with the decisions you need to make, then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
+          <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, publishes a report page with the decisions you need to make (same link every time), then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
@@ -2734,7 +2734,7 @@ git push</code></pre>
 
   <div class="update-banner">
     <span class="update-icon">✦</span>
-    <p><strong>A master prompt for bigger changes.</strong> We now run this on all our own Claude Code sessions. Claude works on a branch, proves the work with before and after screenshots, writes you a short report with the decisions you need to make, then stops and waits. Nothing reaches <code>main</code> until you say so.</p>
+    <p><strong>A master prompt for bigger changes.</strong> We now run this on all our own Claude Code sessions. Claude works on a branch, proves the work with before and after screenshots, publishes a short report with the decisions you need to make, then stops and waits. Nothing reaches <code>main</code> until you say so.</p>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">With auto mode on by default, Claude gets through a lot of work without stopping to ask. That's great for speed, but it means the moment you really need to check things is the end. This prompt turns the end of a task into a proper handover instead of "done, all good".</p>
@@ -2794,22 +2794,35 @@ Do not merge. Do not touch main. Commit to your branch and push the branch only.
 - If you can't take screenshots here, say so and carry on. Do not fake them or describe them from memory.
 
 3. REPORT PAGE
-- Save it as one HTML file at /report-output/report.html
-- Start with "What I need from you": the decisions I have to make, numbered.
-- Then one section per item: what was wrong, what you changed, before and after side by side.
-- Where I asked for options, show each one on a real page, labelled A, B, C. Do not pick one.
-- Flag anything where what I asked for and what's in the project (brief, notes, existing code) disagree.
-- List any extra bugs you found and fixed.
+Where it lives:
+- Publish it as a private page I can open from a link, with the screenshots included.
+- Use the same link every time. If a report page already exists for this project, update that one. Do not make a new page.
+- Replace what's on the page with the newest report each time.
+- Save the report link in CLAUDE.md so the next session updates the same page.
+- If you can't publish a page here, save it as one HTML file at /report-output/report.html and tell me where it is.
+How it looks:
+- One narrow reading column, about 760px wide, easy to read on a phone. Light and dark.
+- Header: the project name and site, today's date and time, and a one-line headline saying what this report covers.
+- A status strip under the header with four boxes: Branch, Merged, Build and tests, Deploy needed.
+- A "Copy as text" button that copies the whole report as plain text, so I can paste it into another chat.
+What goes in it, in this order:
+- Decisions needed: numbered. Where I asked for options, show each one on a real page, labelled A, B, C. Do not pick one.
+- What I did: one short entry per item, what was wrong and what you changed.
+- Flags: anything where what I asked for and what's in the project (brief, notes, existing code) disagree.
+- Extra bugs you found and fixed.
+- Checks: the results from step 1, including anything you could not check.
+- Screenshots: before and after side by side, grouped by item. Desktop open, tablet and mobile folded away.
 - Plain English, short, no jargon.
+- Never put passwords, keys, tokens or private customer details on the page.
 
 4. CHANGES.md
 - Write CHANGES.md in the project root on your branch. Text only, under 60 lines.
-- Include: branch name, where the report is, the numbered decisions, what changed per item with the files touched, anything that disagreed with what I asked for, extra bugs fixed, and the results from step 1.
+- Include: branch name, the report link, the numbered decisions, what changed per item with the files touched, anything that disagreed with what I asked for, extra bugs fixed, and the results from step 1.
 - Commit it and push the branch.
 - It gets deleted before merge, once I approve.
 
 5. FINAL MESSAGE
-- Give me the branch name, where the report is, and the numbered decisions.
+- Give me the branch name, the report link and the numbered decisions.
 - Then stop and wait. Do nothing else until I reply.</code></pre>
       </div>
       <div class="spacer"></div>
@@ -2821,6 +2834,10 @@ Do not merge. Do not touch main. Commit to your branch and push the branch only.
         <li><strong>"Open 2 or 3, nothing more":</strong> looking at every screenshot burns through your usage for no benefit</li>
         <li><strong>"Do not pick one":</strong> when you asked for options, the choice stays yours</li>
         <li><strong>Flag disagreements:</strong> catches the times your instructions and the project say different things</li>
+        <li><strong>Same link every time:</strong> one page to bookmark instead of a new report to hunt for after every task. It always shows the latest one</li>
+        <li><strong>"How it looks":</strong> without layout rules every report comes out looking different. The status strip tells you the state of the work before you read a word</li>
+        <li><strong>Copy as text:</strong> lets you paste the whole report into another chat for a second opinion</li>
+        <li><strong>Save the link in CLAUDE.md:</strong> a fresh session has no memory of where your report page lives. We learned this one the hard way</li>
         <li><strong>CHANGES.md:</strong> a plain text record on the branch that you, or a fresh Claude session, can read in seconds</li>
         <li><strong>Stop and wait:</strong> the most important line. Without it Claude will often carry on and "helpfully" merge</li>
       </ul>
@@ -2838,7 +2855,7 @@ Do not merge. Do not touch main. Commit to your branch and push the branch only.
       <span class="new-badge">Your turn</span>
     </div>
     <div class="auto-mode-body">
-      <p>Open <code>report-output/report.html</code> from the Replit file tree. Start at "What I need from you", make your decisions, then reply with them by number:</p>
+      <p>Open the link Claude gives you. It's the same link every time and always shows the latest report, so it's worth bookmarking. Check the status strip, read "Decisions needed", then reply with your decisions by number:</p>
       <div class="code-block wrap">
         <div class="code-header">
           <span class="code-lang">say to claude</span>
@@ -2880,7 +2897,8 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
       <div class="pad">
         <ul class="plain-list" style="margin-bottom:0;">
           <li><strong>Screenshots failed:</strong> the screenshot tool (Playwright) doesn't always install inside Replit. The prompt tells Claude to say so and carry on, so you still get the report and CHANGES.md, just without pictures. Check the change yourself in the Replit preview</li>
-          <li><strong>Can't find the report:</strong> it's in the <code>report-output</code> folder in your project. That folder is deliberately kept out of GitHub, so it only exists inside Replit</li>
+          <li><strong>You got a file instead of a link:</strong> Claude wasn't able to publish from where it's running, or played it safe. If it offers to publish a private page, say yes. Otherwise the report is at <code>report-output/report.html</code>, open it from the Replit file tree and keep the folder together so the screenshots show</li>
+          <li><strong>It made a new page instead of updating the old one:</strong> the link wasn't saved in CLAUDE.md. Give Claude the old link, tell it to update that page, and to save the link in CLAUDE.md</li>
           <li><strong>Claude merged anyway:</strong> rare, but if it happens ask it to undo the merge. Your <a href="#evening" style="color:var(--amber);">checkpoints</a> and GitHub history mean nothing is lost</li>
           <li><strong>Claude worked on main:</strong> you probably left out the "create a new branch" line. Ask it to move the work onto a new branch before continuing</li>
         </ul>
@@ -3795,7 +3813,7 @@ A React-based dashboard for tracking inventory.
             </div>
           </div>
           <ul class="plain-list" style="margin-bottom:0;">
-            <li>New "Review Before Merge" section with a master prompt for bigger changes: work on a branch, check it builds, before and after screenshots, a short report with numbered decisions, a CHANGES.md record, then stop and wait for approval</li>
+            <li>New "Review Before Merge" section with a master prompt for bigger changes: work on a branch, check it builds, before and after screenshots, a report page on one permanent link with a set layout and numbered decisions, a CHANGES.md record, then stop and wait for approval</li>
             <li>Includes the approve message, how to save the prompt as a <code>/finish</code> command, and what to do when screenshots won't run inside Replit</li>
             <li>Added a Review link to the quick jump buttons</li>
           </ul>
