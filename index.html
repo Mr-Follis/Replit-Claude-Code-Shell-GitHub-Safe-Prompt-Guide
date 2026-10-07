@@ -737,6 +737,11 @@ header h1 span { color: var(--amber); }
   white-space: pre;
 }
 
+.code-block.wrap pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 15px;
@@ -1319,12 +1324,12 @@ footer a:hover { text-decoration: underline; }
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v2.3</span>
-      <span class="new-badge">✦ Updated May 2026 · Opus 4.8</span>
+      <span class="version-badge">v2.9</span>
+      <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.9.7 · Last updated: October 7, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9.8 · Last updated: October 7, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1338,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">New "You should know" add-on · Sonnet 5.5 · October 7, 2026</span>
+        <span class="whats-new-pill">New Review Before Merge prompt · "You should know" add-on · October 7, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1350,6 +1355,11 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">🎯 Which to use:</strong> Sonnet 5.5 for most everyday building, it's quick and cheap on your limits. Opus 5.5 when the job is big and open-ended and needs sustained judgment.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 is due "in the coming weeks".</p>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🔍 New section: Review Before Merge</div>
+          <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, writes a short report with the decisions you need to make, then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
@@ -1559,6 +1569,7 @@ footer a:hover { text-decoration: underline; }
   <div class="nav-grid">
     <a href="#ssh" class="ql ql-purple">🔌 SSH <span class="ql-new ql-new-purple">New</span></a>
     <a href="#checkpoint-script" class="ql ql-blue">⚡ Checkpoint</a>
+    <a href="#review" class="ql ql-blue">🔍 Review <span class="ql-new ql-new-blue">New</span></a>
     <a href="#auto" class="ql ql-blue">🔒 Auto Mode</a>
     <a href="#skills" class="ql ql-purple">🧠 Skills</a>
     <a href="#mistakes" class="ql ql-red">⚠️ Mistakes</a>
@@ -2715,6 +2726,171 @@ git push</code></pre>
   <hr class="divider">
 
 
+  <span class="anchor" id="review"></span>
+  <div class="section-header">
+    <span class="section-icon">🔍</span>
+    <h2>Review Before Merge <span class="new-badge" style="font-size:10px;vertical-align:middle;">New</span></h2>
+  </div>
+
+  <div class="update-banner">
+    <span class="update-icon">✦</span>
+    <p><strong>A master prompt for bigger changes.</strong> We now run this on all our own Claude Code sessions. Claude works on a branch, proves the work with before and after screenshots, writes you a short report with the decisions you need to make, then stops and waits. Nothing reaches <code>main</code> until you say so.</p>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">With auto mode on by default, Claude gets through a lot of work without stopping to ask. That's great for speed, but it means the moment you really need to check things is the end. This prompt turns the end of a task into a proper handover instead of "done, all good".</p>
+
+  <div class="card" style="margin-bottom:16px;">
+    <div class="pad" style="padding:14px 18px;">
+      <p style="margin:0;font-size:14px;color:var(--text-dim);"><strong style="color:var(--text);">When to use it:</strong> redesigns, new features, client work, anything where you want to see it before it goes live. For small everyday fixes, the <a href="#evening" style="color:var(--amber);">checkpoint workflow</a> is still quicker. Use both, they don't clash.</p>
+    </div>
+  </div>
+
+  <div class="auto-mode-card" style="margin-bottom:16px;">
+    <div class="auto-mode-header">
+      <span>1️⃣</span>
+      <h3>Start the task on a branch</h3>
+      <span class="new-badge">Add to your request</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>Put this line at the top of whatever you're asking for, so the work never happens on <code>main</code>:</p>
+      <div class="code-block wrap">
+        <div class="code-header">
+          <span class="code-lang">say to claude</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>Before you start: create a new branch for this work and stay on it. Do not work on main.</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="auto-mode-card" style="margin-bottom:16px;border-color:rgba(245,166,35,0.35);background:linear-gradient(135deg,var(--bg2),rgba(245,166,35,0.05));">
+    <div class="auto-mode-header">
+      <span>2️⃣</span>
+      <h3>The master prompt</h3>
+      <span class="new-badge">Paste with your request</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>Paste this underneath your request. Claude does the work first, then follows these steps when it's finished.</p>
+      <div class="code-block wrap">
+        <div class="code-header">
+          <span class="code-lang">say to claude</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>WHEN THE WORK IS FINISHED
+
+Do not merge. Do not touch main. Commit to your branch and push the branch only.
+
+1. CHECK IT WORKS
+- Run the build, and the tests if the project has any.
+- Tell me plainly what passed, what failed, and anything you could not check.
+
+2. SCREENSHOTS
+- Skip this step if nothing visual changed, and say that you skipped it.
+- Take "before" from main and "after" from your branch. For "before", use a separate copy of the project (a git worktree) so you don't switch branches under the running app.
+- Use a script (Playwright) to screenshot every page you changed.
+- Widths: 1280 desktop, 820 tablet, 390 mobile. Light and dark if the site has both.
+- Do not open every screenshot. Open 2 or 3 per page to check they captured properly, nothing more.
+- Save screenshots and the report in /report-output and add that folder to .gitignore.
+- If you can't take screenshots here, say so and carry on. Do not fake them or describe them from memory.
+
+3. REPORT PAGE
+- Save it as one HTML file at /report-output/report.html
+- Start with "What I need from you": the decisions I have to make, numbered.
+- Then one section per item: what was wrong, what you changed, before and after side by side.
+- Where I asked for options, show each one on a real page, labelled A, B, C. Do not pick one.
+- Flag anything where what I asked for and what's in the project (brief, notes, existing code) disagree.
+- List any extra bugs you found and fixed.
+- Plain English, short, no jargon.
+
+4. CHANGES.md
+- Write CHANGES.md in the project root on your branch. Text only, under 60 lines.
+- Include: branch name, where the report is, the numbered decisions, what changed per item with the files touched, anything that disagreed with what I asked for, extra bugs fixed, and the results from step 1.
+- Commit it and push the branch.
+- It gets deleted before merge, once I approve.
+
+5. FINAL MESSAGE
+- Give me the branch name, where the report is, and the numbered decisions.
+- Then stop and wait. Do nothing else until I reply.</code></pre>
+      </div>
+      <div class="spacer"></div>
+      <p style="font-weight:600;color:var(--text);font-size:15px;">Why each part is there</p>
+      <ul class="plain-list" style="margin-bottom:14px;">
+        <li><strong>Do not merge, do not touch main:</strong> your live site stays exactly as it is until you approve</li>
+        <li><strong>Check it works:</strong> you get told what failed and what couldn't be checked, not just what went well</li>
+        <li><strong>Before and after screenshots:</strong> you see the change instead of taking Claude's word for it</li>
+        <li><strong>"Open 2 or 3, nothing more":</strong> looking at every screenshot burns through your usage for no benefit</li>
+        <li><strong>"Do not pick one":</strong> when you asked for options, the choice stays yours</li>
+        <li><strong>Flag disagreements:</strong> catches the times your instructions and the project say different things</li>
+        <li><strong>CHANGES.md:</strong> a plain text record on the branch that you, or a fresh Claude session, can read in seconds</li>
+        <li><strong>Stop and wait:</strong> the most important line. Without it Claude will often carry on and "helpfully" merge</li>
+      </ul>
+      <div class="availability-note">
+        <span class="note-icon">🛠️</span>
+        <span><strong>Make it yours.</strong> Change the screenshot widths to suit your site (we add 1920 and 3440 for wide screens). If your project has no build step, delete that line. The structure matters more than the exact wording.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="auto-mode-card" style="margin-bottom:16px;">
+    <div class="auto-mode-header">
+      <span>3️⃣</span>
+      <h3>Read the report, then approve</h3>
+      <span class="new-badge">Your turn</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>Open <code>report-output/report.html</code> from the Replit file tree. Start at "What I need from you", make your decisions, then reply with them by number:</p>
+      <div class="code-block wrap">
+        <div class="code-header">
+          <span class="code-lang">say to claude</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>Approved. My decisions: 1 = A, 2 = yes, 3 = leave as is.
+Apply those, delete CHANGES.md, merge the branch into main, push, then delete the branch.</code></pre>
+      </div>
+      <p style="font-size:14px;color:var(--text-muted);">Not happy? Just say what to change. Claude stays on the branch, fixes it, and gives you an updated report. Nothing is live until you send the approve message.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">⚡ Save it as a command <span class="trigger-label">type /finish instead of pasting</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <p>Once you've used the prompt and you're happy with it, get Claude to save it so you never paste it again:</p>
+      <div class="code-block wrap">
+        <div class="code-header">
+          <span class="code-lang">say to claude</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>Save the "when the work is finished" prompt I just gave you as a project command called finish, so I can run it by typing /finish. Don't change the wording.</code></pre>
+      </div>
+        <p>From then on, give Claude your task, and when it's done type <code>/finish</code>. It's saved inside the project, so it's backed up to GitHub with everything else.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">🩹 If something doesn't work <span class="trigger-label">screenshots, reports, branches</span></span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="pad">
+        <ul class="plain-list" style="margin-bottom:0;">
+          <li><strong>Screenshots failed:</strong> the screenshot tool (Playwright) doesn't always install inside Replit. The prompt tells Claude to say so and carry on, so you still get the report and CHANGES.md, just without pictures. Check the change yourself in the Replit preview</li>
+          <li><strong>Can't find the report:</strong> it's in the <code>report-output</code> folder in your project. That folder is deliberately kept out of GitHub, so it only exists inside Replit</li>
+          <li><strong>Claude merged anyway:</strong> rare, but if it happens ask it to undo the merge. Your <a href="#evening" style="color:var(--amber);">checkpoints</a> and GitHub history mean nothing is lost</li>
+          <li><strong>Claude worked on main:</strong> you probably left out the "create a new branch" line. Ask it to move the work onto a new branch before continuing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+
   <span class="anchor" id="auto"></span>
   <div class="section-header">
     <span class="section-icon">⚡</span>
@@ -3613,8 +3789,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.9.7</span>
+              <span class="skill-cmd">v2.9.8</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 7, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New "Review Before Merge" section with a master prompt for bigger changes: work on a branch, check it builds, before and after screenshots, a short report with numbered decisions, a CHANGES.md record, then stop and wait for approval</li>
+            <li>Includes the approve message, how to save the prompt as a <code>/finish</code> command, and what to do when screenshots won't run inside Replit</li>
+            <li>Added a Review link to the quick jump buttons</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9.7</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 7, 2026</span>
             </div>
           </div>
@@ -4099,7 +4289,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.9.7 · Last updated: October 7, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9.8 · Last updated: October 7, 2026</p>
   </footer>
 </div>
 
