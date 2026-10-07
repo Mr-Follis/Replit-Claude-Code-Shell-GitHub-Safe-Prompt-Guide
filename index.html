@@ -1324,7 +1324,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.9.6 · Last updated: September 30, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9.7 · Last updated: October 7, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1333,7 +1333,7 @@ footer a:hover { text-decoration: underline; }
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Sonnet 5.5 is here · SSH section now tested · September 30, 2026</span>
+        <span class="whats-new-pill">New "You should know" add-on · Sonnet 5.5 · October 7, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
@@ -1350,6 +1350,26 @@ footer a:hover { text-decoration: underline; }
             <li><strong style="color:var(--text);">🎯 Which to use:</strong> Sonnet 5.5 for most everyday building, it's quick and cheap on your limits. Opus 5.5 when the job is big and open-ended and needs sustained judgment.</li>
           </ul>
           <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 is due "in the coming weeks".</p>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">👀 "You should know" (October 1, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">A new built-in add-on that scans Claude's output for important things you might miss, and flags them.</strong> Really useful now auto mode is the default, because when Claude is working without stopping to ask, it's easy to skim past a warning, a skipped step or a "by the way" buried in a long reply. It's off by default. Needs Claude Code v2.1.287 or later, so <code>claude update</code> first, then:</p>
+          <div class="code-block" style="margin-bottom:10px;">
+            <div class="code-header"><span class="code-lang">in Claude Code</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+            <pre><code>/plugin enable cc-plugin-you-should-know@builtin</code></pre>
+          </div>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">It arrived alongside <strong style="color:var(--text);">Claude Mods</strong>, a new kind of plugin that can change how Claude Code itself behaves. The built-in one above is from Anthropic and safe to switch on. Be careful with third-party mods though, they run with a lot of access, so only install ones from people you trust.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">↩️ Lost your prompt? Press Up</div>
+          <p>Cleared a half-typed prompt with Ctrl+C by accident? Press the Up arrow and the draft comes back. Small thing, saves a lot of retyping. Claude Code v2.1.288.</p>
+        </div>
+
+        <div class="whats-new-item">
+          <div class="whats-new-item-title">🛡️ Safer deletes and smoother auto mode</div>
+          <p>Two quiet fixes worth updating for. A gap was closed where a dangerous <code>rm</code> could skip the "always ask first" check when wrapped inside another command (v2.1.287). And in long conversations auto mode now compacts the chat by itself instead of interrupting you with permission prompts (v2.1.288). Also fixed: <code>/rewind</code> missing some prompts, and CLAUDE.md being loaded twice after a resume.</p>
         </div>
 
         <div class="whats-new-item" style="grid-column:1/-1;border-color:rgba(245,166,35,0.3);background:rgba(245,166,35,0.05);">
@@ -3593,8 +3613,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.9.6</span>
+              <span class="skill-cmd">v2.9.7</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 7, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New card for "You should know", a built-in add-on (Claude Code v2.1.287) that flags important things in Claude's output you might miss. Includes the enable command and a caution on third-party Claude Mods</li>
+            <li>New tip: press Up to recover a prompt cleared with Ctrl+C</li>
+            <li>Noted the safer <code>rm</code> handling, auto mode compacting long chats by itself, and the <code>/rewind</code> and duplicate CLAUDE.md fixes</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9.6</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">September 30, 2026</span>
             </div>
           </div>
@@ -4065,7 +4099,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.9.6 · Last updated: September 30, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9.7 · Last updated: October 7, 2026</p>
   </footer>
 </div>
 
