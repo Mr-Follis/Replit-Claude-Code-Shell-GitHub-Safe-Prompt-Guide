@@ -1420,8 +1420,9 @@ ul.plain-list li strong { margin-right: 4px; }
 .card, .prompt-card, .tldr, .code-block { box-shadow: none; }
 .card:hover { border-color: var(--border); }
 
-/* Floating quick-copy: only where there's room beside the column */
-@media (max-width: 1240px) { .float-nav { display: none; } }
+/* Floating quick-copy buttons stay on the right. Between tablet and wide desktop,
+   leave room for them so they never sit on top of the content. */
+@media (min-width: 641px) and (max-width: 1240px) { .container { padding-right: 116px; } }
 
 header { margin-bottom: 24px; padding-bottom: 32px; }
 .topnav-inner { mask-image: linear-gradient(90deg,#000 85%,transparent); -webkit-mask-image: linear-gradient(90deg,#000 85%,transparent); }
