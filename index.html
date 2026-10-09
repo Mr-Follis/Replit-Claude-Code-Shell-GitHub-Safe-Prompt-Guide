@@ -1429,6 +1429,24 @@ header { margin-bottom: 24px; padding-bottom: 32px; }
 .topnav-inner { mask-image: linear-gradient(90deg,#000 85%,transparent); -webkit-mask-image: linear-gradient(90deg,#000 85%,transparent); }
 @media (min-width: 900px) { .topnav-inner { mask-image: none; -webkit-mask-image: none; } }
 
+
+/* Foldable sections: click a section title to open or close it */
+.section-header.foldable { cursor: pointer; user-select: none; border-radius: var(--radius-sm); }
+.section-header.foldable:hover h2 { color: var(--amber); }
+.section-header.foldable:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+.sec-chevron {
+  margin-left: auto; align-self: center; flex-shrink: 0;
+  color: var(--text-muted); font-size: 13px; transition: transform 0.2s;
+}
+.section-header.foldable[aria-expanded="false"] .sec-chevron { transform: rotate(-90deg); }
+.section-header.foldable[aria-expanded="false"] { margin-top: 20px; margin-bottom: 0; }
+hr.divider:has(+ .anchor + .section-header[aria-expanded="false"]),
+hr.divider:has(+ .section-header[aria-expanded="false"]) { margin-top: 20px; }
+.part + .anchor + .section-header[aria-expanded="false"] { margin-top: 28px; }
+.sec-hint { display: block; color: var(--text-muted); font-size: 14px; font-weight: 400; letter-spacing: 0; margin-top: 2px; }
+.section-header.foldable[aria-expanded="true"] .sec-hint { display: none; }
+@media (prefers-reduced-motion: reduce) { .sec-chevron { transition: none; } }
+
 /* Visible keyboard focus */
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 </style>
@@ -3964,6 +3982,7 @@ A React-based dashboard for tracking inventory.
             <li>Page reorganised into four parts: Set up, Daily routine, Bigger changes and Reference, with a "New here? Start with this" box at the top</li>
             <li>One sticky nav bar replaces the quick jump buttons and workflow strip. Floating quick-copy buttons stay on the right</li>
             <li>What's New shows the latest 3 updates, older ones folded away</li>
+            <li>Every section now folds open and shut from its title. Set-up and reference sections start closed, the everyday ones start open</li>
             <li>Cleaner code blocks, left-aligned text, one heading style everywhere, fixed mobile headings and tidier lists. No prompts were changed</li>
           </ul>
         </div>
@@ -4636,6 +4655,61 @@ A React-based dashboard for tracking inventory.
     }
     if (clickedBtn && text) doCopy(clickedBtn, text);
   }
+
+  // Foldable sections. Every-day sections start open, set-up and reference start closed.
+  (function () {
+    var startClosed = ['Stable Sessions over SSH', 'Permission Modes', 'Claude Code Skills',
+      'Writing a Good CLAUDE.md', 'Example CLAUDE.md', 'Common Mistakes', 'Troubleshooting'];
+    var stopAt = function (el) {
+      return !el || el.matches('.anchor, hr.divider, .part, .section-header, script') || el.id === 'changelog';
+    };
+    var sections = [];
+    document.querySelectorAll('.container .section-header').forEach(function (head) {
+      var h2 = head.querySelector('h2');
+      if (!h2 || h2.classList.contains('start-title') || h2.classList.contains('part-title')) return;
+      var title = h2.childNodes[0].textContent.trim();
+      if (title === 'Changelog') return;
+      var body = document.createElement('div');
+      body.className = 'sec-body';
+      var next = head.nextElementSibling;
+      while (!stopAt(next)) { var n = next.nextElementSibling; body.appendChild(next); next = n; }
+      if (!body.children.length) return;
+      head.after(body);
+      head.classList.add('foldable');
+      head.setAttribute('role', 'button');
+      head.setAttribute('tabindex', '0');
+      var chev = document.createElement('span');
+      chev.className = 'sec-chevron'; chev.setAttribute('aria-hidden', 'true'); chev.textContent = '▼';
+      head.appendChild(chev);
+      var hint = document.createElement('span');
+      hint.className = 'sec-hint'; hint.textContent = 'Click to open';
+      h2.appendChild(hint);
+      var set = function (open) { body.hidden = !open; head.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+      set(startClosed.indexOf(title) === -1);
+      var toggle = function () { set(body.hidden); };
+      head.addEventListener('click', toggle);
+      head.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      sections.push({ head: head, body: body, set: set });
+    });
+    // Opening a link to a closed section opens it first
+    var openFor = function (target) {
+      if (!target) return;
+      sections.forEach(function (sec) {
+        var anchorBefore = sec.head.previousElementSibling;
+        if (sec.body.contains(target) || target === sec.head || target === anchorBefore) sec.set(true);
+      });
+    };
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a || a.getAttribute('href').length < 2) return;
+      openFor(document.getElementById(a.getAttribute('href').slice(1)));
+    }, true);
+    if (location.hash.length > 1) {
+      var t = document.getElementById(location.hash.slice(1));
+      openFor(t);
+      if (t) setTimeout(function () { t.scrollIntoView(); }, 0);
+    }
+  })();
 </script>
 
 </body>
