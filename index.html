@@ -1309,6 +1309,126 @@ footer a:hover { text-decoration: underline; }
   padding-top: 70px;
   visibility: hidden;
 }
+
+/* ═══════════════════════════════════════
+   v3 LAYOUT CLEAN-UP (preview)
+   One reading column, left aligned, one nav, quieter highlights.
+═══════════════════════════════════════ */
+body { text-align: left; }
+header, header .header-sub, header .header-meta, footer { text-align: center; }
+header .header-top { justify-content: center; }
+.container { max-width: 960px; }
+
+/* Sticky nav: the only way around the page */
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topnav-inner {
+  max-width: 960px; margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 60px);
+  display: flex; gap: 4px; align-items: center;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.topnav-inner::-webkit-scrollbar { display: none; }
+.topnav a {
+  color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500;
+  padding: 14px 10px; white-space: nowrap; border-bottom: 2px solid transparent;
+}
+.topnav a:hover, .topnav a:focus-visible { color: var(--text); border-bottom-color: var(--amber); outline: none; }
+.topnav a.topnav-home { color: var(--text); font-weight: 700; margin-right: auto; padding-left: 0; }
+@media (max-width: 760px) { .topnav a.topnav-home { display: none; } .topnav a { padding: 12px 8px; font-size: 13px; } }
+.anchor { margin-top: -84px; padding-top: 84px; }
+.part, #start { scroll-margin-top: 64px; }
+
+/* Start here */
+.start-here {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: clamp(20px, 4vw, 32px); margin: 28px 0 8px;
+}
+.start-title { font-size: clamp(22px, 3.2vw, 28px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+.start-lede { color: var(--text-dim); font-size: 16px; margin-bottom: 20px; }
+.start-here .workflow {
+  background: none; border: 0; padding: 4px 0 20px; margin: 0 0 20px;
+  border-bottom: 1px solid var(--border); border-radius: 0;
+  justify-content: flex-start; flex-wrap: wrap; row-gap: 12px; overflow: visible;
+}
+.start-here .workflow-icon { width: 48px; height: 48px; font-size: 22px; }
+.start-here .workflow-step { min-width: 64px; }
+.start-here .workflow-arrow { padding: 0 6px 22px; }
+.start-here .tldr { background: none; border: 0; box-shadow: none; }
+.start-here .tldr-header { display: none; }
+.start-here .tldr ol { padding-left: 1.3em; margin: 0; }
+@media (max-width: 560px) {
+  .start-here .workflow { justify-content: space-between; }
+  .start-here .workflow-arrow { display: none; }
+  .start-here .workflow-step { min-width: 0; flex: 1 1 18%; }
+  .start-here .workflow-label { font-size: 11px; white-space: nowrap; }
+  .start-here .workflow-icon { width: 44px; height: 44px; font-size: 20px; }
+}
+
+/* Part headings: the four big chapters */
+.part {
+  margin-top: clamp(56px, 9vw, 88px); padding-top: clamp(24px, 4vw, 32px);
+  border-top: 2px solid var(--border2);
+}
+.part-num { display: block; color: var(--amber); font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.part-title { font-size: clamp(30px, 5vw, 42px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 10px; }
+.part-lede { color: var(--text-dim); font-size: 17px; max-width: 62ch; margin: 0; }
+
+/* Section headers: one style everywhere, works on mobile */
+.section-header, .section-header-daily {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-top: clamp(40px, 6vw, 56px); margin-bottom: 14px;
+  padding: 0; border: 0; background: none; border-radius: 0;
+}
+.section-header .section-icon { font-size: 22px; line-height: 1.3; filter: none; }
+.section-header h2 { display: block; font-size: clamp(21px, 3.2vw, 26px); line-height: 1.3; }
+.section-header h2 .daily-pill, .section-header h2 .new-badge { margin-left: 8px; vertical-align: 3px; }
+.part + .anchor + .section-header, .part + .section-header { margin-top: 28px; }
+
+/* Dividers: one between sections, never stacked */
+hr.divider { margin: clamp(36px, 6vw, 48px) 0 0; border-top-color: var(--border); }
+
+/* Prose: readable line length */
+.container > p { max-width: 72ch; }
+
+/* Code blocks: no per-line highlight boxes */
+pre code, .code-block pre code {
+  background: none; border: 0; padding: 0; border-radius: 0;
+  color: inherit; font-size: inherit; word-break: normal;
+}
+.code-block pre { color: var(--code-text); }
+
+/* "Why each part is there" style lists: label then text, no broken columns */
+ul.plain-list li { display: block; position: relative; padding-left: 22px; }
+ul.plain-list li::before { position: absolute; left: 0; top: 0; }
+ul.plain-list li strong { margin-right: 4px; }
+
+/* Quieter highlights: keep colour for meaning, drop the glow */
+.whats-new-item, .whats-new-event { box-shadow: none !important; }
+.whats-new-event { border-width: 1px !important; }
+.older-updates { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0; }
+.older-updates summary {
+  cursor: pointer; padding: 12px 14px; color: var(--text-dim); font-size: 14px; font-weight: 600;
+}
+.older-updates summary:hover { color: var(--text); }
+.older-updates[open] summary { border-bottom: 1px solid var(--border); }
+.older-grid { padding: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.card, .prompt-card, .tldr, .code-block { box-shadow: none; }
+.card:hover { border-color: var(--border); }
+
+/* Floating quick-copy: only where there's room beside the column */
+@media (max-width: 1240px) { .float-nav { display: none; } }
+
+header { margin-bottom: 24px; padding-bottom: 32px; }
+.topnav-inner { mask-image: linear-gradient(90deg,#000 85%,transparent); -webkit-mask-image: linear-gradient(90deg,#000 85%,transparent); }
+@media (min-width: 900px) { .topnav-inner { mask-image: none; -webkit-mask-image: none; } }
+
+/* Visible keyboard focus */
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -1318,6 +1438,19 @@ footer a:hover { text-decoration: underline; }
   <span class="cross-banner-text">Also available: <strong>Codex CLI + Replit Shell Safe Prompt Guide</strong></span>
   <span class="cross-banner-arrow">→</span>
 </a>
+
+<nav class="topnav" aria-label="Sections">
+  <div class="topnav-inner">
+    <a href="#top" class="topnav-home">Safe Prompt Guide</a>
+    <a href="#start">Start here</a>
+    <a href="#part-setup">Set up</a>
+    <a href="#part-daily">Daily routine</a>
+    <a href="#part-review">Bigger changes</a>
+    <a href="#part-reference">Reference</a>
+    <a href="#mistakes">Fixes</a>
+    <a href="#changelog">Changelog</a>
+  </div>
+</nav>
 
 <div class="container">
 
@@ -1372,6 +1505,9 @@ footer a:hover { text-decoration: underline; }
           <p style="margin:0;font-size:13px;color:var(--text-muted);">It arrived alongside <strong style="color:var(--text);">Claude Mods</strong>, a new kind of plugin that can change how Claude Code itself behaves. The built-in one above is from Anthropic and safe to switch on. Be careful with third-party mods though, they run with a lot of access, so only install ones from people you trust.</p>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (27)</summary>
+          <div class="older-grid">
         <div class="whats-new-item">
           <div class="whats-new-item-title">↩️ Lost your prompt? Press Up</div>
           <p>Cleared a half-typed prompt with Ctrl+C by accident? Press the Up arrow and the draft comes back. Small thing, saves a lot of retyping. Claude Code v2.1.288.</p>
@@ -1555,28 +1691,17 @@ footer a:hover { text-decoration: underline; }
           <p>Community contribution from Tim. Split CLAUDE.md into CLAUDE.md + CONTEXT.md + ROADMAP.md. Lighter on tokens, scales better. Migration section included for existing projects.</p>
         </div>
 
+          </div>
+        </details>
       </div>
     </div>
   </div>
 
-  <!-- QUICK JUMP -->
-  <div class="nav-grid">
-    <a href="#install" class="ql ql-daily">⚙️ Install</a>
-    <a href="#morning" class="ql ql-daily">☀️ Kick-Off</a>
-    <a href="#evening" class="ql ql-daily">🌙 Wrap-Up</a>
-    <a href="#claudemd-tips" class="ql ql-daily">📝 CLAUDE.md</a>
-  </div>
-  <div class="nav-grid">
-    <a href="#ssh" class="ql ql-purple">🔌 SSH <span class="ql-new ql-new-purple">New</span></a>
-    <a href="#checkpoint-script" class="ql ql-blue">⚡ Checkpoint</a>
-    <a href="#review" class="ql ql-blue">🔍 Review <span class="ql-new ql-new-blue">New</span></a>
-    <a href="#auto" class="ql ql-blue">🔒 Auto Mode</a>
-    <a href="#skills" class="ql ql-purple">🧠 Skills</a>
-    <a href="#mistakes" class="ql ql-red">⚠️ Mistakes</a>
-    <a href="#reference" class="ql">📊 Reference</a>
-  </div>
-
-  <!-- WORKFLOW -->
+  <!-- ═══ START HERE ═══ -->
+  <span class="anchor" id="start"></span>
+  <section class="start-here">
+    <h2 class="start-title">New here? Start with this</h2>
+    <p class="start-lede">The whole routine on one screen. Everything below goes into more detail.</p>
   <div class="workflow">
     <div class="workflow-step">
       <div class="workflow-icon">📥</div>
@@ -1602,6 +1727,26 @@ footer a:hover { text-decoration: underline; }
       <div class="workflow-icon">🔄</div>
       <span class="workflow-label">Repeat</span>
     </div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-header">// THE SHORT VERSION</div>
+    <ol>
+      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></li>
+      <li><strong>New project:</strong> Create CLAUDE.md using the First-Time Setup in Part 1</li>
+      <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
+      <li><strong>Rules live in CLAUDE.md.</strong> No need to repeat them every session</li>
+      <li><strong>File too big?</strong> Kick-off prompt auto-archives old logs to CLAUDE_ARCHIVE.md</li>
+      <li><strong>Long tasks:</strong> Press Shift+Tab to cycle permission modes. Auto Mode available on Team/Enterprise/API plans</li>
+      <li><strong>Skills:</strong> Use <code>/debug</code>, <code>/simplify</code> built-in, or install community skills with <code>npx skills add frontend-design</code></li>
+    </ol>
+  </div>
+  </section>
+
+  <div class="part" id="part-setup">
+    <span class="part-num">Part 1</span>
+    <h2 class="part-title">Set up</h2>
+    <p class="part-lede">Install Claude Code, connect GitHub and create your project files. Once per project, plus the install line every session.</p>
   </div>
 
   <!-- ═══ INSTALL ═══ -->
@@ -2354,6 +2499,12 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
   </div>
 
 
+  <div class="part" id="part-daily">
+    <span class="part-num">Part 2</span>
+    <h2 class="part-title">Daily routine</h2>
+    <p class="part-lede">Start each session the same way, work, then save your progress before you stop.</p>
+  </div>
+
   <!-- ═══ MORNING ═══ -->
   <span class="anchor" id="morning"></span>
   <div class="section-header section-header-daily">
@@ -2531,7 +2682,7 @@ rm -f CONTEXT.md ROADMAP.md CLAUDE_ARCHIVE.md</code></pre>
   <span class="anchor" id="checkpoint-script"></span>
   <div class="section-header">
     <span class="section-icon">⚙️</span>
-    <h2>Checkpoint Script <span class="new-badge" style="font-size:10px;vertical-align:middle;">Community</span></h2>
+    <h2>Checkpoint Script</h2>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:16px;line-height:1.6;">Contributed by Tim from the community. Drop this script into your project root and typing <code>checkpoint</code> to Claude replaces the entire wrap-up prompt. One word does everything.</p>
@@ -2723,8 +2874,11 @@ git push</code></pre>
     </div>
   </div>
 
-  <hr class="divider">
-
+  <div class="part" id="part-review">
+    <span class="part-num">Part 3</span>
+    <h2 class="part-title">Bigger changes</h2>
+    <p class="part-lede">For redesigns, new features and client work: Claude works on a branch and you approve before anything goes live.</p>
+  </div>
 
   <span class="anchor" id="review"></span>
   <div class="section-header">
@@ -2911,13 +3065,16 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
     </div>
   </div>
 
-  <hr class="divider">
-
+  <div class="part" id="part-reference">
+    <span class="part-num">Part 4</span>
+    <h2 class="part-title">Reference</h2>
+    <p class="part-lede">Permission modes, skills, CLAUDE.md tips, fixes for common problems, and a cheat sheet.</p>
+  </div>
 
   <span class="anchor" id="auto"></span>
   <div class="section-header">
     <span class="section-icon">⚡</span>
-    <h2>Permission Modes <span class="new-badge" style="font-size:10px;vertical-align:middle;">New in 2026</span></h2>
+    <h2>Permission Modes</h2>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">Claude Code now has multiple permission modes. Cycle through them with <code>Shift+Tab</code> instead of approving every action or skipping all safety checks with <code>--dangerously-skip-permissions</code>.</p>
@@ -2985,7 +3142,7 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
   <span class="anchor" id="skills"></span>
   <div class="section-header">
     <span class="section-icon">🧠</span>
-    <h2>Claude Code Skills <span class="new-badge" style="font-size:10px;vertical-align:middle;">New in 2026</span></h2>
+    <h2>Claude Code Skills</h2>
   </div>
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">Skills are <code>SKILL.md</code> files that give Claude a specialised playbook for a specific task. Invoke them with a <code>/slash-command</code> and Claude loads the instructions on demand without bloating your context window during the rest of the session. If you keep pasting the same long prompt repeatedly, a skill is the fix.</p>
@@ -3399,56 +3556,6 @@ description: >
 
   <hr class="divider">
 
-  <!-- ═══ REFERENCE ═══ -->
-  <span class="anchor" id="reference"></span>
-  <div class="section-header">
-    <span class="section-icon">📊</span>
-    <h2>Quick Reference</h2>
-  </div>
-
-  <div class="card">
-    <table class="ref-table">
-      <thead>
-        <tr>
-          <th>When</th>
-          <th>What to Do</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Every Session</td><td>Install Claude Code and start it with the curl command</td></tr>
-        <tr><td>New Project</td><td>Create CLAUDE.md + CONTEXT.md + ROADMAP.md using First-Time Setup</td></tr>
-        <tr><td>Good CLAUDE.md</td><td>Rules only, keep it short. Project state lives in CONTEXT.md now</td></tr>
-        <tr><td>Start of Session</td><td>Use the Kick-Off Prompt (reads all three files)</td></tr>
-        <tr><td>End of Session</td><td>Type <code>checkpoint</code> to Claude. Replaces the wrap-up prompt entirely</td></tr>
-        <tr><td>Session too long</td><td>Type <code>handoff</code> to Claude for a fresh session bootstrap</td></tr>
-        <tr><td>Something breaks</td><td>Run <code>/debug</code> before asking Claude to fix anything</td></tr>
-        <tr><td>Long Tasks</td><td>Press Shift+Tab to switch permission mode</td></tr>
-        <tr><td>Repeated Tasks</td><td>Create a skill in <code>~/.claude/skills/</code> and invoke with <code>/skill-name</code></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- TLDR -->
-  <div class="section-header">
-    <span class="section-icon">⚡</span>
-    <h2>TL;DR</h2>
-  </div>
-
-  <div class="tldr">
-    <div class="tldr-header">// THE SHORT VERSION</div>
-    <ol>
-      <li><strong>Every session:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash && export PATH="$HOME/.local/bin:$PATH" && claude</code></li>
-      <li><strong>New project:</strong> Create CLAUDE.md using the First-Time Setup above</li>
-      <li><strong>Daily workflow:</strong> Kick-off prompt → Work → Wrap-up prompt</li>
-      <li><strong>Rules live in CLAUDE.md.</strong> No need to repeat them every session</li>
-      <li><strong>File too big?</strong> Kick-off prompt auto-archives old logs to CLAUDE_ARCHIVE.md</li>
-      <li><strong>Long tasks:</strong> Press Shift+Tab to cycle permission modes. Auto Mode available on Team/Enterprise/API plans</li>
-      <li><strong>Skills:</strong> Use <code>/debug</code>, <code>/simplify</code> built-in, or install community skills with <code>npx skills add frontend-design</code></li>
-    </ol>
-  </div>
-
-  <hr class="divider">
-
   <!-- ═══ CLAUDE.MD TIPS ═══ -->
   <span class="anchor" id="claudemd-tips"></span>
   <div class="section-header">
@@ -3594,92 +3701,6 @@ description: >
   </div>
 
   <hr class="divider">
-  <hr class="divider">
-
-  <!-- ═══ COMMON MISTAKES ═══ -->
-  <span class="anchor" id="mistakes"></span>
-  <div class="section-header">
-    <span class="section-icon">⚠️</span>
-    <h2>Common Mistakes</h2>
-  </div>
-
-  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">These aren't error messages , they're habits that quietly make Claude Code worse over time. Most people hit all of them in the first few weeks.</p>
-
-  <div class="card">
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Not committing before starting edits</div>
-      <div class="trouble-a">The single most common cause of lost work. Claude makes several changes, something breaks, and you have no safe state to roll back to. The GitHub safety rules in CLAUDE.md exist to stop this but only if you actually put them there. Make committing first a reflex.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Saying "just fix it" instead of using /debug</div>
-      <div class="trouble-a">Asking Claude to fix an error without diagnosing it first leads to Claude guessing. Sometimes it guesses right. Often it changes the wrong thing and creates a new problem. Run <code>/debug</code> first , it reads the error, finds the root cause, and plans a fix before touching anything.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Still using --dangerously-skip-permissions</div>
-      <div class="trouble-a">This was always a last resort and now there's no reason to use it. Auto Mode (Team/Enterprise/API plans) gives you the same uninterrupted workflow with a classifier blocking dangerous actions. If you're on Pro or Max, use Accept Edits mode instead.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Letting CLAUDE.md grow too big before archiving</div>
-      <div class="trouble-a">The file size check in the Morning Kick-Off prompt exists for a reason. When CLAUDE.md gets over 30k characters, Claude's performance on that project noticeably degrades , it starts drifting from the rules and missing context. Archive early, not when it's already causing problems.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Never adding to Project-Specific Rules</div>
-      <div class="trouble-a">If you correct Claude doing the same thing twice, that's a rule waiting to be written. The Project-Specific Rules section is supposed to grow. Every time you find yourself saying "no, we do it this way" , add it. A CLAUDE.md that never grows is one that never gets better.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Installing skills but never invoking them</div>
-      <div class="trouble-a">Skills don't run themselves unless you either call them or reference them in CLAUDE.md rules. If you've installed <code>/simplify</code> and <code>/debug</code> but never type them or tell Claude to use them automatically, they're doing nothing. Add them to your Project-Specific Rules so Claude uses them without being asked.</div>
-    </div>
-    <div class="trouble-item">
-      <div class="trouble-q">🚫 Skipping the Wrap-Up prompt</div>
-      <div class="trouble-a">The Wrap-Up prompt isn't just about saving , it updates the Session Log, captures what was done, and sets up the next session. If you skip it, the next Kick-Off starts with stale context and Claude has to work harder to understand where things stand. It takes 30 seconds and saves minutes of re-explaining.</div>
-    </div>
-    <div class="trouble-item" style="border-bottom:none;">
-      <div class="trouble-q">🚫 Working on main branch for everything</div>
-      <div class="trouble-a">Claude should create a branch any time it's working on something that might break existing functionality , your CLAUDE.md rules say so. But if you don't check what branch you're on at Kick-Off, you might not notice when Claude skips this. The Kick-Off prompt runs <code>git status</code> and <code>git log</code> for exactly this reason.</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ═══ TROUBLESHOOTING ═══ -->
-  <div class="section-header">
-    <span class="section-icon">🔧</span>
-    <h2>Troubleshooting</h2>
-  </div>
-
-  <div class="card">
-    <button class="collapse-trigger" onclick="toggleCollapse(this)">
-      <span class="trigger-left">🔧 Common Issues &amp; Fixes</span>
-      <span class="chevron">▼</span>
-    </button>
-    <div class="collapse-content">
-      <div class="trouble-item">
-        <div class="trouble-q">❌ Claude Code not installing</div>
-        <div class="trouble-a">If the native installer fails, use the npm fallback: <code>npm install -g @anthropic-ai/claude-code && claude</code>. If still failing, check your internet connection or restart the Repl.</div>
-      </div>
-      <div class="trouble-item">
-        <div class="trouble-q">❌ Git push failing</div>
-        <div class="trouble-a">Make sure GitHub is connected in Replit Settings → Connected Services. Check you have write access to the repo.</div>
-      </div>
-      <div class="trouble-item">
-        <div class="trouble-q">❌ CLAUDE.md not being read</div>
-        <div class="trouble-a">The file must be named exactly <code>CLAUDE.md</code> (case-sensitive) in the project root, not a subfolder.</div>
-      </div>
-      <div class="trouble-item">
-        <div class="trouble-q">❌ Claude forgetting rules mid-session</div>
-        <div class="trouble-a">Your CLAUDE.md is probably too large. Use the Kick-Off prompt to check file size and archive old logs if needed.</div>
-      </div>
-      <div class="trouble-item">
-        <div class="trouble-q">❌ Changes not showing on GitHub</div>
-        <div class="trouble-a">Run <code>git status</code> to check for uncommitted changes, then <code>git add .</code>, <code>git commit -m "message"</code>, and <code>git push</code>.</div>
-      </div>
-      <div class="trouble-item">
-        <div class="trouble-q">❓ Auto Mode questions</div>
-        <div class="trouble-a">As of August 14, 2026 auto mode is the default on Pro, Max, and Team plans (it used to exclude Pro entirely). Still opt-in for now on Enterprise, API, Bedrock, Vertex, and Foundry. If you'd rather approve each step, cycle modes with <code>Shift+Tab</code> or pin manual mode with <code>/config defaultMode=manual</code>. Run <code>claude update</code> to make sure you're current.</div>
-      </div>
-    </div>
-  </div>
 
   <!-- ═══ EXAMPLE ═══ -->
   <div class="section-header">
@@ -3791,10 +3812,130 @@ A React-based dashboard for tracking inventory.
     </div>
   </div>
 
+
+  <hr class="divider">
+
+  <!-- ═══ COMMON MISTAKES ═══ -->
+  <span class="anchor" id="mistakes"></span>
+  <div class="section-header">
+    <span class="section-icon">⚠️</span>
+    <h2>Common Mistakes</h2>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">These aren't error messages , they're habits that quietly make Claude Code worse over time. Most people hit all of them in the first few weeks.</p>
+
+  <div class="card">
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Not committing before starting edits</div>
+      <div class="trouble-a">The single most common cause of lost work. Claude makes several changes, something breaks, and you have no safe state to roll back to. The GitHub safety rules in CLAUDE.md exist to stop this but only if you actually put them there. Make committing first a reflex.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Saying "just fix it" instead of using /debug</div>
+      <div class="trouble-a">Asking Claude to fix an error without diagnosing it first leads to Claude guessing. Sometimes it guesses right. Often it changes the wrong thing and creates a new problem. Run <code>/debug</code> first , it reads the error, finds the root cause, and plans a fix before touching anything.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Still using --dangerously-skip-permissions</div>
+      <div class="trouble-a">This was always a last resort and now there's no reason to use it. Auto Mode (Team/Enterprise/API plans) gives you the same uninterrupted workflow with a classifier blocking dangerous actions. If you're on Pro or Max, use Accept Edits mode instead.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Letting CLAUDE.md grow too big before archiving</div>
+      <div class="trouble-a">The file size check in the Morning Kick-Off prompt exists for a reason. When CLAUDE.md gets over 30k characters, Claude's performance on that project noticeably degrades , it starts drifting from the rules and missing context. Archive early, not when it's already causing problems.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Never adding to Project-Specific Rules</div>
+      <div class="trouble-a">If you correct Claude doing the same thing twice, that's a rule waiting to be written. The Project-Specific Rules section is supposed to grow. Every time you find yourself saying "no, we do it this way" , add it. A CLAUDE.md that never grows is one that never gets better.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Installing skills but never invoking them</div>
+      <div class="trouble-a">Skills don't run themselves unless you either call them or reference them in CLAUDE.md rules. If you've installed <code>/simplify</code> and <code>/debug</code> but never type them or tell Claude to use them automatically, they're doing nothing. Add them to your Project-Specific Rules so Claude uses them without being asked.</div>
+    </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Skipping the Wrap-Up prompt</div>
+      <div class="trouble-a">The Wrap-Up prompt isn't just about saving , it updates the Session Log, captures what was done, and sets up the next session. If you skip it, the next Kick-Off starts with stale context and Claude has to work harder to understand where things stand. It takes 30 seconds and saves minutes of re-explaining.</div>
+    </div>
+    <div class="trouble-item" style="border-bottom:none;">
+      <div class="trouble-q">🚫 Working on main branch for everything</div>
+      <div class="trouble-a">Claude should create a branch any time it's working on something that might break existing functionality , your CLAUDE.md rules say so. But if you don't check what branch you're on at Kick-Off, you might not notice when Claude skips this. The Kick-Off prompt runs <code>git status</code> and <code>git log</code> for exactly this reason.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ TROUBLESHOOTING ═══ -->
+  <div class="section-header">
+    <span class="section-icon">🔧</span>
+    <h2>Troubleshooting</h2>
+  </div>
+
+  <div class="card">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <span class="trigger-left">🔧 Common Issues &amp; Fixes</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="collapse-content">
+      <div class="trouble-item">
+        <div class="trouble-q">❌ Claude Code not installing</div>
+        <div class="trouble-a">If the native installer fails, use the npm fallback: <code>npm install -g @anthropic-ai/claude-code && claude</code>. If still failing, check your internet connection or restart the Repl.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-q">❌ Git push failing</div>
+        <div class="trouble-a">Make sure GitHub is connected in Replit Settings → Connected Services. Check you have write access to the repo.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-q">❌ CLAUDE.md not being read</div>
+        <div class="trouble-a">The file must be named exactly <code>CLAUDE.md</code> (case-sensitive) in the project root, not a subfolder.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-q">❌ Claude forgetting rules mid-session</div>
+        <div class="trouble-a">Your CLAUDE.md is probably too large. Use the Kick-Off prompt to check file size and archive old logs if needed.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-q">❌ Changes not showing on GitHub</div>
+        <div class="trouble-a">Run <code>git status</code> to check for uncommitted changes, then <code>git add .</code>, <code>git commit -m "message"</code>, and <code>git push</code>.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-q">❓ Auto Mode questions</div>
+        <div class="trouble-a">As of August 14, 2026 auto mode is the default on Pro, Max, and Team plans (it used to exclude Pro entirely). Still opt-in for now on Enterprise, API, Bedrock, Vertex, and Foundry. If you'd rather approve each step, cycle modes with <code>Shift+Tab</code> or pin manual mode with <code>/config defaultMode=manual</code>. Run <code>claude update</code> to make sure you're current.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ REFERENCE ═══ -->
+  <span class="anchor" id="reference"></span>
+  <div class="section-header">
+    <span class="section-icon">📊</span>
+    <h2>Cheat sheet</h2>
+  </div>
+
+  <div class="card">
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>What to Do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Every Session</td><td>Install Claude Code and start it with the curl command</td></tr>
+        <tr><td>New Project</td><td>Create CLAUDE.md + CONTEXT.md + ROADMAP.md using First-Time Setup</td></tr>
+        <tr><td>Good CLAUDE.md</td><td>Rules only, keep it short. Project state lives in CONTEXT.md now</td></tr>
+        <tr><td>Start of Session</td><td>Use the Kick-Off Prompt (reads all three files)</td></tr>
+        <tr><td>End of Session</td><td>Type <code>checkpoint</code> to Claude. Replaces the wrap-up prompt entirely</td></tr>
+        <tr><td>Session too long</td><td>Type <code>handoff</code> to Claude for a fresh session bootstrap</td></tr>
+        <tr><td>Something breaks</td><td>Run <code>/debug</code> before asking Claude to fix anything</td></tr>
+        <tr><td>Long Tasks</td><td>Press Shift+Tab to switch permission mode</td></tr>
+        <tr><td>Repeated Tasks</td><td>Create a skill in <code>~/.claude/skills/</code> and invoke with <code>/skill-name</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
 </div><!-- /container -->
 
 <!-- CHANGELOG -->
 <div class="container">
+  <span class="anchor" id="changelog"></span>
   <hr class="divider" style="margin-top:0;">
   <div class="section-header">
     <span class="section-icon">📋</span>
