@@ -3982,7 +3982,7 @@ A React-based dashboard for tracking inventory.
             <li>Page reorganised into four parts: Set up, Daily routine, Bigger changes and Reference, with a "New here? Start with this" box at the top</li>
             <li>One sticky nav bar replaces the quick jump buttons and workflow strip. Floating quick-copy buttons stay on the right</li>
             <li>What's New shows the latest 3 updates, older ones folded away</li>
-            <li>Every section now folds open and shut from its title. Set-up and reference sections start closed, the everyday ones start open</li>
+            <li>Every section now folds open and shut from its title. Only the Daily routine sections start open, everything else starts closed</li>
             <li>Cleaner code blocks, left-aligned text, one heading style everywhere, fixed mobile headings and tidier lists. No prompts were changed</li>
           </ul>
         </div>
@@ -4656,10 +4656,9 @@ A React-based dashboard for tracking inventory.
     if (clickedBtn && text) doCopy(clickedBtn, text);
   }
 
-  // Foldable sections. Every-day sections start open, set-up and reference start closed.
+  // Foldable sections. Only the Daily routine sections start open.
   (function () {
-    var startClosed = ['Stable Sessions over SSH', 'Permission Modes', 'Claude Code Skills',
-      'Writing a Good CLAUDE.md', 'Example CLAUDE.md', 'Common Mistakes', 'Troubleshooting'];
+    var startOpen = ['Morning Kick-Off Prompt', 'End-of-Day Wrap-Up', 'Checkpoint Script'];
     var stopAt = function (el) {
       return !el || el.matches('.anchor, hr.divider, .part, .section-header, script') || el.id === 'changelog';
     };
@@ -4685,7 +4684,7 @@ A React-based dashboard for tracking inventory.
       hint.className = 'sec-hint'; hint.textContent = 'Click to open';
       h2.appendChild(hint);
       var set = function (open) { body.hidden = !open; head.setAttribute('aria-expanded', open ? 'true' : 'false'); };
-      set(startClosed.indexOf(title) === -1);
+      set(startOpen.indexOf(title) !== -1);
       var toggle = function () { set(body.hidden); };
       head.addEventListener('click', toggle);
       head.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
