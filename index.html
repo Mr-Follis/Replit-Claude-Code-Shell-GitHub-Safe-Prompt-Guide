@@ -1329,7 +1329,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v2.9.8 · Last updated: October 7, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v2.9.9 · Last updated: October 9, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1359,7 +1359,7 @@ footer a:hover { text-decoration: underline; }
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🔍 New section: Review Before Merge</div>
-          <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, publishes a report page with the decisions you need to make (same link every time), then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
+          <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, publishes the report as a Claude Code artifact with the decisions you need to make (one private claude.ai link, same link every time), then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
         </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);box-shadow:0 0 28px rgba(74,222,128,0.10);">
@@ -2795,11 +2795,12 @@ Do not merge. Do not touch main. Commit to your branch and push the branch only.
 
 3. REPORT PAGE
 Where it lives:
-- Publish it as a private page I can open from a link, with the screenshots included.
-- Use the same link every time. If a report page already exists for this project, update that one. Do not make a new page.
+- Publish the report as a Claude Code artifact, so I get a private claude.ai link. Do not just save a local file.
+- Embed the screenshots inside the page as compressed images (data URIs). Artifact pages can't load images from files or other sites, so linked screenshots won't show. Keep the whole page under 16MB.
+- Use the same link every time. If CLAUDE.md has a report link for this project, update that artifact. Do not make a new one.
 - Replace what's on the page with the newest report each time.
-- Save the report link in CLAUDE.md so the next session updates the same page.
-- If you can't publish a page here, save it as one HTML file at /report-output/report.html and tell me where it is.
+- Save the artifact link in CLAUDE.md so the next session updates the same page.
+- Only if publishing fails: save it as one HTML file at /report-output/report.html, tell me where it is, and tell me the exact reason it couldn't publish.
 How it looks:
 - One narrow reading column, about 760px wide, easy to read on a phone. Light and dark.
 - Header: the project name and site, today's date and time, and a one-line headline saying what this report covers.
@@ -2834,6 +2835,8 @@ What goes in it, in this order:
         <li><strong>"Open 2 or 3, nothing more":</strong> looking at every screenshot burns through your usage for no benefit</li>
         <li><strong>"Do not pick one":</strong> when you asked for options, the choice stays yours</li>
         <li><strong>Flag disagreements:</strong> catches the times your instructions and the project say different things</li>
+        <li><strong>"Publish as a Claude Code artifact":</strong> naming the feature is what gets you a link. Ask vaguely for "a page" and Claude often just writes a local file</li>
+        <li><strong>Embed the screenshots:</strong> artifact pages block images loaded from files or other sites, so they have to be baked into the page itself</li>
         <li><strong>Same link every time:</strong> one page to bookmark instead of a new report to hunt for after every task. It always shows the latest one</li>
         <li><strong>"How it looks":</strong> without layout rules every report comes out looking different. The status strip tells you the state of the work before you read a word</li>
         <li><strong>Copy as text:</strong> lets you paste the whole report into another chat for a second opinion</li>
@@ -2897,7 +2900,9 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
       <div class="pad">
         <ul class="plain-list" style="margin-bottom:0;">
           <li><strong>Screenshots failed:</strong> the screenshot tool (Playwright) doesn't always install inside Replit. The prompt tells Claude to say so and carry on, so you still get the report and CHANGES.md, just without pictures. Check the change yourself in the Replit preview</li>
-          <li><strong>You got a file instead of a link:</strong> Claude wasn't able to publish from where it's running, or played it safe. If it offers to publish a private page, say yes. Otherwise the report is at <code>report-output/report.html</code>, open it from the Replit file tree and keep the folder together so the screenshots show</li>
+          <li><strong>You got a file instead of a link:</strong> artifacts aren't switched on for that session. Check you're signed in with <code>/login</code> on a Pro, Max, Team or Enterprise plan (an API key can't publish), run <code>claude update</code>, and check the Artifacts row in <code>/config</code> is on. Then ask Claude to publish the report as an artifact. In the meantime the report is at <code>report-output/report.html</code> in the Replit file tree</li>
+          <li><strong>Lost the link:</strong> press <code>Ctrl+]</code> to reopen the latest artifact, or type <code>/artifacts</code> to list them all. Every artifact you've made is also at <a href="https://claude.ai/code/artifacts" style="color:var(--amber);">claude.ai/code/artifacts</a></li>
+          <li><strong>Screenshots missing on the page:</strong> Claude linked them instead of embedding them. Ask it to embed them as compressed images and republish to the same link</li>
           <li><strong>It made a new page instead of updating the old one:</strong> the link wasn't saved in CLAUDE.md. Give Claude the old link, tell it to update that page, and to save the link in CLAUDE.md</li>
           <li><strong>Claude merged anyway:</strong> rare, but if it happens ask it to undo the merge. Your <a href="#evening" style="color:var(--amber);">checkpoints</a> and GitHub history mean nothing is lost</li>
           <li><strong>Claude worked on main:</strong> you probably left out the "create a new branch" line. Ask it to move the work onto a new branch before continuing</li>
@@ -3807,8 +3812,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v2.9.8</span>
+              <span class="skill-cmd">v2.9.9</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 9, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Review Before Merge prompt now tells Claude to publish the report as a Claude Code artifact, so you get a private claude.ai link instead of a local file</li>
+            <li>Screenshots are now embedded in the report page, because artifact pages can't load images from files</li>
+            <li>Troubleshooting updated: what to check when you get a file instead of a link, and how to find a lost link</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v2.9.8</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 7, 2026</span>
             </div>
           </div>
@@ -4307,7 +4326,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v2.9.8 · Last updated: October 7, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v2.9.9 · Last updated: October 9, 2026</p>
   </footer>
 </div>
 
