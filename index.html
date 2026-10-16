@@ -1477,12 +1477,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v3.0</span>
+      <span class="version-badge">v3.1</span>
       <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v3.0 · Last updated: October 9, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v3.1 · Last updated: October 16, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1491,25 +1491,49 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">New Review Before Merge prompt · "You should know" add-on · October 7, 2026</span>
+        <span class="whats-new-pill">Claude Haiku 5.5 · idle compaction · cheaper Sonnet cache reads · October 16, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
 
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🐇 Claude Haiku 5.5 is here (October 7, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Anthropic's fastest and cheapest model, and their most capable small one yet.</strong> Built for quick, high-volume work. API id is <code>claude-haiku-5-5</code>.</p>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">💰 Price:</strong> $0.10/$0.50 per MTok. 1M context.</li>
+            <li><strong style="color:var(--text);">🔧 Getting it in Claude Code:</strong> run <code>claude update</code> to <strong style="color:var(--text);">v2.1.293 or later</strong>. It's now the default Haiku, which Claude Code uses behind the scenes for small jobs.</li>
+            <li><strong style="color:var(--text);">🎯 Which to use:</strong> stick with Sonnet 5.5 or Opus 5.5 for building. Haiku 5.5 is for quick lookups, simple edits and subagents doing lots of small tasks.</li>
+          </ul>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(245,166,35,0.06)); border:2px solid rgba(96,165,250,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🛠️ This week in Claude Code (v2.1.294 to v2.1.301)</div>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">💤 Idle compaction:</strong> walked away from a long session? If the chat is over 200K tokens and sits idle for about 54 minutes, Claude Code now compacts it before its cache expires, so coming back costs less of your limits. Turn it off with <code>"idleCompaction": false</code> in <code>settings.json</code> (v2.1.299).</li>
+            <li><strong style="color:var(--text);">🔀 Smoother model switching:</strong> switching to a model with a smaller context window now summarises a chat that's too long for it, instead of failing (v2.1.301).</li>
+            <li><strong style="color:var(--text);">🪝 Safer hooks:</strong> hooks written as plain instructions ("Block commands that...") could sometimes let through what they should block. Fixed in v2.1.294. New <code>onFailure: "block"</code> option makes a hook that crashes or times out block the action rather than wave it through (v2.1.295).</li>
+            <li><strong style="color:var(--text);">📈 Hit your limit?</strong> Pro and Max now get a "Get more usage" link on the usage-limit banner (v2.1.301). Max and Team plans also now include monthly API credits, claimed by linking a Claude Console organisation in billing settings.</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to pick all of these up.</p>
+        </div>
+
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.14), rgba(74,222,128,0.08)); border:2px solid rgba(96,165,250,0.5);box-shadow:0 0 30px rgba(96,165,250,0.12);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5.5 is here (September 28, 2026)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">Same price as Sonnet 5, 30%+ faster, and up to 30% cheaper per task because it gets there with fewer tokens.</strong> It beats Sonnet 5 across the board and lands within about two points of Opus 5.5 on coding. API id is <code>claude-sonnet-5-5</code>.</p>
           <ul class="plain-list" style="margin-bottom:10px;font-size:13px;">
-            <li><strong style="color:var(--text);">💰 Price:</strong> $2/$10 per MTok, cache reads $0.20. 1M context.</li>
+            <li><strong style="color:var(--text);">💰 Price:</strong> $2/$10 per MTok, cache reads now $0.10 (cut from $0.20 on October 9). 1M context.</li>
             <li><strong style="color:var(--text);">🔧 Getting it in Claude Code:</strong> run <code>claude update</code> to <strong style="color:var(--text);">v2.1.284 or later</strong>, then it's the default Sonnet model. Defaults to <code>medium</code> effort in Claude Code.</li>
             <li><strong style="color:var(--text);">⚠️ Effort gotcha:</strong> avoid <code>max</code> effort for now, it can burn through its whole thinking budget and fail. <code>xhigh</code> is the reliable top setting. Same applies to Opus 5.5.</li>
             <li><strong style="color:var(--text);">🎯 Which to use:</strong> Sonnet 5.5 for most everyday building, it's quick and cheap on your limits. Opus 5.5 when the job is big and open-ended and needs sustained judgment.</li>
           </ul>
-          <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 is due "in the coming weeks".</p>
+          <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 followed on October 7, see the card above.</p>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (29)</summary>
+          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🔍 New section: Review Before Merge</div>
           <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, publishes the report as a Claude Code artifact with the decisions you need to make (one private claude.ai link, same link every time), then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
@@ -1525,9 +1549,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:0;font-size:13px;color:var(--text-muted);">It arrived alongside <strong style="color:var(--text);">Claude Mods</strong>, a new kind of plugin that can change how Claude Code itself behaves. The built-in one above is from Anthropic and safe to switch on. Be careful with third-party mods though, they run with a lot of access, so only install ones from people you trust.</p>
         </div>
 
-        <details class="older-updates" style="grid-column:1/-1;">
-          <summary>Older updates (27)</summary>
-          <div class="older-grid">
         <div class="whats-new-item">
           <div class="whats-new-item-title">↩️ Lost your prompt? Press Up</div>
           <p>Cleared a half-typed prompt with Ctrl+C by accident? Press the Up arrow and the draft comes back. Small thing, saves a lot of retyping. Claude Code v2.1.288.</p>
@@ -3973,8 +3994,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v3.0</span>
+              <span class="skill-cmd">v3.1</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 16, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New What's New card for Claude Haiku 5.5 (October 7): $0.10/$0.50 per MTok, 1M context, default Haiku from Claude Code v2.1.293</li>
+            <li>New "This week in Claude Code" card: idle compaction, smoother model switching, safer hooks, the "Get more usage" link and monthly API credits for Max and Team</li>
+            <li>Sonnet 5.5 card updated: cache reads now $0.10 per MTok (was $0.20), and the "Haiku 5.5 coming soon" line replaced</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v3.0</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 9, 2026</span>
             </div>
           </div>
@@ -4503,7 +4538,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v3.0 · Last updated: October 9, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v3.1 · Last updated: October 16, 2026</p>
   </footer>
 </div>
 
