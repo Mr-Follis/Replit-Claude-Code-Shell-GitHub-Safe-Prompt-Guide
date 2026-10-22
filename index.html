@@ -1477,12 +1477,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v3.1</span>
+      <span class="version-badge">v3.2</span>
       <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v3.1 · Last updated: October 16, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v3.2 · Last updated: October 22, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1491,12 +1491,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Haiku 5.5 · idle compaction · cheaper Sonnet cache reads · October 16, 2026</span>
+        <span class="whats-new-pill">/auto-mode-setup · Code Review out of preview · Claude Duet · October 22, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🧭 This week (October 22, 2026)</div>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">Auto mode blocking too much?</strong> Run <code>/auto-mode-setup</code> and Claude Code drafts a list of what auto mode should trust from your project and recent sessions. We've added a full how-to to <a href="#auto" style="color:var(--amber);">Permission Modes</a>, including a Replit tip.</li>
+            <li><strong style="color:var(--text);">💤 Idle compaction switch:</strong> you can now turn it on or off from the Idle compaction row in <code>/config</code>, no settings file needed (v2.1.302).</li>
+            <li><strong style="color:var(--text);">🔎 Code Review is out of preview:</strong> Claude's automatic pull request reviews are now generally available, with Quick, Standard or Deep review per repo. Pause it on a PR with <code>@claude review stop</code>. Team and Enterprise plans only.</li>
+            <li><strong style="color:var(--text);">🗂️ Deleting a report artifact?</strong> <code>/artifacts</code> now asks for 1 or Enter to keep, 2 to delete, instead of y/n (v2.1.305).</li>
+            <li><strong style="color:var(--text);">👋 You might have seen:</strong> Claude Duet, a new Claude app that sends daily briefings from your connected apps and helps with scheduling and small projects. Research preview for Pro and Max via a waitlist. It's separate from Claude Code.</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to get v2.1.307 or later.</p>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.08)); border:2px solid rgba(74,222,128,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🐇 Claude Haiku 5.5 is here (October 7, 2026)</div>
@@ -1511,7 +1523,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(245,166,35,0.06)); border:2px solid rgba(96,165,250,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🛠️ This week in Claude Code (v2.1.294 to v2.1.301)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
-            <li><strong style="color:var(--text);">💤 Idle compaction:</strong> walked away from a long session? If the chat is over 200K tokens and sits idle for about 54 minutes, Claude Code now compacts it before its cache expires, so coming back costs less of your limits. Turn it off with <code>"idleCompaction": false</code> in <code>settings.json</code> (v2.1.299).</li>
+            <li><strong style="color:var(--text);">💤 Idle compaction:</strong> walked away from a long session? If the chat is over 200K tokens and sits idle for about 54 minutes, Claude Code now compacts it before its cache expires, so coming back costs less of your limits. Turn it off with the Idle compaction row in <code>/config</code> (v2.1.302), or <code>"idleCompaction": false</code> in <code>settings.json</code> (v2.1.299).</li>
             <li><strong style="color:var(--text);">🔀 Smoother model switching:</strong> switching to a model with a smaller context window now summarises a chat that's too long for it, instead of failing (v2.1.301).</li>
             <li><strong style="color:var(--text);">🪝 Safer hooks:</strong> hooks written as plain instructions ("Block commands that...") could sometimes let through what they should block. Fixed in v2.1.294. New <code>onFailure: "block"</code> option makes a hook that crashes or times out block the action rather than wave it through (v2.1.295).</li>
             <li><strong style="color:var(--text);">📈 Hit your limit?</strong> Pro and Max now get a "Get more usage" link on the usage-limit banner (v2.1.301). Max and Team plans also now include monthly API credits, claimed by linking a Claude Console organisation in billing settings.</li>
@@ -1519,6 +1531,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to pick all of these up.</p>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (30)</summary>
+          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.14), rgba(74,222,128,0.08)); border:2px solid rgba(96,165,250,0.5);box-shadow:0 0 30px rgba(96,165,250,0.12);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5.5 is here (September 28, 2026)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">Same price as Sonnet 5, 30%+ faster, and up to 30% cheaper per task because it gets there with fewer tokens.</strong> It beats Sonnet 5 across the board and lands within about two points of Opus 5.5 on coding. API id is <code>claude-sonnet-5-5</code>.</p>
@@ -1531,9 +1546,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:0;font-size:13px;color:var(--text-muted);">It's also now the model on the free tier of claude.ai. Haiku 5.5 followed on October 7, see the card above.</p>
         </div>
 
-        <details class="older-updates" style="grid-column:1/-1;">
-          <summary>Older updates (29)</summary>
-          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);box-shadow:0 0 28px rgba(245,166,35,0.10);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🔍 New section: Review Before Merge</div>
           <p style="margin:0;">A master prompt we now use on all our own sessions. Claude works on a branch, takes before and after screenshots, publishes the report as a Claude Code artifact with the decisions you need to make (one private claude.ai link, same link every time), then stops and waits for your say-so before anything reaches <code>main</code>. Includes how to save it as a <code>/finish</code> command. <a href="#review" style="color:var(--amber);">Jump to the section</a>.</p>
@@ -3177,6 +3189,35 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
     </div>
   </div>
 
+  <div class="auto-mode-card" style="margin-top:16px;">
+    <div class="auto-mode-header">
+      <span>🧭</span>
+      <h3>Auto mode blocking too much? Teach it your setup</h3>
+      <span class="new-badge">Oct 2026</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>Out of the box, auto mode only trusts your project folder and its own GitHub repo. Anything else, like your other repos, a database host or an API you use, can get blocked. <strong style="color:var(--text);">Run this and Claude Code works out what to trust for you:</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">in Claude Code</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>/auto-mode-setup</code></pre>
+      </div>
+      <ul class="plain-list">
+        <li><strong>What it does:</strong> asks how you use the project, reads your CLAUDE.md, README, config files, git remotes and the commands Claude ran in recent sessions, then drafts a list of what auto mode should trust. Nothing is saved until you accept it.</li>
+        <li><strong>Where it saves:</strong> your personal settings file, <code>~/.claude/settings.json</code>, not the project. Auto mode deliberately ignores these rules if they're in the project's own <code>.claude/settings.json</code>, so a repo can't vouch for itself.</li>
+        <li><strong>Check what it saved:</strong> run <code>claude auto-mode config</code> in the Shell. To undo it all, run <code>claude auto-mode reset</code>.</li>
+        <li><strong>It may offer itself:</strong> after auto mode has blocked a few things, Claude Code asks "Teach auto mode about your environment?". Saying yes runs the same setup.</li>
+        <li><strong>Needs:</strong> Pro, Max or Team on Claude Code v2.1.228 or later. Run <code>claude update</code> if the command isn't there.</li>
+      </ul>
+      <div class="availability-note">
+        <span class="note-icon">💡</span>
+        <span><strong>Replit tip:</strong> the settings live in your home folder, not your project. If you find auto mode has forgotten them after Replit restarts, just run <code>/auto-mode-setup</code> again. Rules in your CLAUDE.md, like "never force push", are read by auto mode too, and those travel with the project.</span>
+      </div>
+    </div>
+  </div>
+
   <hr class="divider">
 
   <!-- ═══ SKILLS ═══ -->
@@ -3994,8 +4035,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v3.1</span>
+              <span class="skill-cmd">v3.2</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 22, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>Permission Modes: new "Auto mode blocking too much?" card covering <code>/auto-mode-setup</code>, where it saves, how to check or reset it, and a Replit tip</li>
+            <li>New What's New card: idle compaction switch in <code>/config</code>, Code Review out of preview, the <code>/artifacts</code> delete prompt change, and Claude Duet</li>
+            <li>Idle compaction line in last week's card updated to mention the <code>/config</code> switch</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v3.1</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 16, 2026</span>
             </div>
           </div>
@@ -4538,7 +4593,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v3.1 · Last updated: October 16, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v3.2 · Last updated: October 22, 2026</p>
   </footer>
 </div>
 
