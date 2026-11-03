@@ -1477,12 +1477,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v3.2</span>
+      <span class="version-badge">v3.3</span>
       <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v3.2 · Last updated: October 22, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v3.3 · Last updated: November 3, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1491,12 +1491,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">/auto-mode-setup · Code Review out of preview · Claude Duet · October 22, 2026</span>
+        <span class="whats-new-pill">ultrathink = max effort · clearer 5-hour limit · /rewind gotcha · November 3, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(167,139,250,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(167,139,250,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--purple);">🧠 This week (November 3, 2026)</div>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">Stuck on a hard bug? Say <code>ultrathink</code>.</strong> Put the word in your message and that turn runs at <code>xhigh</code> effort, the highest reliable setting, on Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 (v2.1.311). Uses more of your limits, so save it for the tough ones.</li>
+            <li><strong style="color:var(--text);">⏰ Clearer limit message:</strong> "session limit" is now called the "5-hour limit", and it shows the actual time it resets, so you know exactly when you can carry on (v2.1.312).</li>
+            <li><strong style="color:var(--text);">⚠️ /rewind gotcha:</strong> edits Claude makes with <code>sed -i</code> now ask first, but <code>/rewind</code> can't undo them (v2.1.309). Commit or checkpoint before you start. Added to <a href="#mistakes" style="color:var(--amber);">Common Mistakes</a>.</li>
+            <li><strong style="color:var(--text);">🌍 Skills are an open standard:</strong> Anthropic donated the Agent Skills format to the Agentic AI Foundation, which also runs MCP (October 22). Skills you write aren't locked to Claude.</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to get v2.1.312 or later. Startup is a bit faster on Pro and Max too.</p>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🧭 This week (October 22, 2026)</div>
@@ -1520,6 +1531,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           </ul>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (31)</summary>
+          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(245,166,35,0.06)); border:2px solid rgba(96,165,250,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🛠️ This week in Claude Code (v2.1.294 to v2.1.301)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
@@ -1531,9 +1545,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to pick all of these up.</p>
         </div>
 
-        <details class="older-updates" style="grid-column:1/-1;">
-          <summary>Older updates (30)</summary>
-          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.14), rgba(74,222,128,0.08)); border:2px solid rgba(96,165,250,0.5);box-shadow:0 0 30px rgba(96,165,250,0.12);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">⚡ Claude Sonnet 5.5 is here (September 28, 2026)</div>
           <p style="margin-bottom:10px;"><strong style="color:var(--text);">Same price as Sonnet 5, 30%+ faster, and up to 30% cheaper per task because it gets there with fewer tokens.</strong> It beats Sonnet 5 across the board and lands within about two points of Opus 5.5 on coding. API id is <code>claude-sonnet-5-5</code>.</p>
@@ -3229,6 +3240,11 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
 
   <p style="color:var(--text-dim);font-size:16px;margin-bottom:20px;line-height:1.6;">Skills are <code>SKILL.md</code> files that give Claude a specialised playbook for a specific task. Invoke them with a <code>/slash-command</code> and Claude loads the instructions on demand without bloating your context window during the rest of the session. If you keep pasting the same long prompt repeatedly, a skill is the fix.</p>
 
+  <div class="availability-note" style="margin-bottom:16px;">
+    <span class="note-icon">🌍</span>
+    <span><strong>Skills are an open standard.</strong> In October 2026 Anthropic handed the Agent Skills format to the Agentic AI Foundation, the same open body that looks after MCP. So a skill you write isn't locked to Claude, other AI tools can adopt the same format.</span>
+  </div>
+
   <!-- HOW THEY WORK -->
   <div class="card card-amber" style="margin-bottom:16px;">
     <div class="pad">
@@ -3935,6 +3951,10 @@ A React-based dashboard for tracking inventory.
       <div class="trouble-q">🚫 Skipping the Wrap-Up prompt</div>
       <div class="trouble-a">The Wrap-Up prompt isn't just about saving , it updates the Session Log, captures what was done, and sets up the next session. If you skip it, the next Kick-Off starts with stale context and Claude has to work harder to understand where things stand. It takes 30 seconds and saves minutes of re-explaining.</div>
     </div>
+    <div class="trouble-item">
+      <div class="trouble-q">🚫 Treating /rewind as your undo button</div>
+      <div class="trouble-a"><code>/rewind</code> only rolls back edits Claude made with its own file tools. Anything changed by a shell command isn't covered, and since v2.1.309 that includes <code>sed -i</code>, which Claude often uses for quick find-and-replace edits. Your real undo is a git commit or a <a href="#checkpoint-script" style="color:var(--amber);">checkpoint</a> before the work starts, so make those the habit and treat <code>/rewind</code> as a bonus.</div>
+    </div>
     <div class="trouble-item" style="border-bottom:none;">
       <div class="trouble-q">🚫 Working on main branch for everything</div>
       <div class="trouble-a">Claude should create a branch any time it's working on something that might break existing functionality , your CLAUDE.md rules say so. But if you don't check what branch you're on at Kick-Off, you might not notice when Claude skips this. The Kick-Off prompt runs <code>git status</code> and <code>git log</code> for exactly this reason.</div>
@@ -4035,8 +4055,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v3.2</span>
+              <span class="skill-cmd">v3.3</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">November 3, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New What's New card: <code>ultrathink</code> now runs at xhigh effort, the clearer "5-hour limit" message, the <code>/rewind</code> and <code>sed -i</code> gotcha, and Skills becoming an open standard</li>
+            <li>Common Mistakes: new "Treating /rewind as your undo button" entry</li>
+            <li>Skills: note that Agent Skills is now an open standard under the Agentic AI Foundation</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v3.2</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">October 22, 2026</span>
             </div>
           </div>
@@ -4593,7 +4627,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v3.2 · Last updated: October 22, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v3.3 · Last updated: November 3, 2026</p>
   </footer>
 </div>
 
