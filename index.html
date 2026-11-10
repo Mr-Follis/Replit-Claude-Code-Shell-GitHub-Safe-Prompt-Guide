@@ -1477,12 +1477,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v3.3</span>
+      <span class="version-badge">v3.4</span>
       <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v3.3 · Last updated: November 3, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v3.4 · Last updated: November 10, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1491,12 +1491,34 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">ultrathink = max effort · clearer 5-hour limit · /rewind gotcha · November 3, 2026</span>
+        <span class="whats-new-pill">Claude Fable 5.2 · free usage reset (Pro: use by Nov 16) · November 10, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(167,139,250,0.08)); border:2px solid rgba(245,166,35,0.5);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Fable 5.2 is here (November 9, 2026)</div>
+          <p style="margin-bottom:10px;"><strong style="color:var(--text);">Anthropic's new most capable model, for the hardest coding and technical work.</strong> Available to everyone in the Claude apps and Claude Code. API id is <code>claude-fable-5-2</code>.</p>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">💰 Cheaper and faster:</strong> $8/$40 per MTok, down from $10/$50 for Fable 5.1, and up to 30% faster. Optional fast mode is about 2.5x quicker at $16/$80.</li>
+            <li><strong style="color:var(--text);">🎯 Which model to use:</strong> Anthropic still recommends <strong style="color:var(--text);">Opus 5.5 as your daily driver</strong>. Fable 5.2 scores higher on coding tests, but it costs twice as much per token and early testers found it slower and wordier. Switch to it with <code>/model</code> when Opus gets stuck on something big.</li>
+            <li><strong style="color:var(--text);">🎁 Free usage reset, act fast:</strong> Pro and Team standard seats get a reset, and Fable can use up to 50% of your weekly limit, but it must be <strong style="color:var(--text);">used by November 16</strong>. Max, Ultra and Team premium seats get one to three resets depending on how long you've subscribed, usable until March 8, 2027. Look for "Reset for free" under Settings &gt; Usage. Not on the free plan.</li>
+            <li><strong style="color:var(--text);">🔐 Mythos 5.2:</strong> the same model with fewer safety limits, only for vetted security and science organisations. Fable 5.2 is the one you'll use.</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> first so it shows up in <code>/model</code>.</p>
+        </div>
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(74,222,128,0.06)); border:2px solid rgba(96,165,250,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🛠️ This week in Claude Code (v2.1.314 to v2.1.319)</div>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">📁 Keep Claude in your project:</strong> a new setting stops Claude writing to anything outside your project folder. Copy-paste setup in <a href="#auto" style="color:var(--amber);">Permission Modes</a> (v2.1.314).</li>
+            <li><strong style="color:var(--text);">🔑 Know when you'll be signed out:</strong> <code>claude auth status</code> now shows when your sign-in ends, with a warning 10 days before (v2.1.318).</li>
+            <li><strong style="color:var(--text);">✉️ Email check:</strong> Claude Code now asks before a web or shell command sends your account email anywhere (v2.1.317).</li>
+            <li><strong style="color:var(--text);">⏳ Less waiting:</strong> slow MCP tool calls now run in the background and report back when done (v2.1.319), and background subagents move long shell commands to the background after 3 minutes (v2.1.318).</li>
+          </ul>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(167,139,250,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(167,139,250,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--purple);">🧠 This week (November 3, 2026)</div>
@@ -1509,6 +1531,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to get v2.1.312 or later. Startup is a bit faster on Pro and Max too.</p>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (32)</summary>
+          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🧭 This week (October 22, 2026)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
@@ -1531,9 +1556,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           </ul>
         </div>
 
-        <details class="older-updates" style="grid-column:1/-1;">
-          <summary>Older updates (31)</summary>
-          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(245,166,35,0.06)); border:2px solid rgba(96,165,250,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--blue);">🛠️ This week in Claude Code (v2.1.294 to v2.1.301)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
@@ -3229,6 +3251,33 @@ Apply those, delete CHANGES.md, merge the branch into main, push, then delete th
     </div>
   </div>
 
+  <div class="auto-mode-card" style="margin-top:16px;">
+    <div class="auto-mode-header">
+      <span>📁</span>
+      <h3>Keep Claude inside your project folder</h3>
+      <span class="new-badge">Nov 2026</span>
+    </div>
+    <div class="auto-mode-body">
+      <p>New in Claude Code v2.1.314: one setting stops Claude writing or editing any file outside your project, whatever permission mode you're in. Handy in Replit, where your project sits next to config files you never want touched. Add this to <code>.claude/settings.json</code> in your project:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">.claude/settings.json</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+        <pre><code>{
+  "permissions": {
+    "blockWritesOutsideWorkingDirectories": true
+  }
+}</code></pre>
+      </div>
+      <ul class="plain-list">
+        <li><strong>Already have a settings file?</strong> Add the <code>"blockWritesOutsideWorkingDirectories": true</code> line inside your existing <code>"permissions"</code> block instead of pasting a second one. The file is strict JSON, so no trailing commas.</li>
+        <li><strong>Check it loaded:</strong> run <code>/status</code>. If Claude Code shows a Settings Warning about this key, run <code>claude update</code> to get v2.1.314 or later.</li>
+        <li><strong>Commit the file</strong> and the rule travels with the project, so every session gets it.</li>
+      </ul>
+    </div>
+  </div>
+
   <hr class="divider">
 
   <!-- ═══ SKILLS ═══ -->
@@ -4055,8 +4104,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v3.3</span>
+              <span class="skill-cmd">v3.4</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">November 10, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New What's New card for Claude Fable 5.2: price, speed, which model to use, and the free usage reset (Pro and Team standard: use by November 16)</li>
+            <li>New "This week in Claude Code" card: keep-writes-in-project setting, sign-in expiry, email check, background MCP calls</li>
+            <li>Permission Modes: new "Keep Claude inside your project folder" card with a copy-paste settings snippet</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v3.3</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">November 3, 2026</span>
             </div>
           </div>
@@ -4627,7 +4690,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v3.3 · Last updated: November 3, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v3.4 · Last updated: November 10, 2026</p>
   </footer>
 </div>
 
