@@ -1477,12 +1477,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   <!-- HEADER -->
   <header id="top">
     <div class="header-top">
-      <span class="version-badge">v3.4</span>
+      <span class="version-badge">v3.5</span>
       <span class="new-badge">✦ Updated October 2026 · Opus 5.5</span>
     </div>
     <h1>🚀 Replit + <span>Claude Code</span><br>GitHub Safe Prompt Guide</h1>
     <p class="header-sub">CLAUDE.md is the single source of truth. It holds your project rules, context, and session history. Claude Code reads it automatically so you never have to repeat yourself.</p>
-    <p class="header-meta">v3.4 · Last updated: November 10, 2026 · by Mr-Follis</p>
+    <p class="header-meta">v3.5 · Last updated: November 18, 2026 · by Mr-Follis</p>
   </header>
 
   <!-- WHAT'S NEW BANNER -->
@@ -1491,12 +1491,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
       <div class="whats-new-left">
         <span class="whats-new-dot"></span>
         <span class="whats-new-label">What's New</span>
-        <span class="whats-new-pill">Claude Fable 5.2 · free usage reset (Pro: use by Nov 16) · November 10, 2026</span>
+        <span class="whats-new-pill">1M context by default · sandbox now asks first · apps beside the chat · November 18, 2026</span>
       </div>
       <span class="chevron">▼</span>
     </button>
     <div class="collapse-content whats-new-body">
       <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+
+        <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(74,222,128,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(74,222,128,0.45);">
+          <div class="whats-new-item-title" style="font-size:15px;color:var(--green);">🛠️ This week in Claude Code (v2.1.320 to v2.1.326)</div>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li><strong style="color:var(--text);">🧠 1M context by default:</strong> models Claude Code doesn't recognise now get a 1M token window instead of 200K. To keep 200K, set <code>CLAUDE_CODE_DISABLE_1M_CONTEXT=1</code> (v2.1.323).</li>
+            <li><strong style="color:var(--text);">📈 Out of usage?</strong> When a model needs usage credits that are off or used up, you now get a menu to stop, switch to usage credits or upgrade, instead of just an error (v2.1.323).</li>
+            <li><strong style="color:var(--text);">🧱 Sandbox now asks first:</strong> commands running in the sandbox go through the normal permission prompts by default. To go back to running them without asking, set <code>"sandbox": { "autoAllowBashIfSandboxed": true }</code> in your settings (v2.1.325).</li>
+            <li><strong style="color:var(--text);">⏸️ Safer auto-continue:</strong> "Continue automatically at usage limit" now stops with a notice if your sign-in changes or ends while it waits (v2.1.326).</li>
+          </ul>
+          <p style="margin:10px 0 6px;font-size:13px;"><strong style="color:var(--text);">👋 You might have seen (claude.ai, not Claude Code):</strong></p>
+          <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
+            <li>Connected apps like Notion, Canva, Asana and HubSpot can now open beside your chat, and Claude makes live changes in them. All plans, web and desktop.</li>
+            <li>Claude Sheets and Whiteboards are in beta, and Claude Data (was Dashboards) is out of beta. All paid plans.</li>
+            <li>Claude Meetings (beta): Claude joins Google Meet calls to take notes and answer questions. Team and Enterprise only.</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to get v2.1.326 or later.</p>
+        </div>
 
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.14), rgba(167,139,250,0.08)); border:2px solid rgba(245,166,35,0.5);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🚀 Claude Fable 5.2 is here (November 9, 2026)</div>
@@ -1504,7 +1521,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
             <li><strong style="color:var(--text);">💰 Cheaper and faster:</strong> $8/$40 per MTok, down from $10/$50 for Fable 5.1, and up to 30% faster. Optional fast mode is about 2.5x quicker at $16/$80.</li>
             <li><strong style="color:var(--text);">🎯 Which model to use:</strong> Anthropic still recommends <strong style="color:var(--text);">Opus 5.5 as your daily driver</strong>. Fable 5.2 scores higher on coding tests, but it costs twice as much per token and early testers found it slower and wordier. Switch to it with <code>/model</code> when Opus gets stuck on something big.</li>
-            <li><strong style="color:var(--text);">🎁 Free usage reset, act fast:</strong> Pro and Team standard seats get a reset, and Fable can use up to 50% of your weekly limit, but it must be <strong style="color:var(--text);">used by November 16</strong>. Max, Ultra and Team premium seats get one to three resets depending on how long you've subscribed, usable until March 8, 2027. Look for "Reset for free" under Settings &gt; Usage. Not on the free plan.</li>
+            <li><strong style="color:var(--text);">🎁 Free usage reset:</strong> the Pro and Team standard offer <strong style="color:var(--text);">ended on November 16</strong>. Max, Ultra and Team premium seats still get one to three resets depending on how long you've subscribed, usable until March 8, 2027. Look for "Reset for free" under Settings &gt; Usage.</li>
             <li><strong style="color:var(--text);">🔐 Mythos 5.2:</strong> the same model with fewer safety limits, only for vetted security and science organisations. Fable 5.2 is the one you'll use.</li>
           </ul>
           <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> first so it shows up in <code>/model</code>.</p>
@@ -1520,6 +1537,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           </ul>
         </div>
 
+        <details class="older-updates" style="grid-column:1/-1;">
+          <summary>Older updates (33)</summary>
+          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(167,139,250,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(167,139,250,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--purple);">🧠 This week (November 3, 2026)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
@@ -1531,9 +1551,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
           <p style="margin:10px 0 0;font-size:13px;color:var(--text-muted);">Run <code>claude update</code> to get v2.1.312 or later. Startup is a bit faster on Pro and Max too.</p>
         </div>
 
-        <details class="older-updates" style="grid-column:1/-1;">
-          <summary>Older updates (32)</summary>
-          <div class="older-grid">
         <div class="whats-new-item whats-new-event" style="grid-column:1/-1;background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(96,165,250,0.06)); border:2px solid rgba(245,166,35,0.45);">
           <div class="whats-new-item-title" style="font-size:15px;color:var(--amber);">🧭 This week (October 22, 2026)</div>
           <ul class="plain-list" style="margin-bottom:0;font-size:13px;">
@@ -4104,8 +4121,22 @@ A React-based dashboard for tracking inventory.
         <div class="skill-card">
           <div class="skill-header">
             <div class="skill-title-row">
-              <span class="skill-cmd">v3.4</span>
+              <span class="skill-cmd">v3.5</span>
               <span class="skill-badge skill-badge-popular">Current</span>
+              <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">November 18, 2026</span>
+            </div>
+          </div>
+          <ul class="plain-list" style="margin-bottom:0;">
+            <li>New "This week in Claude Code" card: 1M context by default, the out-of-usage menu, sandbox commands now asking first, and safer auto-continue</li>
+            <li>Short "you might have seen" notes on apps beside the chat, Claude Sheets, Whiteboards and Data, and Claude Meetings</li>
+            <li>Fable 5.2 card updated: the Pro and Team standard free reset ended on November 16, Max and Ultra resets still open</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-title-row">
+              <span class="skill-cmd">v3.4</span>
               <span style="font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">November 10, 2026</span>
             </div>
           </div>
@@ -4690,7 +4721,7 @@ A React-based dashboard for tracking inventory.
       <a href="https://auditmylisting.com/" target="_blank">AuditMyListing</a>
       <a href="https://github.com/Mr-Follis/Replit-Claude-Code-Shell-GitHub-Safe-Prompt-Guide" target="_blank">⭐ Star on GitHub</a>
     </div>
-    <p style="margin-top:12px;font-size:12px;">v3.4 · Last updated: November 10, 2026</p>
+    <p style="margin-top:12px;font-size:12px;">v3.5 · Last updated: November 18, 2026</p>
   </footer>
 </div>
 
